@@ -134,9 +134,9 @@ const productSchema = {
 
       <!-- AREA ATAS: FOTO GALERI & RINGKASAN PRODUK -->
       <div class="product-hero-card">
-        <!-- GALERI FOTO LENGKAP: FOTO UTAMA + ZOOM MAKRO LOGO & BAHAN (SWIPE DI HP, KLIK DI DESKTOP) -->
+        <!-- GALERI FOTO LENGKAP: RESPONSIF TOTAL (ASPECT-RATIO 1:1, NAVIGASI ARROW, ZOOM LIGHTBOX, SWIPE DI HP) -->
         <div class="product-hero-image-wrap">
-          <div class="product-main-view">
+          <div class="product-main-view" id="mainProductView">
             <img
               id="mainProductImg"
               src={mainImg}
@@ -146,19 +146,48 @@ const productSchema = {
               class="product-main-img"
               fetchpriority="high"
             />
-            <span class="gallery-zoom-hint">Klik foto bawah untuk detail makro</span>
+
+            <!-- TOMBOL NAVIGASI CHEVRON (PREV & NEXT) DI ATAS FOTO -->
+            <button class="gallery-nav-btn prev" id="btnPrevImg" type="button" aria-label="Foto Sebelumnya">
+              <Icon name="chevron" size={16} />
+            </button>
+            <button class="gallery-nav-btn next" id="btnNextImg" type="button" aria-label="Foto Selanjutnya">
+              <Icon name="chevron" size={16} />
+            </button>
+
+            <!-- PILL BADGE INDIKATOR SLIDE AKTIF -->
+            <div class="gallery-info-pill">
+              <span id="galleryCounter">1 / 3</span>
+              <span class="gallery-pill-dot">·</span>
+              <span id="galleryLabel">Foto Utama</span>
+            </div>
+
+            <!-- TOMBOL ZOOM MODAL / PERBESAR -->
+            <button class="gallery-zoom-btn" id="btnOpenLightbox" type="button" aria-label="Perbesar Foto">
+              <Icon name="search" size={14} />
+              <span>Perbesar</span>
+            </button>
           </div>
 
-          <!-- THUMBNAILS CAROUSEL (DAPAT DIGESER DI HP & DIKLIK DI DESKTOP) -->
+          <!-- THUMBNAILS CAROUSEL DENGAN LABEL (RESPONSIF KLIK DI DESKTOP & GESER DI HP) -->
           <div class="product-gallery-thumbs" id="productThumbs" role="tablist" aria-label="Galeri detail makro foto">
-            <button class="thumb-card active" data-img={mainImg} type="button" aria-label="Foto Utama">
-              <img src={mainImg} alt={'Foto Utama ' + p.name} width="76" height="76" loading="lazy" />
+            <button class="thumb-card active" data-img={mainImg} data-title="Foto Utama" data-index="0" type="button" aria-label="Foto Utama">
+              <div class="thumb-img-box">
+                <img src={mainImg} alt={'Foto Utama ' + p.name} width="76" height="76" loading="lazy" />
+              </div>
+              <span class="thumb-label">Foto Utama</span>
             </button>
-            <button class="thumb-card" data-img={macroLogo} type="button" aria-label="Detail Makro Logo">
-              <img src={macroLogo} alt={'Detail Makro Logo ' + p.name} width="76" height="76" loading="lazy" />
+            <button class="thumb-card" data-img={macroLogo} data-title="Makro Logo" data-index="1" type="button" aria-label="Detail Makro Logo">
+              <div class="thumb-img-box">
+                <img src={macroLogo} alt={'Detail Makro Logo ' + p.name} width="76" height="76" loading="lazy" />
+              </div>
+              <span class="thumb-label">Makro Logo</span>
             </button>
-            <button class="thumb-card" data-img={macroMaterial} type="button" aria-label="Detail Makro Bahan">
-              <img src={macroMaterial} alt={'Detail Makro Bahan ' + p.name} width="76" height="76" loading="lazy" />
+            <button class="thumb-card" data-img={macroMaterial} data-title="Makro Bahan" data-index="2" type="button" aria-label="Detail Makro Bahan">
+              <div class="thumb-img-box">
+                <img src={macroMaterial} alt={'Detail Makro Bahan ' + p.name} width="76" height="76" loading="lazy" />
+              </div>
+              <span class="thumb-label">Makro Bahan</span>
             </button>
           </div>
         </div>
@@ -388,9 +417,20 @@ const productSchema = {
         });
       });
 
-      // 2. Script Galeri Thumbnail (Klik di Desktop, Geser / Swipe di HP)
+      // 2. Script Galeri Interaktif & Responsif (Klik di Desktop, Geser / Swipe di HP, Zoom Lightbox)
       var mainImg = document.getElementById('mainProductImg');
       var thumbBtns = Array.from(document.querySelectorAll('.product-gallery-thumbs .thumb-card'));
+      var galleryCounter = document.getElementById('galleryCounter');
+      var galleryLabel = document.getElementById('galleryLabel');
+      var btnPrev = document.getElementById('btnPrevImg');
+      var btnNext = document.getElementById('btnNextImg');
+      var lightbox = document.getElementById('product-lightbox');
+      var lightboxImg = document.getElementById('lightboxImg');
+      var lightboxCounter = document.getElementById('lightboxCounter');
+      var btnCloseLightbox = document.getElementById('btnCloseLightbox');
+      var btnOpenLightbox = document.getElementById('btnOpenLightbox');
+      var btnLbPrev = document.getElementById('btnLightboxPrev');
+      var btnLbNext = document.getElementById('btnLightboxNext');
       var currentIndex = 0;
 
       function selectImage(idx) {
@@ -401,8 +441,10 @@ const productSchema = {
 
         var targetThumb = thumbBtns[currentIndex];
         var newSrc = targetThumb.getAttribute('data-img');
+        var newTitle = targetThumb.getAttribute('data-title') || 'Detail Produk';
+
         if (newSrc && mainImg) {
-          mainImg.style.opacity = '0.5';
+          mainImg.style.opacity = '0.4';
           mainImg.src = newSrc;
           mainImg.onload = function() {
             mainImg.style.opacity = '1';
@@ -410,6 +452,20 @@ const productSchema = {
           setTimeout(function() {
             mainImg.style.opacity = '1';
           }, 150);
+        }
+
+        if (galleryCounter) {
+          galleryCounter.textContent = (currentIndex + 1) + ' / ' + thumbBtns.length;
+        }
+        if (galleryLabel) {
+          galleryLabel.textContent = newTitle;
+        }
+
+        if (lightbox && lightbox.open && lightboxImg) {
+          lightboxImg.src = newSrc;
+          if (lightboxCounter) {
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + thumbBtns.length + ' · ' + newTitle;
+          }
         }
 
         thumbBtns.forEach(function(t, i) {
@@ -425,21 +481,88 @@ const productSchema = {
         });
       });
 
+      if (btnPrev) {
+        btnPrev.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectImage(currentIndex - 1);
+        });
+      }
+      if (btnNext) {
+        btnNext.addEventListener('click', function(e) {
+          e.stopPropagation();
+          selectImage(currentIndex + 1);
+        });
+      }
+
+      // Lightbox open / close
+      function openLightbox() {
+        if (!lightbox) return;
+        var currentThumb = thumbBtns[currentIndex];
+        var src = currentThumb ? currentThumb.getAttribute('data-img') : mainImg.src;
+        var title = currentThumb ? currentThumb.getAttribute('data-title') : 'Foto Produk';
+        if (lightboxImg) lightboxImg.src = src;
+        if (lightboxCounter) lightboxCounter.textContent = (currentIndex + 1) + ' / ' + thumbBtns.length + ' · ' + title;
+        lightbox.showModal();
+      }
+
+      if (btnOpenLightbox) {
+        btnOpenLightbox.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openLightbox();
+        });
+      }
+
+      if (mainImg) {
+        mainImg.addEventListener('click', function() {
+          openLightbox();
+        });
+      }
+
+      if (btnCloseLightbox && lightbox) {
+        btnCloseLightbox.addEventListener('click', function() {
+          lightbox.close();
+        });
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) {
+            lightbox.close();
+          }
+        });
+      }
+
+      if (btnLbPrev) {
+        btnLbPrev.addEventListener('click', function() {
+          selectImage(currentIndex - 1);
+        });
+      }
+      if (btnLbNext) {
+        btnLbNext.addEventListener('click', function() {
+          selectImage(currentIndex + 1);
+        });
+      }
+
       // Swipe gesture di HP pada area foto utama
       var mainView = document.querySelector('.product-main-view');
       if (mainView) {
         var startX = 0;
         var endX = 0;
+        var startY = 0;
+        var endY = 0;
 
         mainView.addEventListener('touchstart', function(e) {
           startX = e.changedTouches[0].screenX;
+          startY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         mainView.addEventListener('touchend', function(e) {
           endX = e.changedTouches[0].screenX;
-          var diff = startX - endX;
-          if (Math.abs(diff) > 40) {
-            if (diff > 0) {
+          endY = e.changedTouches[0].screenY;
+          var diffX = startX - endX;
+          var diffY = startY - endY;
+          if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > 0) {
               selectImage(currentIndex + 1);
             } else {
               selectImage(currentIndex - 1);
@@ -449,5 +572,26 @@ const productSchema = {
       }
     })();
   </script>
+
+  <!-- MODAL LIGHTBOX UNTUK ZOOM FOTO RESOLUSI PENUH -->
+  <dialog id="product-lightbox" class="product-lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="btnCloseLightbox" type="button" aria-label="Tutup Tampilan Penuh">
+        <Icon name="close" size={22} />
+      </button>
+      <div class="lightbox-body">
+        <img id="lightboxImg" src={mainImg} alt={'Detail perbesar ' + p.name} />
+      </div>
+      <div class="lightbox-bar">
+        <button class="lightbox-nav-btn" id="btnLightboxPrev" type="button" aria-label="Foto Sebelumnya">
+          <Icon name="chevron" size={18} />
+        </button>
+        <span class="lightbox-counter" id="lightboxCounter">1 / 3 · Foto Utama</span>
+        <button class="lightbox-nav-btn" id="btnLightboxNext" type="button" aria-label="Foto Selanjutnya">
+          <Icon name="chevron" size={18} />
+        </button>
+      </div>
+    </div>
+  </dialog>
 </Layout>
 
