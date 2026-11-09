@@ -40,13 +40,14 @@ const productSchema = {
   '@type': 'Product',
   'name': p.name,
   'image': [
-    'https://sekata.id' + mainImg,
-    'https://sekata.id' + macroLogo,
-    'https://sekata.id' + macroMaterial
+    'https://sekata.web.id' + mainImg,
+    'https://sekata.web.id' + macroLogo,
+    'https://sekata.web.id' + macroMaterial
   ],
   'description': p.desc,
   'sku': p.id,
   'mpn': 'SEKATA-' + p.id.toUpperCase(),
+  'url': 'https://sekata.web.id/' + categorySlug + '/' + p.id + '/',
   'brand': {
     '@type': 'Brand',
     'name': 'Sekata Malang'
@@ -60,8 +61,7 @@ const productSchema = {
     'priceValidUntil': '2027-12-31',
     'availability': 'https://schema.org/InStock',
     'seller': {
-      '@type': 'Organization',
-      'name': 'Sekata'
+      '@id': 'https://sekata.web.id/#organization'
     }
   },
   'aggregateRating': {

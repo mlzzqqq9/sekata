@@ -88,20 +88,28 @@ if (isHampersLebaran) {
   relevant = products;
 }
 
-// Schema.org CollectionPage / ItemList dengan AggregateRating untuk Google Search
+// Schema.org CollectionPage / WebPage yang valid menurut pedoman Google Rich Results
 const catalogSchema = {
   '@context': 'https://schema.org',
   '@type': isCatalog ? 'CollectionPage' : 'WebPage',
   'name': (category?.name || titles[page!] || 'Sekata') + ' | Sekata Malang',
   'description': desc,
-  'url': 'https://sekata.id/' + (page ? page + '/' : ''),
-  'aggregateRating': {
-    '@type': 'AggregateRating',
-    'ratingValue': '4.9',
-    'reviewCount': '128',
-    'bestRating': '5',
-    'worstRating': '1'
-  }
+  'url': 'https://sekata.web.id/' + (page ? page + '/' : ''),
+  'isPartOf': {
+    '@id': 'https://sekata.web.id/#organization'
+  },
+  ...(isCatalog && relevant.length > 0 ? {
+    'mainEntity': {
+      '@type': 'ItemList',
+      'numberOfItems': Math.min(relevant.length, 12),
+      'itemListElement': relevant.slice(0, 12).map((prod, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': prod.name,
+        'url': 'https://sekata.web.id/' + (prod.categorySlug || 'gift') + '/' + prod.id + '/'
+      }))
+    }
+  } : {})
 };
 
 // FAQ khusus kategori dinamis sesuai halaman aktif (humanis, formal & tanpa emoji)
