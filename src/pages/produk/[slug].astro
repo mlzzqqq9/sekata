@@ -1,0 +1,21 @@
+---
+import { products } from '../../data/site';
+
+export function getStaticPaths() {
+  return products.map((p) => {
+    const categorySlug = p.categorySlug || (
+      p.kind.toLowerCase().includes('lebaran') ? 'hampers-lebaran' :
+      p.kind.toLowerCase().includes('wedding') ? 'souvenir-wedding' :
+      p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah') ? 'souvenir-haji-umrah' :
+      'gift'
+    );
+    return {
+      params: { slug: p.id },
+      props: { categorySlug, slug: p.id }
+    };
+  });
+}
+
+const { categorySlug, slug } = Astro.props;
+return Astro.redirect('/' + categorySlug + '/' + slug + '/', 301);
+---

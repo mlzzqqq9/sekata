@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { wa } from '../data/site';
+
+interface FaqGroup {
+  id: string;
+  category: string;
+  title: string;
+  desc: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const faqGroups: FaqGroup[] = [
+  {
+    id: 'general-information',
+    category: 'general',
+    title: 'General Information (Informasi Umum)',
+    desc: 'Mengenal Sekata, konsep thoughtful gifting, dan cara memulai konsultasi hadiah impianmu.',
+    items: [
+      {
+        question: 'Apa itu Sekata dan apa yang membedakannya dengan penyedia souvenir biasa?',
+        answer: 'Sekata adalah studio kurasi souvenir pernikahan, hampers, dan gift custom yang berbasis di Malang, Jawa Timur. Kami mengusung konsep thoughtful gifting: setiap hadiah dirancang berawal dari cerita dan rasa terima kasih tulus, memadukan estetika modern yang timeless, material fungsional berkualitas tinggi, serta opsi personalisasi nama atau inisial yang rapi.'
+      },
+      {
+        question: 'Di mana lokasi workshop dan galeri Sekata?',
+        answer: 'Workshop dan galeri kami berlokasi di Cemorokandang, Kota Malang, Jawa Timur (65138). Kunjungan tatap muka untuk melihat contoh produk dan konsultasi langsung dapat dijadwalkan terlebih dahulu dengan menghubungi admin Ayu via WhatsApp.'
+      },
+      {
+        question: 'Apakah Sekata melayani pengiriman ke luar kota Malang?',
+        answer: 'Ya, Sekata melayani pengiriman ke seluruh wilayah Indonesia. Kami rutin mengirimkan pesanan ke kota-kota besar seperti Surabaya, Jakarta, Bandung, Semarang, Yogyakarta, Denpasar Bali, Makassar, Banjarmasin, Medan, hingga Balikpapan menggunakan mitra kargo terpercaya dengan packing kayu aman.'
+      },
+      {
+        question: 'Bisakah saya berkonsultasi jika belum memiliki ide produk atau tema yang pasti?',
+        answer: 'Sangat bisa! Tim kami dan Kak Ayu siap membantu memandu Anda sejak awal. Cukup sampaikan perkiraan jumlah tamu, konsep atau nuansa warna acara, dan estimasi anggaran. Kami akan merekomendasikan pilihan produk, kombinasi kemasan, dan ide kartu ucapan yang paling serasi.'
+      },
+      {
+        question: 'Apakah saya bisa meminta atau memesan sampel fisik sebelum produksi massal?',
+        answer: 'Tentu bisa. Anda dapat memesan paket sampel fisik untuk merasakan langsung tekstur bahan kulit, kerapian jahitan kanvas, kilau foil emas, dan kualitas kemasan sebelum pesanan massal disepakati.'
+      }
+    ]
+  },
+  {
+    id: 'orders-customization',
+    category: 'orders',
+    title: 'Orders & Customization (Pemesanan & Personalisasi)',
+    desc: 'Panduan jumlah pesanan minimal, pilihan teknik personalisasi, dan estimasi waktu produksi.',
+    items: [
+      {
+        question: 'Berapa minimum order quantity (MOQ) pemesanan di Sekata?',
+        answer: 'Minimum pemesanan bervariasi mengikuti jenis produk. Untuk souvenir pernikahan seperti pouch kulit dan card holder, MOQ dimulai dari 50–100 pcs. Untuk paket hampers eksklusif (gift set), kami melayani pemesanan fleksibel mulai dari 10 paket. Untuk kebutuhan di bawah MOQ, silakan diskusikan bersama Ayu.'
+      },
+      {
+        question: 'Teknik personalisasi apa saja yang dapat diterapkan pada souvenir?',
+        answer: 'Kami menyediakan berbagai teknik personalisasi berkelas: (1) Deboss/Emboss tekan pada material kulit sintetis, (2) Hot-stamping foil emas atau perak mewah, (3) Grafir laser presisi untuk kayu, logam, dan pouch, (4) Sablon grafis halus ramah lingkungan pada kain kanvas, dan (5) Cetak custom greeting card/kartu doa full color bertekstur premium.'
+      },
+      {
+        question: 'Berapa lama estimasi waktu pengerjaan (lead time) pesanan?',
+        answer: 'Waktu produksi standar berkisar antara 14 hingga 30 hari kerja setelah approval desain akhir dan konfirmasi pembayaran DP. Untuk pesanan dalam jumlah besar (di atas 1.000 pcs) atau pesanan mendesak (rush order), jadwal dapat disesuaikan melalui koordinasi khusus dengan admin.'
+      },
+      {
+        question: 'Kapan waktu paling ideal bagi calon pengantin untuk memesan souvenir pernikahan?',
+        answer: 'Kami menyarankan calon pengantin untuk mulai berkonsultasi sekitar 2 hingga 3 bulan sebelum hari bahagia. Waktu tersebut sangat ideal untuk tahap kurasi sampel, revisi desain inisial monogram, masa produksi tenang, serta pengiriman aman tanpa terburu-buru.'
+      },
+      {
+        question: 'Bisakah saya mengombinasikan isi hampers sesuai keinginan sendiri (custom mix)?',
+        answer: 'Bisa sekali! Anda dapat mengombinasikan berbagai item dalam satu hampers, misalnya memadukan tote bag kanvas, pouch monogram, lilin aromaterapi, kue kering premium, dan tumbler grafir dengan kemasan hardbox berpita kustom.'
+      }
+    ]
+  },
+  {
+    id: 'payment-pricing',
+    category: 'payment',
+    title: 'Payment & Invoicing (Pembayaran & Biaya)',
+    desc: 'Sistem pembayaran bertahap (DP & pelunasan), transparansi harga, dan invoice resmi instansi.',
+    items: [
+      {
+        question: 'Bagaimana skema pembayaran di Sekata?',
+        answer: 'Kami menerapkan sistem pembayaran bertahap yang aman dan transparan: (1) Down Payment (DP) sebesar 50% saat kesepakatan penawaran dan persetujuan desain sebelum produksi dimulai, dan (2) Pelunasan 50% setelah seluruh pesanan selesai diproduksi, lolos quality check, dan siap dikirimkan.'
+      },
+      {
+        question: 'Metode pembayaran apa saja yang diterima?',
+        answer: 'Pembayaran dapat dilakukan melalui transfer bank resmi (BCA, Mandiri, BNI, BRI) atas nama badan usaha resmi Sekata. Konfirmasi pembayaran dilakukan via WhatsApp bersama admin kasir kami.'
+      },
+      {
+        question: 'Apakah Sekata dapat menerbitkan invoice resmi, kwitansi, dan faktur untuk instansi atau BUMN?',
+        answer: 'Tentu bisa. Kami melayani kebutuhan pengadaan resmi corporate gifting dengan kelengkapan dokumen legal seperti surat penawaran resmi (Quotation), Purchase Order (PO), Invoice bertanda tangan dan cap resmi, kwitansi bermaterai, serta faktur pajak jika diperlukan.'
+      },
+      {
+        question: 'Apakah ada biaya tersembunyi (hidden fees)?',
+        answer: 'Tidak ada. Seluruh rincian biaya—termasuk biaya produk, personalisasi, kemasan pelindung, dan estimasi ongkos kirim kargo—akan tercantum secara terbuka dalam lembar penawaran resmi sebelum pesanan Anda diproses.'
+      }
+    ]
+  },
+  {
+    id: 'shipping-delivery',
+    category: 'shipping',
+    title: 'Shipping & Delivery (Pengiriman & Keamanan)',
+    desc: 'Jangkauan ekspedisi ke seluruh Indonesia, proteksi kemasan ganda, dan opsi penjemputan mandiri.',
+    items: [
+      {
+        question: 'Ekspedisi kargo apa saja yang digunakan untuk pengiriman?',
+        answer: 'Kami bekerja sama dengan berbagai ekspedisi kargo resmi terpercaya, seperti J&T Cargo, Indah Logistik, Dakota Cargo, Baraka Sarana Tama, KALOG (Kereta Api Logistik), hingga JNE Trucking (JTR) untuk memastikan tarif kirim ekonomis dan waktu tiba yang terprediksi.'
+      },
+      {
+        question: 'Bagaimana Sekata memastikan souvenir tidak rusak atau penyok selama pengiriman jarak jauh?',
+        answer: 'Setiap pesanan melewati standar proteksi ganda: setiap souvenir dibungkus plastik pelindung, dikemas ke dalam master box kardus tebal berserat rapat, dilapisi bubble wrap tebal multi-lapis, dan untuk pengiriman antarpulau atau produk pecah belah/mika kami melengkapinya dengan packing kayu palet kokoh berlabel fragile.'
+      },
+      {
+        question: 'Apakah tersedia asuransi pengiriman?',
+        answer: 'Ya, Anda dapat memilih penambahan asuransi pengiriman ekspedisi untuk memberikan perlindungan penuh terhadap risiko kehilangan atau kerusakan selama perjalanan kargo.'
+      },
+      {
+        question: 'Bisakah pesanan diambil langsung ke workshop Sekata di Malang?',
+        answer: 'Tentu bisa. Bagi pemesan di area Malang Raya, Batu, atau Surabaya yang ingin mengambil pesanan secara mandiri (self-pickup) atau menggunakan kurir instan, tim kami siap membantu penyerahan pesanan di workshop.'
+      }
+    ]
+  },
+  {
+    id: 'product-care',
+    category: 'product-care',
+    title: 'Product Care Instruction (Panduan Perawatan Produk)',
+    desc: 'Langkah praktis merawat pouch kulit, tas kanvas katun, aksesoris resin, dan tasbih digital.',
+    items: [
+      {
+        question: 'Bagaimana cara merawat dan membersihkan pouch / clutch kulit sintetis (PU Leather)?',
+        answer: 'Untuk menjaga kelenturan dan kilau kulit sintetis: (1) Bersihkan debu atau noda ringan menggunakan kain microfiber lembut yang sedikit dibasahi air hangat, (2) Hindari penggunaan alkohol, pemutih, atau detergen keras, (3) Keringkan secara alami di tempat teduh (jangan dijemur langsung di bawah terik matahari), dan (4) Simpan di tempat yang bersirkulasi udara baik dengan silica gel agar bebas jamur.'
+      },
+      {
+        question: 'Bagaimana cara mencuci tote bag kanvas katun agar sablon dan serat kain tetap awet?',
+        answer: 'Untuk tote bag kanvas beraksen sablon atau monogram: (1) Disarankan mencuci dengan tangan (hand wash) secara lembut, (2) Jangan disikat kasar pada area sablon atau bordir nama, (3) Gunakan sabun detergen lembut tanpa pemutih, dan (4) Jemur dengan bagian dalam tas dibalik (inside out) agar warna kain katun tetap segar.'
+      },
+      {
+        question: 'Bagaimana cara merawat dan menyimpan tasbih digital agar baterai awet bertahun-tahun?',
+        answer: 'Tasbih digital Sekata telah dilengkapi sistem auto-sleep otomatis untuk menghemat daya. Hindari menekan tombol terus-menerus saat tidak digunakan, jauhkan dari paparan air atau cairan wangi langsung, dan simpan dalam pouch pelindung yang kering.'
+      },
+      {
+        question: 'Bagaimana cara membersihkan jepit rambut dan aksesoris berbahan resin frangipani?',
+        answer: 'Cukup usap permukaan resin jernih menggunakan kain lembut kering atau tisu kacamata untuk mengembalikan kilaunya. Hindari menjatuhkan aksesoris ke permukaan keras berbatu dan jangan disemprot parfum langsung pada bagian resin.'
+      },
+      {
+        question: 'Bagaimana cara penyimpanan lilin aromaterapi (scented candle) yang tepat?',
+        answer: 'Simpan lilin aromaterapi di ruangan bersuhu sejuk dan kering, terlindung dari sinar matahari langsung agar minyak atsiri alaminya tidak menguap. Pastikan tutup toples terpasang rapat saat lilin tidak dinyalakan.'
+      }
+    ]
+  },
+  {
+    id: 'returns-guarantee',
+    category: 'guarantee',
+    title: 'Guarantee & Claims (Garansi & Penggantian)',
+    desc: 'Komitmen garansi kualitas Sekata dan prosedur klaim yang cepat dan solutif.',
+    items: [
+      {
+        question: 'Bagaimana jika terdapat barang yang cacat produksi atau rusak saat sampai di tujuan?',
+        answer: 'Kepuasan dan ketenangan hati Anda adalah prioritas utama Sekata. Apabila terdapat cacat produksi murni (misalnya ritsleting macet, kesalahan cetak inisial yang tidak sesuai kesepakatan desain, atau kerusakan akibat kelalaian pengemasan), kami memberikan garansi penggantian unit baru atau kompensasi yang disepakati bersama.'
+      },
+      {
+        question: 'Apa syarat dan prosedur untuk mengajukan klaim penggantian produk?',
+        answer: 'Mohon rekam video unboxing utuh saat paket pertama kali dibuka dari segel kardus luar. Kirimkan bukti video dan foto detail kendala kepada Ayu via WhatsApp maksimal 2 x 24 jam setelah paket diterima. Tim kami akan segera menindaklanjuti dan memproses solusi terbaik untuk Anda.'
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="FAQ — Pertanyaan yang Sering Diajukan | Sekata Malang"
+  description="Pusat bantuan lengkap seputar pemesanan, kustomisasi, pembayaran, pengiriman, dan panduan perawatan souvenir & hampers di Sekata Malang."
+>
+  <!-- HERO SECTION -->
+  <section class="page-hero" style="--page-hero-bg: url('/images/hero-tulip-gading.png');">
+    <div class="breadcrumbs">
+      <a href="/">Beranda</a> / FAQ
+    </div>
+    <span class="eyebrow">PUSAT BANTUAN & INFORMASI</span>
+    <h1>Pertanyaan yang Sering Diajukan</h1>
+    <p>
+      Segala hal yang ingin kamu ketahui tentang proses pemesanan souvenir, kustomisasi desain, sistem pembayaran bertahap, panduan ekspedisi, hingga cara merawat produk Sekata agar awet dan bermakna.
+    </p>
+
+    <!-- SEARCH BAR INTERAKTIF -->
+    <div class="faq-search-box-wrap">
+      <div class="faq-search-input-inner">
+        <Icon name="search" size={18} />
+        <input
+          type="search"
+          id="faqSearchInput"
+          placeholder="Cari pertanyaan... (contoh: minimum order, pengiriman, cara merawat kulit, faktur pajak)"
+          aria-label="Cari pertanyaan FAQ"
+        />
+      </div>
+    </div>
+
+    <!-- CATEGORY FILTER PILLS -->
+    <div class="faq-pill-bar" role="tablist" aria-label="Kategori FAQ">
+      <button class="faq-pill-btn active" data-category="all" type="button">Semua Kategori</button>
+      <button class="faq-pill-btn" data-category="general" type="button">General Info</button>
+      <button class="faq-pill-btn" data-category="orders" type="button">Orders & Custom</button>
+      <button class="faq-pill-btn" data-category="payment" type="button">Payment</button>
+      <button class="faq-pill-btn" data-category="shipping" type="button">Shipping</button>
+      <button class="faq-pill-btn" data-category="product-care" type="button">Product Care</button>
+      <button class="faq-pill-btn" data-category="guarantee" type="button">Garansi & Klaim</button>
+    </div>
+  </section>
+
+  <!-- ACCORDION CONTENT SECTION -->
+  <section class="section faq-page-section">
+    <div class="faq-container" id="faqAccordionContainer">
+      {faqGroups.map((group) => (
+        <div class="faq-group-card" data-category={group.category} id={group.id}>
+          <div class="faq-group-header">
+            <h2 class="faq-group-title">{group.title}</h2>
+            <p class="faq-group-desc">{group.desc}</p>
+          </div>
+
+          <div class="faq-accordion-list">
+            {group.items.map((item, idx) => (
+              <details class="faq-accordion-item" data-search-target={`${item.question.toLowerCase()} ${item.answer.toLowerCase()}`}>
+                <summary class="faq-summary">
+                  <span class="faq-q-number">0{idx + 1}</span>
+                  <span class="faq-q-title">{item.question}</span>
+                  <span class="faq-q-icon" aria-hidden="true"><Icon name="plus" size={18} /></span>
+                </summary>
+                <div class="faq-answer-content">
+                  <p>{item.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- PESAN TIDAK DITEMUKAN (FALLBACK SEARCH) -->
+    <div id="faqNoResults" class="faq-empty-state" style="display: none;">
+      <Icon name="search" size={32} />
+      <h3>Pertanyaan tidak ditemukan</h3>
+      <p>Kata kunci yang kamu cari belum tersedia di daftar FAQ kami. Tanyakan langsung kepada Ayu untuk jawaban yang lebih cepat dan personal.</p>
+      <a href={wa} class="button" target="_blank" rel="noopener noreferrer">Tanya Ayu di WhatsApp <Icon name="chat" size={14} /></a>
+    </div>
+
+    <!-- FOOTER CALLOUT / STILL HAVE QUESTIONS -->
+    <div class="faq-support-card">
+      <div class="support-text">
+        <span class="eyebrow">BANTUAN LANGSUNG DARI AYU</span>
+        <h2>Masih memiliki pertanyaan lain yang belum terjawab?</h2>
+        <p>
+          Setiap momen dan acara memiliki kebutuhan unik. Ceritakan tanggal pernikahan, rencana jumlah souvenir, atau konsep kemasan idamanmu kepada Ayu sekarang.
+        </p>
+      </div>
+      <div class="support-action">
+        <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya membaca halaman FAQ Sekata dan ingin menanyakan detail lebih lanjut mengenai pesanan saya.')} class="button" target="_blank" rel="noopener noreferrer">
+          Konsultasi Langsung via WhatsApp <Icon name="chevron" size={14} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Filter & Search Script -->
+  <script is:inline>
+    (function() {
+      var filterBtns = document.querySelectorAll('.faq-pill-btn');
+      var groups = document.querySelectorAll('.faq-group-card');
+      var items = document.querySelectorAll('.faq-accordion-item');
+      var searchInput = document.getElementById('faqSearchInput');
+      var noResults = document.getElementById('faqNoResults');
+
+      var currentCat = 'all';
+      var currentQuery = '';
+
+      function applyFilterAndSearch() {
+        var visibleCount = 0;
+
+        groups.forEach(function(group) {
+          var groupCat = group.getAttribute('data-category');
+          var groupItems = group.querySelectorAll('.faq-accordion-item');
+          var groupHasMatch = false;
+
+          var matchesCat = (currentCat === 'all' || groupCat === currentCat);
+
+          if (!matchesCat) {
+            group.style.display = 'none';
+            return;
+          }
+
+          groupItems.forEach(function(item) {
+            var searchTarget = item.getAttribute('data-search-target') || '';
+            var matchesSearch = (!currentQuery || searchTarget.indexOf(currentQuery) !== -1);
+
+            if (matchesSearch) {
+              item.style.display = '';
+              groupHasMatch = true;
+              visibleCount++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          if (groupHasMatch) {
+            group.style.display = 'block';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentCat = btn.getAttribute('data-category');
+          applyFilterAndSearch();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          currentQuery = (e.target.value || '').trim().toLowerCase();
+          applyFilterAndSearch();
+        });
+      }
+    })();
+  </script>
+</Layout>
+

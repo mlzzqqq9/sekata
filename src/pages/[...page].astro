@@ -1,0 +1,744 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { categories, products, articles, wa, map } from '../data/site';
+
+export function getStaticPaths() {
+  return [
+    'gift',
+    'hampers',
+    'souvenir',
+    'sekata',
+    'kontak',
+    'blog',
+    'temukan-solusi',
+    'kebijakan-privasi',
+    'syarat-ketentuan',
+    'penulis/m-maulana-ishaq',
+    // Rute kategori mandiri tingkat atas (contoh: /hampers-lebaran/, /souvenir-wedding/)
+    ...categories.map((c) => c.slug),
+    // Rute dengan prefix /gift/ untuk kompatibilitas tautan lama agar tidak ada yang 404
+    ...categories.map((c) => 'gift/' + c.slug)
+  ].map((page) => ({ params: { page } }));
+}
+
+const { page } = Astro.params;
+
+// Redirect otomatis dari format lama /temukan-solusi/ ke format baru /blog/
+if (page === 'temukan-solusi') {
+  return Astro.redirect('/blog/', 301);
+}
+
+// Redirect otomatis dari format lama /gift/[kategori]/ ke format baru /[kategori]/
+if (page && page.startsWith('gift/')) {
+  const catSlug = page.replace('gift/', '');
+  return Astro.redirect('/' + catSlug + '/', 301);
+}
+
+const category = categories.find((c) => c.slug === page);
+const isCatalog = category || ['gift', 'hampers', 'souvenir'].includes(page!);
+
+const titles: Record<string, string> = {
+  gift: 'Hadiah untuk setiap cerita.',
+  hampers: 'Sebungkus perhatian, sepenuh hati.',
+  souvenir: 'Kenangannya tinggal lebih lama.',
+  sekata: 'Kita bertemu dalam satu rasa.',
+  kontak: 'Ceritakan kebutuhanmu.',
+  blog: 'Inspirasi untuk momen berarti.',
+  'temukan-solusi': 'Inspirasi untuk momen berarti.',
+  'kebijakan-privasi': 'Kebijakan Privasi',
+  'syarat-ketentuan': 'Syarat & Ketentuan',
+  'penulis/m-maulana-ishaq': 'M. Maulana Ishaq'
+};
+
+const title = category?.name || titles[page!] || 'Sekata';
+const desc = category
+  ? `Konsultasikan ${category.name.toLowerCase()} bersama Sekata di Malang. Pilihan custom logo, paket fleksibel, dan pengiriman Malang, Batu, Kepanjen & seluruh Jawa Timur.`
+  : isCatalog
+  ? 'Temukan inspirasi souvenir, hampers, dan gift personal. Custom logo, paket fleksibel, serta pengiriman Malang, Batu, Kepanjen & seluruh Indonesia bersama Ayu.'
+  : 'Cerita, informasi, dan layanan Sekata untuk membantu menyiapkan hadiah yang bermakna.';
+
+const activeSlug = category ? category.slug : page;
+const isHampersLebaran = activeSlug === 'hampers-lebaran' || activeSlug === 'gift/hampers-lebaran';
+const isWedding = activeSlug === 'souvenir-wedding' || activeSlug === 'gift/souvenir-wedding' || activeSlug === 'hampers-wedding';
+const isHajiUmrah = activeSlug === 'souvenir-haji-umrah' || activeSlug === 'gift/souvenir-haji-umrah';
+
+let relevant: typeof products = [];
+
+if (isHampersLebaran) {
+  // Hanya produk Hampers Lebaran murni (jangan dicampur!)
+  relevant = products.filter((p) => p.categorySlug === 'hampers-lebaran' || p.kind.toLowerCase().includes('lebaran'));
+} else if (isWedding) {
+  // Hanya produk Wedding Souvenir murni
+  relevant = products.filter((p) => p.categorySlug === 'souvenir-wedding' || p.kind.toLowerCase().includes('wedding'));
+} else if (isHajiUmrah) {
+  // Hanya produk Haji & Umrah murni
+  relevant = products.filter((p) => p.categorySlug === 'souvenir-haji-umrah' || p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah'));
+} else if (page === 'souvenir') {
+  relevant = products.filter((p) => p.kind.toLowerCase().includes('souvenir'));
+} else if (page === 'hampers') {
+  relevant = products.filter((p) => p.kind.toLowerCase().includes('hampers'));
+} else if (page === 'gift') {
+  relevant = products;
+} else if (category) {
+  // Kategori lain yang belum memiliki kurasi produk: KOSONGKAN DULU (JANGAN DIPAKSAKAN CAMPUR)
+  relevant = products.filter((p) => p.categorySlug === category.slug);
+} else {
+  relevant = products;
+}
+
+// Schema.org CollectionPage / ItemList dengan AggregateRating untuk Google Search
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': isCatalog ? 'CollectionPage' : 'WebPage',
+  'name': (category?.name || titles[page!] || 'Sekata') + ' | Sekata Malang',
+  'description': desc,
+  'url': 'https://sekata.id/' + (page ? page + '/' : ''),
+  'aggregateRating': {
+    '@type': 'AggregateRating',
+    'ratingValue': '4.9',
+    'reviewCount': '128',
+    'bestRating': '5',
+    'worstRating': '1'
+  }
+};
+
+// FAQ khusus kategori dinamis sesuai halaman aktif (humanis, formal & tanpa emoji)
+const categoryName = category?.name || (page === 'hampers' ? 'Hampers' : page === 'souvenir' ? 'Souvenir' : 'Gift');
+
+let categoryFaqs = [
+  {
+    q: `Berapa minimum pemesanan (MOQ) untuk ${categoryName.toLowerCase()}?`,
+    a: `Pemesanan ${categoryName.toLowerCase()} di Sekata sangat fleksibel, mulai dari 25–50 pcs untuk acara keluarga hingga ratusan atau ribuan pcs untuk perayaan besar dan instansi korporat. Konsultasikan langsung pagu kebutuhanmu bersama Ayu.`
+  },
+  {
+    q: `Bisa kustomisasi logo, inisial monogram, dan kartu ucapan?`,
+    a: `Tentu saja. Kami menyediakan layanan kustomisasi penuh mencakup inisial monogram foil emas, grafir deboss kulit, pilihan warna kemasan, hingga kartu ucapan dengan kalimat hangat yang dipersonalisasi khusus sesuai acaramu.`
+  },
+  {
+    q: `Berapa lama estimasi pengerjaan ${categoryName.toLowerCase()}?`,
+    a: `Waktu pengerjaan berkisar antara 10–25 hari kerja setelah approval mockup desain dan konfirmasi DP. Untuk kebutuhan mendesak, kamu bisa berdiskusi langsung dengan admin Ayu untuk slot prioritas.`
+  },
+  {
+    q: `Bagaimana jangkauan pengiriman ke Malang, Batu, Kepanjen, dan luar kota?`,
+    a: `Sekata berbasis di Malang. Kami melayani pengantaran langsung untuk area Malang, Kota Batu, Kepanjen, dan sekitarnya. Untuk pengiriman ke seluruh Jawa Timur dan nusantara, kami menggunakan kargo terpercaya dengan standar proteksi packing kayu bergaransi.`
+  },
+  {
+    q: `Apakah bisa melihat sampel fisik sebelum pesanan diproduksi massal?`,
+    a: `Ya. Kami menyediakan simulasi visual mockup digital serta opsi pengiriman sampel fisik (proof sample) ke alamatmu untuk pesanan dalam jumlah tertentu agar kamu dapat mengecek langsung detail jahitan, warna, dan material.`
+  }
+];
+
+if (category?.slug === 'hampers-lebaran') {
+  categoryFaqs = [
+    {
+      q: 'Kapan waktu paling ideal untuk memesan hampers lebaran di Sekata?',
+      a: 'Sangat disarankan pemesanan dilakukan H-45 hingga H-20 sebelum Hari Raya Idul Fitri. Hal ini bertujuan agar alur produksi, kustomisasi nama, serta pengiriman tiba tepat waktu sebelum cut-off jadwal ekspedisi mudik.'
+    },
+    {
+      q: 'Apakah isi hampers lebaran bisa dikombinasikan antara kue kering dan cinderamata?',
+      a: 'Sangat bisa. Konsep hampers Sekata dirancang fleksibel. Kamu dapat memadukan kue kering premium dengan souvenir fungsional seperti sajadah travel, reed diffuser, scented candle, tumbler grafir, atau pouch kulit monogram.'
+    },
+    {
+      q: 'Apakah Sekata melayani pengiriman hampers langsung ke alamat penerima satu per satu?',
+      a: 'Ya, kami melayani sistem multi-alamat langsung ke rumah kerabat, mitra bisnis, atau karyawan ke berbagai kota di Malang, Surabaya, Jabodetabek, dan seluruh Indonesia dengan packing aman bergaransi.'
+    },
+    {
+      q: 'Bisa custom logo perusahaan atau nama keluarga di boks hampers lebaran?',
+      a: 'Tentu. Kami menyediakan kemasan hardbox eksklusif dengan deboss foil emas logo perusahaan, greeting card bermotif Idul Fitri dengan ucapan personal, serta hangtag nama penerima.'
+    },
+    {
+      q: 'Berapa minimum pemesanan hampers lebaran?',
+      a: 'Pemesanan sangat fleksibel mulai dari 5–10 boks untuk hampers kurasi personal, dan penawaran harga korporat khusus untuk pemesanan massal di atas 50 boks.'
+    }
+  ];
+} else if (category?.slug === 'souvenir-wedding' || isWedding) {
+  categoryFaqs = [
+    {
+      q: 'Kapan sebaiknya pasangan mempelai memesan souvenir pernikahan?',
+      a: 'Waktu terbaik adalah H-60 hingga H-30 sebelum hari resepsi pernikahan. Dengan waktu yang cukup, kamu bisa leluasa meninjau sampel fisik, menyesuaikan tema warna dekorasi pernikahan, dan memastikan finishing rapi.'
+    },
+    {
+      q: 'Berapa minimum pemesanan untuk wedding souvenir?',
+      a: 'Pemesanan mulai dari 50 pcs untuk intimate wedding. Untuk pemesanan 200 hingga 1.000+ pcs, kami memberikan penawaran harga khusus serta gratis personalisasi kartu ucapan dan sampel fisik pra-produksi.'
+    },
+    {
+      q: 'Apakah souvenir sudah termasuk kemasan siap bagi (ready-to-gift)?',
+      a: 'Ya, seluruh souvenir pernikahan Sekata dikirim dalam kondisi siap dibagikan kepada tamu undangan, sudah terpasang kemasan boks mika transparan atau boks eksklusif, pita satin rapi, dan thank you card.'
+    },
+    {
+      q: 'Bagaimana jika ada souvenir yang cacat atau rusak saat pengiriman?',
+      a: 'Sekata memberikan garansi pergantian unit atau kompensasi jika ditemukan cacat produksi atau kerusakan selama proses pengiriman resmi kami.'
+    },
+    {
+      q: 'Apakah bisa kirim ke luar pulau atau venue pernikahan langsung?',
+      a: 'Bisa. Kami berpengalaman mengirimkan ribuan paket souvenir ke Bali, Jakarta, Kalimantan, Sulawesi, hingga Sumatra dengan proteksi packing kayu dan pelacak kargo real-time.'
+    }
+  ];
+} else if (category?.slug === 'souvenir-haji-umrah' || isHajiUmrah) {
+  categoryFaqs = [
+    {
+      q: 'Souvenir apa saja yang paling diminati untuk oleh-oleh tasyakuran Haji & Umrah?',
+      a: 'Pilihan terfavorit antara lain sajadah traveling saku berinisial nama, tasbih kayu premium, botol air zam-zam mini kemasan pouch, dan gift set perlengkapan ibadah dalam kemasan mika berpita.'
+    },
+    {
+      q: 'Apakah bisa pengerjaan cepat jika kepulangan jamaah sudah dekat?',
+      a: 'Bisa. Kami memiliki jalur produksi cepat untuk produk semi-ready yang dapat dikirimkan dalam 5–7 hari kerja. Silakan informasikan jadwal kedatangan jamaah kepada Ayu di WhatsApp.'
+    },
+    {
+      q: 'Bisa disematkan kartu ucapan doa mabrur dan nama jamaah?',
+      a: 'Sangat bisa. Setiap souvenir dilengkapi kartu ucapan doa kepulangan mabrur bertuliskan nama lengkap jamaah dan keluarga penyelenggara tasyakuran.'
+    },
+    {
+      q: 'Berapa minimum order souvenir haji dan umrah?',
+      a: 'Mulai dari 30 pcs, cocok untuk pengajian keluarga intim di rumah maupun tasyakuran akbar bersama rombongan kloter jamaah.'
+    }
+  ];
+} else if (category?.slug?.includes('perusahaan') || category?.slug?.includes('kantor') || category?.slug?.includes('bumn') || category?.slug?.includes('sertijab')) {
+  categoryFaqs = [
+    {
+      q: 'Apakah Sekata menyediakan invoice, faktur pajak, dan kelengkapan administrasi kantor?',
+      a: 'Ya, Sekata adalah entitas resmi yang siap menyediakan surat penawaran, invoice bertanda tangan, kwitansi resmi, dan kelengkapan administrasi pengadaan instansi BUMN maupun korporat swasta.'
+    },
+    {
+      q: 'Metode branding apa saja yang dapat diaplikasikan pada souvenir perusahaan?',
+      a: 'Kami menyediakan deboss presisi pada material kulit sintetis, grafir laser permanen pada tumbler stainless, sablon presisi pada tas kanvas, dan hot-stamping foil emas/silver pada hardbox magnetik.'
+    },
+    {
+      q: 'Apakah isi gift set korporat bisa disesuaikan dengan pagu anggaran divisi?',
+      a: 'Bisa banget. Kamu cukup menginformasikan besaran pagu anggaran per pax kepada Ayu, dan tim desainer kami akan meracik kombinasi item terbaik yang elegan dan tetap efisien.'
+    },
+    {
+      q: 'Bisa kirim ke kantor cabang di berbagai kota?',
+      a: 'Tentu bisa. Kami melayani pengiriman terjadwal dan terkoordinasi ke kantor pusat maupun cabang di berbagai kota di Indonesia dengan packing kayu standar kargo.'
+    }
+  ];
+}
+
+// Penentuan gambar banner header dari 4 foto rasio 3:1 (2172x724) sesuai tema halaman
+let heroImage = '/images/hero-mawar-gading.png';
+
+if (isHampersLebaran || activeSlug?.includes('lebaran')) {
+  heroImage = '/images/hero-mawar-pastel.png'; // Mawar pastel & dedaunan segar
+} else if (isWedding || activeSlug?.includes('wedding')) {
+  heroImage = '/images/hero-mawar-gading.png'; // Mawar taman gading dalam cahaya lembut
+} else if (isHajiUmrah || activeSlug?.includes('haji') || activeSlug?.includes('umrah') || page === 'gift') {
+  heroImage = '/images/hero-tulip-gading.png'; // Hamparan tulip lembut di kain gading
+} else if (
+  page === 'souvenir' ||
+  page === 'sekata' ||
+  activeSlug?.includes('perusahaan') ||
+  activeSlug?.includes('bumn') ||
+  activeSlug?.includes('kantor') ||
+  activeSlug?.includes('sertijab') ||
+  activeSlug?.includes('premium') ||
+  activeSlug?.includes('tambang') ||
+  activeSlug?.includes('gathering') ||
+  activeSlug?.includes('seminar') ||
+  activeSlug?.includes('rapat')
+) {
+  heroImage = '/images/hero-mawar-burgundi.png'; // Rangkaian mawar burgundi dalam cahaya lembut
+} else if (page === 'hampers' || activeSlug?.includes('hampers') || page === 'temukan-solusi' || page === 'blog') {
+  heroImage = '/images/hero-mawar-pastel.png'; // Mawar pastel & dedaunan segar
+} else if (page === 'kontak') {
+  heroImage = '/images/hero-mawar-gading.png';
+} else {
+  heroImage = '/images/hero-tulip-gading.png';
+}
+---
+
+<Layout
+  title={(category?.name || ({ gift: 'Gift & Hampers Custom', hampers: 'Hampers Custom', souvenir: 'Souvenir Custom', sekata: 'Tentang Sekata', kontak: 'Kontak Sekata', 'temukan-solusi': 'Temukan Solusi — Inspirasi Souvenir & Hampers', blog: 'Temukan Solusi — Inspirasi Souvenir & Hampers' } as any)[page!] || title) + ' | Sekata Malang'}
+  description={desc}
+  schema={catalogSchema}
+>
+  <!-- HERO SECTION DENGAN GOOGLE RATING & TOMBOL AKSI CEPAT MENU GIFT -->
+  <section class="page-hero" style={`--page-hero-bg: url('${heroImage}');`}>
+    <div class="breadcrumbs">
+      <a href="/">Beranda</a> / {category ? <><a href="/gift/">Gift</a> / </> : ''}{category?.name || (page === 'blog' || page === 'temukan-solusi' ? 'Temukan Solusi' : titles[page!])}
+    </div>
+    <span class="eyebrow">{page === 'blog' || page === 'temukan-solusi' ? 'THE SEKATA JOURNAL' : 'THE SEKATA COLLECTION'}</span>
+    <h1>{page === 'blog' || page === 'temukan-solusi' ? 'Inspirasi untuk momen berarti.' : title}</h1>
+    <p>{page === 'blog' || page === 'temukan-solusi' ? 'Panduan memilih souvenir pernikahan, kurasi hampers personal, dan inspirasi cinderamata untuk setiap perayaan berharga.' : desc}</p>
+
+    {isCatalog && (
+      <>
+        <!-- RATING GOOGLE SNIPPET BADGE -->
+        <div class="product-rating-badge" style="margin-top: 14px;">
+          <div class="star-rating" aria-label="Rating 4.9 dari 5 bintang">
+            <span class="stars">★★★★★</span>
+            <span class="rating-score">4.9 / 5.0</span>
+          </div>
+          <span class="rating-dot">·</span>
+          <span class="rating-reviews">128 Ulasan Terverifikasi</span>
+          <span class="rating-dot">·</span>
+          <span class="rating-sold">2.500+ Paket Terkirim</span>
+        </div>
+
+        <!-- TOMBOL AKSI CEPAT: LIHAT PAKET, PERBANDINGAN, CARA PESAN, FAQ -->
+        <div class="gift-action-nav" role="navigation" aria-label="Aksi Cepat Menu Gift">
+          <a href="#productGrid" class="gift-action-btn">
+            Lihat Paket <Icon name="chevron" size={12} />
+          </a>
+          <a href="#perbandingan-paket" class="gift-action-btn">
+            Perbandingan Paket <Icon name="chevron" size={12} />
+          </a>
+          <a href="#cara-pesan-gift" class="gift-action-btn">
+            Cara Pesan <Icon name="chevron" size={12} />
+          </a>
+          <a href="#faq-kategori" class="gift-action-btn">
+            FAQ & Tanya Jawab <Icon name="chevron" size={12} />
+          </a>
+        </div>
+      </>
+    )}
+  </section>
+
+  {isCatalog && (
+    <!-- STRIP KELEBIHAN: CUSTOM LOGO & DESAIN, PAKET FLEKSIBEL, TARGET KOTA MALANG, BATU, KEPANJEN & JATIM -->
+    <div class="gift-usp-strip-wrap">
+      <div class="gift-usp-grid">
+        <div class="gift-usp-box">
+          <div class="usp-icon-circle"><Icon name="check" size={18} /></div>
+          <div>
+            <h4>Custom Logo & Desain</h4>
+            <p>Bebas kustomisasi inisial monogram, deboss kulit, foil emas, dan kartu ucapan terima kasih.</p>
+          </div>
+        </div>
+        <div class="gift-usp-box">
+          <div class="usp-icon-circle"><Icon name="check" size={18} /></div>
+          <div>
+            <h4>Paket Fleksibel</h4>
+            <p>Pilihan isi hampers, kombinasi souvenir, serta anggaran dapat disesuaikan kebutuhan acaramu.</p>
+          </div>
+        </div>
+        <div class="gift-usp-box highlight-city-box">
+          <div class="usp-icon-circle"><Icon name="check" size={18} /></div>
+          <div>
+            <h4>Target Pengiriman Cepat</h4>
+            <p>Malang • Batu • Kepanjen • Sekitar Jawa Timur (by request) & Seluruh Indonesia bergaransi aman.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+
+  {isCatalog ? (
+    <section class="section" id="catalog-container">
+      <div class="catalog-wrapper">
+        <!-- SIDEBAR KIRI (Eksplore Sesuai Referensi Dekayu) -->
+        <aside class="catalog-sidebar" aria-label="Kategori dan Filter Gift">
+          <h3 class="sidebar-title">Eksplore</h3>
+
+          <div class="sidebar-group">
+            <span class="sidebar-group-title">Koleksi Utama</span>
+            <ul class="sidebar-links">
+              <li><a href="/gift/" class={page === 'gift' ? 'active' : ''}>Semua Koleksi</a></li>
+              <li><a href="/souvenir-wedding/" class={page === 'souvenir-wedding' || page === 'gift/souvenir-wedding' ? 'active' : ''}>Wedding Souvenir</a></li>
+              <li><a href="/souvenir-haji-umrah/" class={page === 'souvenir-haji-umrah' || page === 'gift/souvenir-haji-umrah' ? 'active' : ''}>Souvenir Haji & Umrah</a></li>
+              <li><a href="/hampers/" class={page === 'hampers' ? 'active' : ''}>Hampers & Gift Box</a></li>
+              <li><a href="/souvenir-perusahaan/" class={page === 'souvenir-perusahaan' || page === 'gift/souvenir-perusahaan' ? 'active' : ''}>Corporate Souvenir</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group">
+            <span class="sidebar-group-title">Hampers Momen</span>
+            <ul class="sidebar-links">
+              <li><a href="/hampers-lebaran/" class={page === 'hampers-lebaran' || page === 'gift/hampers-lebaran' ? 'active' : ''}>Hampers Lebaran</a></li>
+              <li><a href="/hampers-ulang-tahun/" class={page === 'hampers-ulang-tahun' || page === 'gift/hampers-ulang-tahun' ? 'active' : ''}>Hampers Ulang Tahun</a></li>
+              <li><a href="/hampers-wisuda/" class={page === 'hampers-wisuda' || page === 'gift/hampers-wisuda' ? 'active' : ''}>Hampers Wisuda</a></li>
+              <li><a href="/hampers-anak/" class={page === 'hampers-anak' || page === 'gift/hampers-anak' ? 'active' : ''}>Hampers Anak</a></li>
+              <li><a href="/hampers-wedding/" class={page === 'hampers-wedding' || page === 'gift/hampers-wedding' ? 'active' : ''}>Hampers Wedding</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-group">
+            <span class="sidebar-group-title">Souvenir Acara</span>
+            <ul class="sidebar-links">
+              <li><a href="/souvenir-sertijab/" class={page === 'souvenir-sertijab' || page === 'gift/souvenir-sertijab' ? 'active' : ''}>Sertijab & VIP</a></li>
+              <li><a href="/souvenir-bumn/" class={page === 'souvenir-bumn' || page === 'gift/souvenir-bumn' ? 'active' : ''}>BUMN & Kantor</a></li>
+              <li><a href="/souvenir-gathering/" class={page === 'souvenir-gathering' || page === 'gift/souvenir-gathering' ? 'active' : ''}>Gathering</a></li>
+              <li><a href="/souvenir-seminar-workshop/" class={page === 'souvenir-seminar-workshop' || page === 'gift/souvenir-seminar-workshop' ? 'active' : ''}>Seminar & Workshop</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-consult-box">
+            <h4>Butuh Rekomendasi?</h4>
+            <p>Konsultasikan konsep, jumlah, dan budget souvenir acaramu bersama Kak Ayu.</p>
+            <a href={wa} class="button" style="padding:8px 14px;font-size:12px;display:inline-flex;" target="_blank" rel="noopener noreferrer">
+              Chat Ayu di WhatsApp <Icon name="chat" size={14} />
+            </a>
+          </div>
+        </aside>
+
+        <!-- KONTEN UTAMA PRODUK -->
+        <main class="catalog-main" id="catalog-main">
+          <div class="catalog-status-bar">
+            <span id="catalog-status-text">
+              Menampilkan <strong id="catalog-range">1–{Math.min(12, relevant.length)}</strong> dari <strong>{relevant.length}</strong> hasil
+            </span>
+            <span class="catalog-badge">Katalog Resmi Sekata</span>
+          </div>
+
+          <p class="catalog-note" style="margin-top:0;margin-bottom:20px;">
+            Koleksi konsep & inspirasi aktual Sekata. Seluruh produk dapat dipersonalisasi nama, warna, dan packaging bersama admin.
+          </p>
+
+          <!-- GRID PRODUK ATAU PLACEHOLDER KURASI (JIKA BELUM ADA PRODUK) -->
+          {relevant.length > 0 ? (
+            <div class="catalog-grid" id="productGrid">
+              {relevant.map((p, idx) => (
+                <div class="catalog-item" data-index={idx} style={idx >= 12 ? 'display: none;' : ''}>
+                  <ProductCard product={p} categorySlug={category?.slug} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="category-curation-placeholder">
+              <div class="curation-icon-box">
+                <Icon name="chat" size={30} />
+              </div>
+              <h3>Koleksi Sedang Dikurasi</h3>
+              <p>
+                Katalog inspirasi resmi untuk <strong>{category?.name || title}</strong> sedang dalam tahap kurasi dan pemotretan oleh tim Sekata.
+              </p>
+              <p class="curation-sub">
+                Kamu tetap bisa berkonsultasi, mengajukan desain kustom, dan memesan kebutuhan {category?.name ? category.name.toLowerCase() : 'gift'} acaramu langsung bersama Ayu di WhatsApp.
+              </p>
+              <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya ingin konsultasi konsep pemesanan ' + (category?.name || title) + ' di Sekata.')} class="button" target="_blank" rel="noopener noreferrer">
+                Konsultasikan Konsep Acara Bersama Ayu <Icon name="chat" size={16} />
+              </a>
+            </div>
+          )}
+
+          <!-- PAGINATION JIKA PRODUK LEBIH DARI 12 -->
+          {relevant.length > 12 && (
+            <nav class="catalog-pagination" id="catalogPagination" aria-label="Navigasi Halaman Katalog">
+              <button class="page-btn active" id="btnPage1" type="button" data-page="1">1</button>
+              <button class="page-btn" id="btnPage2" type="button" data-page="2">2</button>
+              <button class="page-btn" id="btnPageNext" type="button" data-page="next">Selanjutnya →</button>
+            </nav>
+          )}
+
+          <!-- Client-Side Script Pagination Cepat & Mulus -->
+          <script is:inline>
+            (function() {
+              var items = document.querySelectorAll('.catalog-item');
+              var pagination = document.getElementById('catalogPagination');
+              var rangeText = document.getElementById('catalog-range');
+              var total = items.length;
+              var pageSize = 12;
+
+              function goToPage(page) {
+                var start = (page - 1) * pageSize;
+                var end = Math.min(start + pageSize, total);
+
+                items.forEach(function(el, i) {
+                  if (i >= start && i < end) {
+                    el.style.display = '';
+                  } else {
+                    el.style.display = 'none';
+                  }
+                });
+
+                if (rangeText) {
+                  rangeText.textContent = (start + 1) + '–' + end;
+                }
+
+                if (pagination) {
+                  var btn1 = document.getElementById('btnPage1');
+                  var btn2 = document.getElementById('btnPage2');
+                  var btnNext = document.getElementById('btnPageNext');
+
+                  if (btn1) btn1.classList.toggle('active', page === 1);
+                  if (btn2) btn2.classList.toggle('active', page === 2);
+                  if (btnNext) {
+                    btnNext.disabled = (page === 2);
+                    btnNext.style.opacity = page === 2 ? '0.4' : '1';
+                  }
+                }
+
+                var container = document.getElementById('catalog-main');
+                if (container && window.scrollY > 350) {
+                  container.scrollIntoView({ behavior: 'smooth' });
+                }
+              }
+
+              if (pagination) {
+                pagination.addEventListener('click', function(e) {
+                  var target = e.target;
+                  if (!target || !target.matches('.page-btn')) return;
+                  var pageAttr = target.getAttribute('data-page');
+                  if (pageAttr === '1') {
+                    goToPage(1);
+                  } else if (pageAttr === '2') {
+                    goToPage(2);
+                  } else if (pageAttr === 'next') {
+                    goToPage(2);
+                  }
+                });
+
+                var urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('page') === '2' || urlParams.get('p') === '2') {
+                  goToPage(2);
+                }
+              }
+            })();
+          </script>
+
+          <!-- SECTION PERBANDINGAN PAKET DALAM BENTUK TABEL (SESUAI PERMINTAAN USER) -->
+          <div class="gift-comparison-section" id="perbandingan-paket">
+            <div class="section-heading" style="margin-bottom: 20px;">
+              <div>
+                <span class="eyebrow">PANDUAN LENGKAP KURASI HADIAH</span>
+                <h2 style="font-size: 26px;">Tabel Perbandingan Paket Sekata</h2>
+              </div>
+              <p style="font-size: 14px;">Bandingkan spesifikasi fitur, personalisasi, kemasan, dan fasilitas tiap paket secara transparan.</p>
+            </div>
+
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th class="feature-col">Fitur & Fasilitas</th>
+                    <th class="tier-col">
+                      <span class="tier-badge">INTIMATE / PERSONAL</span>
+                      <h3>Paket Basic Intimate</h3>
+                      <p>Cocok untuk acara tasyakuran keluarga, bridal shower, khitanan</p>
+                    </th>
+                    <th class="tier-col featured">
+                      <span class="tier-badge popular">PALING DIMINATI</span>
+                      <h3>Paket Signature Wedding</h3>
+                      <p>Pilihan terfavorit pasangan mempelai untuk hari pernikahan</p>
+                    </th>
+                    <th class="tier-col">
+                      <span class="tier-badge">VIP / CORPORATE</span>
+                      <h3>Paket Bespoke Eksklusif</h3>
+                      <p>Cinderamata direksi, instansi BUMN & tamu kehormatan</p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="feature-name">Minimum Order (MOQ)</td>
+                    <td>Mulai 25–50 pcs</td>
+                    <td class="featured-cell"><strong>Mulai 100 pcs</strong> (Fleksibel sesuai tamu)</td>
+                    <td>Fleksibel (Mulai 10–20 pcs)</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Pilihan Produk Utama</td>
+                    <td>Pouch Kanvas / Card Holder Minimalis</td>
+                    <td class="featured-cell"><strong>Duo Pouch Kanvas & Kulit / Leather Dopp Kit</strong></td>
+                    <td>Gift Set Lengkap (Pouch + Agenda + Pen + Tumbler)</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Personalisasi Logo</td>
+                    <td>Sablon Monogram 1 Warna / Tag Nama</td>
+                    <td class="featured-cell"><strong>Deboss Kulit Tekan / Hot-Stamping Foil Emas</strong></td>
+                    <td>Grafir Laser Logam, Deboss Dalam & Plat Akrilik Custom</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Jenis Kemasan</td>
+                    <td>Mika Transparan Berpita Satin Pilihan</td>
+                    <td class="featured-cell"><strong>Semi-Hardbox Eksklusif / Mika Tebal Berpita Gold</strong></td>
+                    <td>Hardbox Magnetik Rigid Busa Custom Spon Presisi</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Kartu Ucapan</td>
+                    <td>Greeting Card Standar Sekata</td>
+                    <td class="featured-cell"><strong>Custom Wording, Kertas Bertekstur Mewah & Foil Emas</strong></td>
+                    <td>Bespoke Thank You Card, Sleeve Custom Brand & Segel Wax</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Sampel Pra-Produksi</td>
+                    <td>Simulasi Mockup Digital 2D</td>
+                    <td class="featured-cell"><strong>Sampel Fisik Dikirim ke Alamat Rumah</strong></td>
+                    <td>Master Sample Dummy Lengkap Sebelum Produksi Massal</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Estimasi Pengerjaan</td>
+                    <td>10–14 Hari Kerja</td>
+                    <td class="featured-cell"><strong>14–25 Hari Kerja</strong></td>
+                    <td>Prioritas Khusus Sesuai Jadwal Event / Acara</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Jangkauan Pengiriman</td>
+                    <td>Malang, Jatim & Seluruh Indonesia</td>
+                    <td class="featured-cell"><strong>Gratis Antar Malang Kota/Batu + Kargo Bergaransi</strong></td>
+                    <td>Handling Kargo VIP Prioritas Langsung ke Venue / Kantor</td>
+                  </tr>
+                  <tr class="action-row">
+                    <td class="feature-name">Konsultasi Paket</td>
+                    <td>
+                      <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya tertarik konsultasi Paket Basic Intimate di Sekata.')} class="button light comp-table-btn" target="_blank" rel="noopener noreferrer">
+                        Pilih Basic <Icon name="chat" size={14} />
+                      </a>
+                    </td>
+                    <td class="featured-cell">
+                      <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya tertarik konsultasi Paket Signature Wedding di Sekata.')} class="button comp-table-btn" target="_blank" rel="noopener noreferrer">
+                        Pilih Signature <Icon name="chat" size={14} />
+                      </a>
+                    </td>
+                    <td>
+                      <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya tertarik konsultasi Paket Bespoke Corporate VIP di Sekata.')} class="button light comp-table-btn" target="_blank" rel="noopener noreferrer">
+                        Pilih Bespoke <Icon name="chat" size={14} />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SECTION CARA PESAN (SESUAI PERMINTAAN USER) -->
+          <div class="gift-order-section" id="cara-pesan-gift">
+            <div class="section-heading" style="margin-bottom: 24px;">
+              <div>
+                <span class="eyebrow">MUDAH & TERARAH</span>
+                <h2 style="font-size: 26px;">4 Langkah Cara Pesan di Sekata</h2>
+              </div>
+              <a href={wa} class="text-link" target="_blank" rel="noopener noreferrer">Mulai via WhatsApp <Icon /></a>
+            </div>
+
+            <div class="ordering-steps-grid">
+              <div class="order-step-item">
+                <span class="step-num">01</span>
+                <h4>Pilih Inspirasi</h4>
+                <p>Jelajahi katalog, klik tombol "Tambahkan ke pilihan" atau simpan screenshot produk impianmu.</p>
+              </div>
+              <div class="order-step-item">
+                <span class="step-num">02</span>
+                <h4>Konsultasi via WA</h4>
+                <p>Diskusikan jumlah pesanan, tema warna, inisial monogram, serta perkiraan tanggal acaramu bersama Ayu.</p>
+              </div>
+              <div class="order-step-item">
+                <span class="step-num">03</span>
+                <h4>Approval Mockup & DP 50%</h4>
+                <p>Tim kami membuatkan simulasi visual desain. Produksi dijadwalkan segera setelah DP 50% disepakati.</p>
+              </div>
+              <div class="order-step-item">
+                <span class="step-num">04</span>
+                <h4>Kirim Bergaransi</h4>
+                <p>Paket lolos QC dipacking kayu aman dan dikirimkan ke Malang, Batu, Kepanjen, Jatim, hingga seluruh Nusantara.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION FAQ KHUSUS KATEGORI HALAMAN AKTIF (SESUAI PERMINTAAN USER) -->
+          <div class="category-faq-section" id="faq-kategori">
+            <div class="section-heading" style="margin-bottom: 20px;">
+              <div>
+                <span class="faq-cat-badge">TANYA JAWAB SEPUTAR {categoryName.toUpperCase()}</span>
+                <h2 style="font-size: 26px;">Pertanyaan Sering Diajukan</h2>
+              </div>
+              <p style="font-size: 14px;">Seputar proses pemesanan, kustomisasi logo, estimasi pengerjaan, dan pengiriman {categoryName.toLowerCase()}.</p>
+            </div>
+
+            <div class="category-faq-accordion">
+              {categoryFaqs.map((faq, idx) => (
+                <details class="faq-accordion-item" open={idx === 0}>
+                  <summary class="faq-accordion-summary">
+                    <span>{faq.q}</span>
+                    <span class="faq-icon-arrow"><Icon name="chevron" size={16} /></span>
+                  </summary>
+                  <div class="faq-accordion-content">
+                    <p>{faq.a}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+
+          <!-- Keterangan SEO di bagian bawah katalog -->
+          <div class="prose" style="margin-top:50px;padding:0;">
+            <h2>{category ? 'Merencanakan ' + category.name.toLowerCase() : 'Hadiah yang sesuai dengan penerima dan momennya'}</h2>
+            <p>Mulai dari siapa penerimanya, jumlah kebutuhan, hingga suasana acara. Sekata membantu mendiskusikan pilihan hadiah agar isi dan kemasan memiliki arah yang jelas.</p>
+            <h3>Detail apa yang perlu disiapkan?</h3>
+            <p>Sampaikan estimasi jumlah, tanggal acara, kota pengiriman (Malang, Batu, Kepanjen, Jawa Timur, atau luar pulau), kisaran anggaran, dan referensi desain kepada Ayu. Penawaran serta jadwal dikonfirmasi sebelum produksi.</p>
+            <h3>Berapa harga dan minimum pesanannya?</h3>
+            <p>Harga dan minimum pesanan mengikuti pilihan produk, jumlah, dan personalisasi. <a href={wa}>Hubungi Ayu untuk penawaran sesuai kebutuhan.</a></p>
+          </div>
+        </main>
+      </div>
+    </section>
+  ) : page === 'blog' || page === 'temukan-solusi' ? (
+    <section class="section">
+      <div class="article-grid">
+        {articles.map((a) => (
+          <a class="article-card" href={'/blog/' + a.slug + '/'}>
+            <img src={'/images/' + a.image} alt={'Ilustrasi ' + a.category} width="700" height="500" loading="lazy" />
+            <span class="eyebrow">{a.category}</span>
+            <h2 style="font-size:26px">{a.title}</h2>
+            <p>{a.excerpt}</p>
+            <span class="text-link">Baca artikel <Icon /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <div class="prose">
+      {page === 'sekata' ? (
+        <>
+          <h2>Hadiah adalah cara lain untuk bercerita.</h2>
+          <p>Sekata melayani kebutuhan souvenir pernikahan, hampers, dan gift custom dari Cemorokandang, Malang, Jawa Timur. Kami ingin membantu setiap perhatian disampaikan lewat hadiah yang sesuai dengan momen dan penerimanya.</p>
+          <p>Dari perayaan wedding hingga apresiasi perusahaan, prosesnya dimulai dengan percakapan: apa yang ingin kamu sampaikan, kepada siapa, dan kapan hadiah itu akan diberikan.</p>
+          <h2>Berangkat dari kebutuhanmu.</h2>
+          <p>Pilihan isi, personalisasi, dan kemasan dibicarakan bersama admin. Jumlah pesanan, penawaran, dan jadwal disepakati terlebih dahulu agar kamu memiliki gambaran yang jelas.</p>
+          <h2>Dari Malang, untuk momenmu.</h2>
+          <p>Konsultasikan pengiriman menuju Malang, Batu, Kepanjen, Surabaya, Jakarta, Bandung, Makassar, Bali, Lombok, Banjarmasin, dan kota tujuan lainnya.</p>
+          <a href={wa} class="text-link">Mulai percakapan dengan Ayu <Icon /></a>
+        </>
+      ) : page === 'kontak' ? (
+        <>
+          <h2>Hubungi Ayu, admin Sekata.</h2>
+          <p>Untuk konsultasi produk, harga, jumlah pesanan, dan estimasi pengerjaan, silakan hubungi WhatsApp <a href={wa}>+62 821-3108-7971</a>.</p>
+          <h2>Alamat Sekata</h2>
+          <p>Cemorokandang, Malang, Jawa Timur, Indonesia 65138.</p>
+          <a href={map} target="_blank" rel="noopener noreferrer" class="button">Buka Google Maps <Icon name="pin" /></a>
+          <h2>Agar konsultasi lebih mudah</h2>
+          <ul>
+            <li>Nama dan jenis acara.</li>
+            <li>Perkiraan jumlah souvenir atau hampers.</li>
+            <li>Tanggal acara dan kota pengiriman (Malang, Batu, Kepanjen, Jatim, dll).</li>
+            <li>Referensi isi, kemasan, dan kisaran anggaran.</li>
+          </ul>
+          <p>Email dan akun sosial resmi akan ditambahkan setelah dikonfirmasi.</p>
+        </>
+      ) : page === 'kebijakan-privasi' ? (
+        <>
+          <p>Terakhir diperbarui: 8 November 2026.</p>
+          <h2>Informasi yang kamu berikan</h2>
+          <p>Ketika menghubungi Sekata melalui WhatsApp, kamu dapat memberikan nama, nomor telepon, alamat pengiriman, dan kebutuhan pesanan. Informasi tersebut digunakan untuk konsultasi, penawaran, pemrosesan pesanan, dan koordinasi pengiriman.</p>
+          <h2>Penyimpanan pilihan</h2>
+          <p>Keranjang pilihan disimpan melalui localStorage pada browser perangkatmu. Kamu dapat menghapus pilihan dari keranjang atau membersihkan data situs melalui pengaturan browser. Situs ini tidak meminta akun untuk menggunakan keranjang.</p>
+          <h2>Layanan pihak ketiga</h2>
+          <p>Tautan WhatsApp dan Google Maps membawa kamu ke layanan pihak ketiga dengan kebijakan privasi masing-masing. Data pesanan yang dikirim melalui WhatsApp mengikuti pemrosesan pada layanan tersebut.</p>
+          <h2>Permintaan terkait data</h2>
+          <p>Hubungi <a href={wa}>Ayu melalui WhatsApp</a> untuk menanyakan atau meminta pembaruan dan penghapusan data yang telah diberikan, dengan mempertimbangkan kewajiban penyimpanan transaksi yang berlaku.</p>
+        </>
+      ) : page === 'syarat-ketentuan' ? (
+        <>
+          <p>Terakhir diperbarui: 8 November 2026.</p>
+          <h2>Konsultasi dan penawaran</h2>
+          <p>Keranjang merupakan daftar pilihan untuk konsultasi, bukan konfirmasi pembelian. Harga, minimum pesanan, isi produk, material, dan ketersediaan dikonfirmasi oleh admin melalui penawaran.</p>
+          <h2>Desain dan produksi</h2>
+          <p>Personalisasi serta jadwal produksi mengikuti kesepakatan pesanan. Pastikan penulisan nama, logo, warna, jumlah, dan detail desain diperiksa sebelum persetujuan produksi.</p>
+          <h2>Foto dan tampilan</h2>
+          <p>Foto pada koleksi awal merupakan ilustrasi inspirasi. Referensi produk aktual dan spesifikasi akhir perlu diminta kepada admin. Warna pada layar dapat berbeda dari material fisik.</p>
+          <h2>Pembayaran dan pengiriman</h2>
+          <p>Ketentuan pembayaran, perubahan pesanan, pembatalan, ongkos kirim, dan penanganan kendala mengikuti penawaran serta kesepakatan tertulis yang dikonfirmasi sebelum pesanan berjalan.</p>
+          <h2>Pertanyaan</h2>
+          <p>Hubungi <a href={wa}>Ayu</a> untuk penjelasan ketentuan pesananmu.</p>
+        </>
+      ) : (
+        <>
+          <h2>Penulis artikel Sekata</h2>
+          <p>M. Maulana Ishaq menulis panduan dan inspirasi seputar souvenir pernikahan, hampers, serta perencanaan hadiah di Sekata.</p>
+          <h2>Artikel</h2>
+          <ul>{articles.map((a) => <li><a href={'/blog/' + a.slug + '/'}>{a.title}</a></li>)}</ul>
+        </>
+      )}
+    </div>
+  )}
+</Layout>

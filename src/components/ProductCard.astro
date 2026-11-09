@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  product: any;
+  categorySlug?: string;
+}
+const { product: p, categorySlug } = Astro.props;
+
+const cat = categorySlug || p.categorySlug || (
+  p.kind.toLowerCase().includes('lebaran') ? 'hampers-lebaran' :
+  p.kind.toLowerCase().includes('wedding') ? 'souvenir-wedding' :
+  p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah') ? 'souvenir-haji-umrah' :
+  'produk'
+);
+const productUrl = cat === 'produk' ? `/produk/${p.id}/` : `/${cat}/${p.id}/`;
+---
+<article class="product-card">
+  <a class="product-image" href={productUrl}>
+    <img src={'/images/' + p.image} alt={'Ilustrasi ' + p.kind + ' ' + p.name} width="700" height="800" loading="lazy" />
+    <span class="product-label">{p.kind}</span>
+  </a>
+  <div class="product-info">
+    <div>
+      <h3><a href={productUrl}>{p.name}</a></h3>
+      <p>Personalisasikan hadiahmu</p>
+    </div>
+    <button class="add-product icon-button" data-id={p.id} data-name={p.name} aria-label={'Tambahkan ' + p.name + ' ke pilihan'}>
+      <Icon name="plus" />
+    </button>
+  </div>
+</article>

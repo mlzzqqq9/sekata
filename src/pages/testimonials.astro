@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { wa } from '../data/site';
+
+interface TestimonialItem {
+  id: string;
+  category: 'wedding' | 'corporate' | 'haji-umrah';
+  categoryLabel: string;
+  clientName: string;
+  eventDetail: string;
+  image: string;
+  quote: string;
+}
+
+const testimonials: TestimonialItem[] = [
+  // --- KOLEKSI PERNIKAHAN (VERSI PASANGAN PENGANTIN) ---
+  {
+    id: 'ranty-rayn',
+    category: 'wedding',
+    categoryLabel: 'WEDDING SOUVENIRS',
+    clientName: 'Ranty Maria & Rayn Wijaya',
+    eventDetail: 'Vows Exchanged in Bali',
+    image: '/images/pengantin-kotak-hadiah.png',
+    quote: 'Untuk momen pernikahan tepi pantai kami, Sekata menghadirkan pouch clutch minimalis berhias inisial monogram foil emas yang sangat elegan. Seluruh tamu dan sahabat terdekat memuji kelembutan material dan kemasannya yang terasa begitu personal dan berkelas.'
+  },
+  {
+    id: 'kevin-natasha',
+    category: 'wedding',
+    categoryLabel: 'WEDDING SOUVENIRS',
+    clientName: 'Kevin & Natasha',
+    eventDetail: 'Grand Ballroom Reception, Surabaya',
+    image: '/images/momen-hangat-pengantin.png',
+    quote: 'Menyiapkan 1.500 souvenir bukan hal yang mudah, tapi tim Sekata mendampingi kami dengan sangat sabar. Duo Pouch Kanvas & Kulit pilihan kami dikemas mika berhias pita satin yang rapi dan serasi dengan palet dekorasi. Sebuah kenangan indah yang terus terpakai.'
+  },
+  {
+    id: 'dimas-anindya',
+    category: 'wedding',
+    categoryLabel: 'WEDDING SOUVENIRS',
+    clientName: 'Dimas & Anindya',
+    eventDetail: 'Intimate Garden Wedding, Malang',
+    image: '/images/romansa-cahaya-lilin.png',
+    quote: 'Pouch Quilted Star & Tassel dan lilin aromaterapi dari Sekata menjadi sorotan manis di pernikahan kami. Aromanya yang menenangkan serta kartu ucapan puitis berhasil menyampaikan rasa terima kasih kami dengan cara yang sangat menyentuh hati.'
+  },
+  {
+    id: 'aditya-clarissa',
+    category: 'wedding',
+    categoryLabel: 'WEDDING SOUVENIRS',
+    clientName: 'Aditya & Clarissa',
+    eventDetail: 'Modern Heritage Wedding, Malang',
+    image: '/images/langkah-pengantin-taman.png',
+    quote: 'Kami menginginkan souvenir yang eco-friendly dan bermanfaat jangka panjang. Tote Bag Kanvas Custom Nama dengan tali kulit cokelat dari Sekata adalah jawaban sempurna. Kualitas jahitan dan bahan kanvasnya tebal dan sangat awet.'
+  },
+
+  // --- KOLEKSI KORPORAT & INSTANSI (VERSI PRODUK) ---
+  {
+    id: 'bca-solitaire',
+    category: 'corporate',
+    categoryLabel: 'CORPORATE GIFTING',
+    clientName: 'BCA Solitaire & Prioritas',
+    eventDetail: 'Year-End Client Appreciation',
+    image: '/images/products/wedding-gift-set-exclusive.jpg',
+    quote: 'Sebagai bentuk apresiasi bagi nasabah terhormat, BCA mempercayakan paket gift set eksklusif kepada Sekata. Sentuhan deboss logo yang presisi dan kemasan hardbox mewah mencerminkan komitmen bank kami terhadap kualitas dan hubungan yang erat.'
+  },
+  {
+    id: 'wika-persero',
+    category: 'corporate',
+    categoryLabel: 'CORPORATE SOUVENIRS',
+    clientName: 'PT Wijaya Karya (Persero) Tbk',
+    eventDetail: 'Management & Partner Gathering',
+    image: '/images/products/wedding-leather-doppkit-trio.jpg',
+    quote: 'Leather Dopp Kit Series dari Sekata hadir dengan kualitas kulit sintetis kokoh dan grafir logo korporat yang rapi. Pouch serbaguna ini menjadi cinderamata yang sangat diapresiasi oleh seluruh jajaran manajemen dan mitra strategis kami.'
+  },
+  {
+    id: 'bank-indonesia',
+    category: 'corporate',
+    categoryLabel: 'CORPORATE SOUVENIRS',
+    clientName: 'Bank Indonesia Kantor Perwakilan Malang',
+    eventDetail: 'Pertemuan Tahunan & Apresiasi Stakeholder',
+    image: '/images/products/wedding-dual-pouch-canvas.jpg',
+    quote: 'Kolaborasi bersama Sekata selalu mengesankan. Duo pouch kanvas dan card holder bernuansa warna bumi dengan inisial foil emas menjadi kenang-kenangan yang formal, elegan, dan sarat nilai keramahan khas Jawa Timur.'
+  },
+  {
+    id: 'pertamina-patra',
+    category: 'corporate',
+    categoryLabel: 'CORPORATE SOUVENIRS',
+    clientName: 'Pertamina Patra Niaga',
+    eventDetail: 'Vendor & Stakeholder Conference',
+    image: '/images/products/wedding-canvas-tote-leather.jpg',
+    quote: 'Tote bag kanvas beraksen kulit dari Sekata diproduksi tepat waktu dengan standar kontrol kualitas yang luar biasa. Sangat fungsional membawa berkas konferensi dan kini tetap digunakan oleh para tamu dalam aktivitas harian.'
+  },
+
+  // --- KOLEKSI HAJI & UMRAH (VERSI IBADAH KELUARGA) ---
+  {
+    id: 'syamsul-arifin',
+    category: 'haji-umrah',
+    categoryLabel: 'SOUVENIR HAJI & UMRAH',
+    clientName: 'Keluarga Besar H. Syamsul Arifin',
+    eventDetail: 'Syukuran Kepulangan Umrah Ramadhan',
+    image: '/images/products/haji-umroh-tasbih-black-gold.jpg',
+    quote: 'Tasbih digital hitam beraksen emas dengan kartu doa kaligrafi batik menjadi bingkisan syukuran yang penuh berkah. Tamu-tamu pengajian sangat menyukainya karena praktis dibawa berdzikir harian di mana pun berada.'
+  },
+  {
+    id: 'nurul-hidayati',
+    category: 'haji-umrah',
+    categoryLabel: 'SOUVENIR HAJI & UMRAH',
+    clientName: 'Keluarga Hj. Nurul Hidayati',
+    eventDetail: 'Tasyakuran Keberangkatan Ibadah Haji',
+    image: '/images/products/haji-umroh-tasbih-idul-fitri.jpg',
+    quote: 'Desain kubah masjid floral cat air pada kartu doa Sekata sangat anggun dan menyejukkan hati. Terima kasih Kak Ayu yang telah membantu menyiapkan souvenir doa ini dengan sangat rapi dan tepat waktu.'
+  }
+];
+
+const weddingTestimonials = testimonials.filter(t => t.category === 'wedding');
+const productTestimonials = testimonials.filter(t => t.category !== 'wedding');
+---
+
+<Layout
+  title="Testimonials — Cerita & Pengalaman Bersama Sekata"
+  description="Kumpulan cerita bahagia pasangan pengantin, instansi, dan keluarga yang mempercayakan souvenir dan hampers custom kepada Sekata Malang."
+>
+  <!-- HERO SECTION DENGAN 4 FOTO BANNER BUNGA (RASIO 3:1) -->
+  <section class="page-hero" id="testimonialsHero">
+    <!-- SLIDER BACKGROUND 4 FOTO -->
+    <div class="hero-bg-slider" id="testiHeroSlider" aria-hidden="true">
+      <div class="hero-slide active" style="background-image: url('/images/hero-mawar-gading.png');" data-index="0" data-filter="wedding" title="Mawar Taman Gading"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero-mawar-burgundi.png');" data-index="1" data-filter="corporate" title="Rangkaian Mawar Burgundi"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero-tulip-gading.png');" data-index="2" data-filter="haji-umrah" title="Hamparan Tulip Gading"></div>
+      <div class="hero-slide" style="background-image: url('/images/hero-mawar-pastel.png');" data-index="3" data-filter="all" title="Mawar Pastel & Dedaunan"></div>
+    </div>
+    <div class="hero-gradient-overlay" aria-hidden="true"></div>
+
+    <div class="breadcrumbs">
+      <a href="/">Beranda</a> / Testimonials
+    </div>
+    <span class="eyebrow">MOMEN NYATA, CERITA HANGAT</span>
+    <h1>Cerita Mereka Bersama Sekata</h1>
+    <p>
+      Dari janji suci pernikahan hingga apresiasi korporat terhormat. Inilah kisah bagaimana souvenir dan hampers Sekata menghadirkan senyum dan kenangan yang abadi bagi setiap penerima.
+    </p>
+
+    <!-- FILTER KATEGORI -->
+    <div class="testi-filter-bar" role="tablist" aria-label="Filter Testimoni">
+      <button class="testi-filter-btn active" data-filter="all" type="button">Semua Cerita</button>
+      <button class="testi-filter-btn" data-filter="wedding" type="button">Wedding Souvenirs</button>
+      <button class="testi-filter-btn" data-filter="corporate" type="button">Corporate Gifting</button>
+      <button class="testi-filter-btn" data-filter="haji-umrah" type="button">Haji & Umrah</button>
+    </div>
+
+    <!-- KONTROL SLIDE BANNER FOTO (4 FOTO SEPERTI YANG DI-UPLOAD USER) -->
+    <div class="hero-slider-nav" id="heroSliderNav" aria-label="Pilih Foto Header">
+      <button class="hero-dot active" data-slide="0" aria-label="Foto 1: Mawar Taman Gading" title="Mawar Taman Gading"></button>
+      <button class="hero-dot" data-slide="1" aria-label="Foto 2: Mawar Burgundi" title="Mawar Burgundi"></button>
+      <button class="hero-dot" data-slide="2" aria-label="Foto 3: Tulip Gading" title="Tulip Gading"></button>
+      <button class="hero-dot" data-slide="3" aria-label="Foto 4: Mawar Pastel" title="Mawar Pastel"></button>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS CONTENT SECTION -->
+  <section class="section testimonials-page-section">
+    <!-- 1. GROUP PASANGAN PENGANTIN -->
+    <div class="testi-group-block" id="weddingGroup">
+      <div class="testimonials-dual-grid">
+        {weddingTestimonials.map((item) => (
+          <article class="testi-card" data-category={item.category}>
+            <div class="testi-image-wrap">
+              <img
+                src={item.image}
+                alt={`Dokumentasi testimoni ${item.clientName} - ${item.categoryLabel}`}
+                width="600"
+                height="550"
+                loading="lazy"
+                class="testi-img"
+              />
+            </div>
+            <div class="testi-content">
+              <span class="testi-quote-mark open" aria-hidden="true">“</span>
+              <p class="testi-quote-text">{item.quote}</p>
+              <span class="testi-quote-mark close" aria-hidden="true">”</span>
+
+              <div class="testi-author-block">
+                <h3 class="testi-client-name">{item.clientName}</h3>
+                <span class="testi-event-meta">{item.eventDetail}</span>
+                <span class="testi-category-tag">{item.categoryLabel}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- 2. PEMISAH BANNER CTA LANDSCAPE (PRODUK SEKATA) -->
+    <div class="testi-separator-banner" id="testiSeparatorBanner">
+      <div class="testi-banner-bg-wrap">
+        <img
+          src="/images/products/wedding-gift-set-exclusive.jpg"
+          alt="Koleksi Hampers & Souvenir Eksklusif Sekata"
+          width="1400"
+          height="650"
+          loading="lazy"
+          class="testi-banner-bg-img"
+        />
+        <div class="testi-banner-gradient-shade"></div>
+      </div>
+      <div class="testi-banner-content">
+        <span class="eyebrow light">KOLABORASI & SOUVENIR KORPORAT</span>
+        <h2>Sentuhan Eksklusif untuk Mengapresiasi Setiap Relasi</h2>
+        <p>
+          Selain mendampingi ratusan momen bahagia pernikahan, Sekata dipercaya oleh berbagai institusi, BUMN, dan korporat ternama untuk merangkai cinderamata yang berkesan, fungsional, dan sarat nilai keramahan.
+        </p>
+        <div class="testi-banner-buttons">
+          <a href="/souvenir-perusahaan/" class="button light">
+            Jelajahi Souvenir Perusahaan <Icon />
+          </a>
+          <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya ingin konsultasi souvenir korporat/instansi di Sekata.')} class="button secondary-light" target="_blank" rel="noopener noreferrer">
+            Konsultasi Souvenir Acara <Icon name="chat" size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. GROUP PRODUK (KORPORAT, INSTANSI & HAJI/UMRAH) -->
+    <div class="testi-group-block" id="productGroup">
+      <div class="testimonials-dual-grid">
+        {productTestimonials.map((item) => (
+          <article class="testi-card" data-category={item.category}>
+            <div class="testi-image-wrap">
+              <img
+                src={item.image}
+                alt={`Dokumentasi testimoni ${item.clientName} - ${item.categoryLabel}`}
+                width="600"
+                height="550"
+                loading="lazy"
+                class="testi-img"
+              />
+            </div>
+            <div class="testi-content">
+              <span class="testi-quote-mark open" aria-hidden="true">“</span>
+              <p class="testi-quote-text">{item.quote}</p>
+              <span class="testi-quote-mark close" aria-hidden="true">”</span>
+
+              <div class="testi-author-block">
+                <h3 class="testi-client-name">{item.clientName}</h3>
+                <span class="testi-event-meta">{item.eventDetail}</span>
+                <span class="testi-category-tag">{item.categoryLabel}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- CALL TO ACTION SECTION -->
+    <div class="testi-cta-box">
+      <span class="eyebrow">GILIRAN CERITAMU</span>
+      <h2>Setiap momen layak dirayakan dengan penuh makna.</h2>
+      <p>
+        Ceritakan konsep acaramu, jumlah kebutuhan, dan suasana yang ingin kamu hadirkan. Ayu siap mendampingi setiap langkah hingga hadiah terbaik sampai ke tangan para tamu.
+      </p>
+      <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya melihat cerita di halaman testimonials Sekata dan ingin konsultasi souvenir untuk acara saya.')} class="button" target="_blank" rel="noopener noreferrer">
+        Konsultasikan Acaramu Bersama Ayu <Icon name="chat" size={16} />
+      </a>
+    </div>
+  </section>
+
+  <!-- Interactive Client-side Filter & Hero Background Slider Script -->
+  <script is:inline>
+    (function() {
+      // 1. Hero Background Slider (4 Foto Rasio 3:1)
+      var slides = document.querySelectorAll('#testiHeroSlider .hero-slide');
+      var dots = document.querySelectorAll('#heroSliderNav .hero-dot');
+      var currentSlide = 0;
+      var slideTimer = null;
+      var isAuto = true;
+
+      function setSlide(idx) {
+        if (!slides.length) return;
+        currentSlide = (idx + slides.length) % slides.length;
+        slides.forEach(function(s, i) {
+          s.classList.toggle('active', i === currentSlide);
+        });
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === currentSlide);
+        });
+      }
+
+      function startTimer() {
+        stopTimer();
+        slideTimer = setInterval(function() {
+          if (isAuto) {
+            setSlide(currentSlide + 1);
+          }
+        }, 5500);
+      }
+
+      function stopTimer() {
+        if (slideTimer) clearInterval(slideTimer);
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var idx = parseInt(dot.getAttribute('data-slide') || '0', 10);
+          setSlide(idx);
+          isAuto = true;
+          startTimer();
+        });
+      });
+
+      startTimer();
+
+      // 2. Filter Testimoni & Integrasi ke Background Hero
+      var filterBtns = document.querySelectorAll('.testi-filter-btn');
+      var cards = document.querySelectorAll('.testi-card');
+      var separatorBanner = document.getElementById('testiSeparatorBanner');
+
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetFilter = btn.getAttribute('data-filter');
+
+          filterBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          // Alihkan foto hero sesuai kategori yang diklik
+          if (targetFilter === 'wedding') {
+            setSlide(0); // Mawar taman gading
+            isAuto = false;
+          } else if (targetFilter === 'corporate') {
+            setSlide(1); // Mawar burgundi
+            isAuto = false;
+          } else if (targetFilter === 'haji-umrah') {
+            setSlide(2); // Tulip gading
+            isAuto = false;
+          } else {
+            isAuto = true;
+            setSlide(0);
+            startTimer();
+          }
+
+          cards.forEach(function(card) {
+            var cardCat = card.getAttribute('data-category');
+            if (targetFilter === 'all' || cardCat === targetFilter) {
+              card.style.display = 'grid';
+              card.style.opacity = '1';
+            } else {
+              card.style.display = 'none';
+              card.style.opacity = '0';
+            }
+          });
+
+          if (separatorBanner) {
+            if (targetFilter === 'all') {
+              separatorBanner.style.display = 'flex';
+            } else {
+              separatorBanner.style.display = 'none';
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</Layout>
+

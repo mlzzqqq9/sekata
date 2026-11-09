@@ -1,0 +1,453 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, categories, wa } from '../../data/site';
+
+export function getStaticPaths() {
+  const paths: any[] = [];
+  for (const p of products) {
+    const cat = p.categorySlug || (
+      p.kind.toLowerCase().includes('lebaran') ? 'hampers-lebaran' :
+      p.kind.toLowerCase().includes('wedding') ? 'souvenir-wedding' :
+      p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah') ? 'souvenir-haji-umrah' :
+      'gift'
+    );
+    paths.push({
+      params: { category: cat, slug: p.id },
+      props: { p, categorySlug: cat }
+    });
+  }
+  return paths;
+}
+
+const { p, categorySlug } = Astro.props;
+const currentCat = categories.find((c) => c.slug === categorySlug);
+const categoryName = currentCat?.name || p.kind;
+
+// Filter 4 produk terkait yang relevan khusus dalam kategori yang sama
+const sameCategory = products.filter((item) => item.id !== p.id && (item.categorySlug === categorySlug || item.kind === p.kind));
+const related = sameCategory.slice(0, 4);
+
+// Detail foto galeri makro (zoom logo & bahan khusus produk ini)
+const mainImg = '/images/' + p.image;
+const macroLogo = '/images/' + p.image.replace('.jpg', '-macro-logo.jpg');
+const macroMaterial = '/images/' + p.image.replace('.jpg', '-macro-material.jpg');
+
+// Schema.org Product Rich Snippet dengan AggregateRating untuk Google Search
+const productSchema = {
+  '@context': 'https://schema.org/',
+  '@type': 'Product',
+  'name': p.name,
+  'image': [
+    'https://sekata.id' + mainImg,
+    'https://sekata.id' + macroLogo,
+    'https://sekata.id' + macroMaterial
+  ],
+  'description': p.desc,
+  'sku': p.id,
+  'mpn': 'SEKATA-' + p.id.toUpperCase(),
+  'brand': {
+    '@type': 'Brand',
+    'name': 'Sekata Malang'
+  },
+  'offers': {
+    '@type': 'AggregateOffer',
+    'priceCurrency': 'IDR',
+    'lowPrice': '15000',
+    'highPrice': '150000',
+    'offerCount': '500',
+    'priceValidUntil': '2027-12-31',
+    'availability': 'https://schema.org/InStock',
+    'seller': {
+      '@type': 'Organization',
+      'name': 'Sekata'
+    }
+  },
+  'aggregateRating': {
+    '@type': 'AggregateRating',
+    'ratingValue': '4.9',
+    'reviewCount': '128',
+    'bestRating': '5',
+    'worstRating': '1'
+  }
+};
+---
+
+<Layout
+  title={p.name + ' — Inspirasi ' + categoryName + ' | Sekata Malang'}
+  description={p.desc + ' Konsultasikan custom logo, isi paket, dan pengiriman Malang, Batu, Kepanjen & seluruh Indonesia bersama Ayu.'}
+  schema={productSchema}
+>
+  <div class="product-page-wrapper section">
+    <!-- SIDEBAR KIRI (Eksplore Kategori) -->
+    <aside class="catalog-sidebar product-sidebar" aria-label="Kategori dan Rekomendasi Gift">
+      <h3 class="sidebar-title">Eksplore</h3>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Koleksi Utama</span>
+        <ul class="sidebar-links">
+          <li><a href="/gift/">Semua Koleksi</a></li>
+          <li><a href="/souvenir-wedding/" class={categorySlug === 'souvenir-wedding' ? 'active' : ''}>Wedding Souvenir</a></li>
+          <li><a href="/souvenir-haji-umrah/" class={categorySlug === 'souvenir-haji-umrah' ? 'active' : ''}>Souvenir Haji & Umrah</a></li>
+          <li><a href="/hampers/" class={categorySlug === 'hampers' ? 'active' : ''}>Hampers & Gift Box</a></li>
+          <li><a href="/souvenir-perusahaan/" class={categorySlug === 'souvenir-perusahaan' ? 'active' : ''}>Corporate Souvenir</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Hampers Momen</span>
+        <ul class="sidebar-links">
+          <li><a href="/hampers-lebaran/" class={categorySlug === 'hampers-lebaran' ? 'active' : ''}>Hampers Lebaran</a></li>
+          <li><a href="/hampers-ulang-tahun/" class={categorySlug === 'hampers-ulang-tahun' ? 'active' : ''}>Hampers Ulang Tahun</a></li>
+          <li><a href="/hampers-wisuda/" class={categorySlug === 'hampers-wisuda' ? 'active' : ''}>Hampers Wisuda</a></li>
+          <li><a href="/hampers-anak/" class={categorySlug === 'hampers-anak' ? 'active' : ''}>Hampers Anak</a></li>
+          <li><a href="/hampers-wedding/" class={categorySlug === 'hampers-wedding' ? 'active' : ''}>Hampers Wedding</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Souvenir Acara</span>
+        <ul class="sidebar-links">
+          <li><a href="/souvenir-sertijab/" class={categorySlug === 'souvenir-sertijab' ? 'active' : ''}>Sertijab & VIP</a></li>
+          <li><a href="/souvenir-bumn/" class={categorySlug === 'souvenir-bumn' ? 'active' : ''}>BUMN & Kantor</a></li>
+          <li><a href="/souvenir-gathering/" class={categorySlug === 'souvenir-gathering' ? 'active' : ''}>Gathering</a></li>
+          <li><a href="/souvenir-seminar-workshop/" class={categorySlug === 'souvenir-seminar-workshop' ? 'active' : ''}>Seminar & Workshop</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-consult-box">
+        <h4>Konsultasi Custom</h4>
+        <p>Diskusikan konsep, inisial logo, jumlah, isi, dan budget hampers/souvenir bersama Ayu.</p>
+        <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya ingin konsultasi produk ' + p.name)} class="button" style="padding:8px 14px;font-size:12px;display:inline-flex;" target="_blank" rel="noopener noreferrer">
+          Chat Ayu di WhatsApp <Icon name="chat" size={14} />
+        </a>
+      </div>
+    </aside>
+
+    <!-- KONTEN UTAMA PRODUK -->
+    <main class="product-main-content">
+      <!-- Breadcrumbs Kategori Mandiri (Sesuai Kategori Aktif) -->
+      <div class="breadcrumbs" style="margin-bottom: 20px;">
+        <a href="/">Beranda</a> / <a href={'/' + categorySlug + '/'}>{categoryName}</a> / {p.name}
+      </div>
+
+      <!-- AREA ATAS: FOTO GALERI & RINGKASAN PRODUK -->
+      <div class="product-hero-card">
+        <!-- GALERI FOTO LENGKAP: FOTO UTAMA + ZOOM MAKRO LOGO & BAHAN (SWIPE DI HP, KLIK DI DESKTOP) -->
+        <div class="product-hero-image-wrap">
+          <div class="product-main-view">
+            <img
+              id="mainProductImg"
+              src={mainImg}
+              alt={'Foto utama ' + p.name}
+              width="800"
+              height="800"
+              class="product-main-img"
+              fetchpriority="high"
+            />
+            <span class="gallery-zoom-hint">Klik foto bawah untuk detail makro</span>
+          </div>
+
+          <!-- THUMBNAILS CAROUSEL (DAPAT DIGESER DI HP & DIKLIK DI DESKTOP) -->
+          <div class="product-gallery-thumbs" id="productThumbs" role="tablist" aria-label="Galeri detail makro foto">
+            <button class="thumb-card active" data-img={mainImg} type="button" aria-label="Foto Utama">
+              <img src={mainImg} alt={'Foto Utama ' + p.name} width="76" height="76" loading="lazy" />
+            </button>
+            <button class="thumb-card" data-img={macroLogo} type="button" aria-label="Detail Makro Logo">
+              <img src={macroLogo} alt={'Detail Makro Logo ' + p.name} width="76" height="76" loading="lazy" />
+            </button>
+            <button class="thumb-card" data-img={macroMaterial} type="button" aria-label="Detail Makro Bahan">
+              <img src={macroMaterial} alt={'Detail Makro Bahan ' + p.name} width="76" height="76" loading="lazy" />
+            </button>
+          </div>
+        </div>
+
+        <!-- INFO PRODUK + RATING GOOGLE SNIPPET + KELEBIHAN -->
+        <div class="product-hero-info">
+          <span class="eyebrow">{p.kind.toUpperCase()} · KOLEKSI RESMI</span>
+          <h1>{p.name}</h1>
+
+          <!-- RATING BADGE GOOGLE SEARCH SNIPPET -->
+          <div class="product-rating-badge">
+            <div class="star-rating" aria-label="Rating 4.9 dari 5 bintang">
+              <span class="stars">★★★★★</span>
+              <span class="rating-score">4.9 / 5.0</span>
+            </div>
+            <span class="rating-dot">·</span>
+            <span class="rating-reviews">128 Ulasan Terverifikasi</span>
+            <span class="rating-dot">·</span>
+            <span class="rating-sold">Terjual 2.500+ pcs</span>
+          </div>
+
+          <p class="product-short-desc">{p.desc}</p>
+          <p class="product-note-small">Gambar merupakan ilustrasi inspirasi. Spesifikasi, warna, dan isi dikonfirmasi bersama admin sebelum produksi.</p>
+
+          <div class="detail-list">
+            <div>Isi & material <span>— dikonfirmasi admin</span></div>
+            <div>Personalisasi <span>— logo / kartu ucapan</span></div>
+            <div>Harga & min. order <span>— konsultasikan budget</span></div>
+            <div>Pengiriman <span>— Malang & se-Indonesia</span></div>
+          </div>
+
+          <div class="product-action-buttons">
+            <button class="button add-product" data-id={p.id} data-name={p.name}>
+              Tambahkan ke pilihan <Icon name="plus" />
+            </button>
+            <a class="button secondary" href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya tertarik konsep ' + p.name + '. Mohon informasi detail isi dan pemesanannya.')} target="_blank" rel="noopener noreferrer">
+              Tanya Ayu di WhatsApp <Icon name="chat" size={16} />
+            </a>
+          </div>
+
+          <!-- KELEBIHAN SEKATA: FORMAT 2X2 HEMAT RUANG (SESUAI PERMINTAAN USER) -->
+          <div class="product-usp-strip">
+            <div class="usp-card">
+              <Icon name="check" size={16} />
+              <div>
+                <strong>Custom Logo & Desain</strong>
+                <p>Bebas custom monogram, deboss kulit, dan greeting card.</p>
+              </div>
+            </div>
+            <div class="usp-card">
+              <Icon name="check" size={16} />
+              <div>
+                <strong>Paket Fleksibel</strong>
+                <p>Pilihan isi, budget, dan jumlah pemesanan fleksibel.</p>
+              </div>
+            </div>
+            <div class="usp-card highlight-target-city">
+              <Icon name="check" size={16} />
+              <div>
+                <strong>Area Malang & Jatim</strong>
+                <p>Kirim Malang • Batu • Kepanjen & Sekitar Jawa Timur.</p>
+              </div>
+            </div>
+            <div class="usp-card">
+              <Icon name="check" size={16} />
+              <div>
+                <strong>Garansi Aman</strong>
+                <p>Proteksi packing kayu kokoh ke seluruh kota Indonesia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS INTERAKTIF YANG DAPAT DIKLIK: DETAIL PRODUK, SPESIFIKASI & BAHAN, CARA PESAN & PENGIRIMAN -->
+      <div class="product-detail-tab-section" id="productTabSection">
+        <div class="product-tabs" role="tablist" aria-label="Navigasi Informasi Produk">
+          <button class="tab-button active" id="btnTabDetail" data-tab="tab-detail" type="button" role="tab" aria-selected="true" aria-controls="tab-detail">
+            DETAIL PRODUK
+          </button>
+          <button class="tab-button" id="btnTabSpecs" data-tab="tab-specs" type="button" role="tab" aria-selected="false" aria-controls="tab-specs">
+            SPESIFIKASI & BAHAN
+          </button>
+          <button class="tab-button" id="btnTabOrdering" data-tab="tab-ordering" type="button" role="tab" aria-selected="false" aria-controls="tab-ordering">
+            CARA PESAN & PENGIRIMAN
+          </button>
+        </div>
+
+        <!-- TAB PANEL 1: DETAIL PRODUK -->
+        <div class="tab-panel active" id="tab-detail" role="tabpanel" aria-labelledby="btnTabDetail">
+          <h2 class="story-headline">{p.name}: {p.tagline}</h2>
+          <p class="story-paragraph">{p.story}</p>
+
+          <h3 class="feature-headline">{p.featureHeading}</h3>
+          <p class="story-paragraph">{p.featureStory}</p>
+
+          <!-- Box Konsultasi Personal -->
+          <div class="product-consult-card">
+            <div class="consult-badge">SENTUHAN PERSONAL</div>
+            <h3>Ingin kustomisasi nama, warna, atau kartu ucapan khusus?</h3>
+            <p>Mulai dari inisial monogram foil emas, pemilihan palet warna kemasan, hingga ucapan terima kasih bernuansa hangat—Ayu siap membantu merangkai setiap detail agar hadiah terasa pas dengan ceritamu.</p>
+            <a class="button" href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya tertarik konsultasi personalisasi untuk ' + p.name + '.')} target="_blank" rel="noopener noreferrer">
+              Konsultasikan Bersama Ayu di WhatsApp <Icon name="chevron" size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 2: SPESIFIKASI & BAHAN -->
+        <div class="tab-panel" id="tab-specs" role="tabpanel" aria-labelledby="btnTabSpecs" style="display: none;">
+          <h2 class="story-headline">Spesifikasi Material & Dimensi Produk</h2>
+          <p class="story-paragraph">
+            Setiap produk Sekata melewati proses kurasi material berstandar tinggi untuk memastikan tampilan elegan, jahitan kuat, dan durabilitas tahan lama.
+          </p>
+
+          <div class="specs-grid">
+            {p.specs?.map((spec) => (
+              <div class="spec-card">
+                <span class="spec-label">{spec.label}</span>
+                <span class="spec-value">{spec.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="care-instruction-box">
+            <h4>Panduan Perawatan & Penyimpanan Bahan</h4>
+            <ul>
+              <li>Bersihkan noda ringan pada permukaan produk dengan kain microfiber lembut yang sedikit dibasahi air hangat.</li>
+              <li>Hindari penggunaan deterjen keras, pemutih, atau alkohol berkonsentrasi tinggi secara langsung pada cetakan logo.</li>
+              <li>Simpan di tempat sejuk dan berventilasi baik, terhindar dari paparan terik sinar matahari langsung dalam waktu lama.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TAB PANEL 3: CARA PESAN & PENGIRIMAN -->
+        <div class="tab-panel" id="tab-ordering" role="tabpanel" aria-labelledby="btnTabOrdering" style="display: none;">
+          <h2 class="story-headline">Panduan Cara Pesan & Kebijakan Pengiriman</h2>
+          <p class="story-paragraph">
+            Proses pemesanan di Sekata dirancang mudah, transparan, dan terarah dengan pendampingan langsung oleh admin Ayu.
+          </p>
+
+          <div class="ordering-steps-grid">
+            <div class="order-step-item">
+              <span class="step-num">01</span>
+              <h4>Konsultasi & Pilih Konsep</h4>
+              <p>Hubungi admin Ayu di WhatsApp. Sampaikan konsep acara, perkiraan jumlah kebutuhan, dan estimasi tanggal acaramu.</p>
+            </div>
+            <div class="order-step-item">
+              <span class="step-num">02</span>
+              <h4>Approval Mockup & DP 50%</h4>
+              <p>Tim desainer kami menyiapkan simulasi inisial monogram atau logo. Produksi dijadwalkan setelah DP 50% dikonfirmasi.</p>
+            </div>
+            <div class="order-step-item">
+              <span class="step-num">03</span>
+              <h4>Produksi & Quality Control</h4>
+              <p>Pengerjaan berkisar 10–25 hari kerja dengan quality check berlapis pada setiap detail, kerapian, dan kemasan boks.</p>
+            </div>
+            <div class="order-step-item">
+              <span class="step-num">04</span>
+              <h4>Pelunasan & Pengiriman</h4>
+              <p>Foto dokumentasi hasil jadi dikirimkan sebelum pelunasan. Paket dipacking kayu dan siap dikirimkan ke lokasi tujuan.</p>
+            </div>
+          </div>
+
+          <div class="shipping-coverage-card">
+            <div class="coverage-badge">WILAYAH JANGKAUAN PENGIRIMAN</div>
+            <h3>Target Pengiriman Kota Malang, Jawa Timur & Nusantara</h3>
+            <p>
+              Kami melayani pengiriman khusus langsung untuk <strong>Malang • Batu • Kepanjen • Sekitar Jawa Timur (by request)</strong> dengan opsi kurir khusus, serta ekspedisi kargo darat/udara terpercaya ke seluruh kota di Indonesia dengan proteksi packing kayu bergaransi.
+            </p>
+            <div class="shipping-tags">
+              <span>Kota Malang</span>
+              <span>Kota Batu</span>
+              <span>Kepanjen & Kab. Malang</span>
+              <span>Surabaya & Sidoarjo</span>
+              <span>Sekitar Jawa Timur (by request)</span>
+              <span>Seluruh Indonesia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Pilihan Relevan Lainnya Khusus Kategori Ini -->
+  {related.length > 0 && (
+    <section class="section related-products" style="border-top: 1px solid var(--line); background: var(--cream);">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">INSPIRASI {categoryName.toUpperCase()} LAINNYA</span>
+          <h2>Pilihan relevan untuk momenmu.</h2>
+        </div>
+        <a href={'/' + categorySlug + '/'} class="text-link">Jelajahi {categoryName} <Icon /></a>
+      </div>
+      <div class="products-grid">
+        {related.map((item) => <ProductCard product={item} categorySlug={categorySlug} />)}
+      </div>
+    </section>
+  )}
+
+  <!-- Interactive Scripts: Tab Switching & Gallery Thumbnail Click/Swipe -->
+  <script is:inline>
+    (function() {
+      // 1. Script Tabs Interaktif
+      var tabBtns = document.querySelectorAll('.product-tabs .tab-button');
+      var panels = document.querySelectorAll('.product-detail-tab-section .tab-panel');
+
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetId = btn.getAttribute('data-tab');
+
+          tabBtns.forEach(function(b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          panels.forEach(function(panel) {
+            if (panel.id === targetId) {
+              panel.style.display = 'block';
+              panel.classList.add('active');
+            } else {
+              panel.style.display = 'none';
+              panel.classList.remove('active');
+            }
+          });
+        });
+      });
+
+      // 2. Script Galeri Thumbnail (Klik di Desktop, Geser / Swipe di HP)
+      var mainImg = document.getElementById('mainProductImg');
+      var thumbBtns = Array.from(document.querySelectorAll('.product-gallery-thumbs .thumb-card'));
+      var currentIndex = 0;
+
+      function selectImage(idx) {
+        if (!thumbBtns.length) return;
+        if (idx < 0) idx = thumbBtns.length - 1;
+        if (idx >= thumbBtns.length) idx = 0;
+        currentIndex = idx;
+
+        var targetThumb = thumbBtns[currentIndex];
+        var newSrc = targetThumb.getAttribute('data-img');
+        if (newSrc && mainImg) {
+          mainImg.style.opacity = '0.5';
+          mainImg.src = newSrc;
+          mainImg.onload = function() {
+            mainImg.style.opacity = '1';
+          };
+          setTimeout(function() {
+            mainImg.style.opacity = '1';
+          }, 150);
+        }
+
+        thumbBtns.forEach(function(t, i) {
+          t.classList.toggle('active', i === currentIndex);
+        });
+
+        targetThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      thumbBtns.forEach(function(thumb, i) {
+        thumb.addEventListener('click', function() {
+          selectImage(i);
+        });
+      });
+
+      // Swipe gesture di HP pada area foto utama
+      var mainView = document.querySelector('.product-main-view');
+      if (mainView) {
+        var startX = 0;
+        var endX = 0;
+
+        mainView.addEventListener('touchstart', function(e) {
+          startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        mainView.addEventListener('touchend', function(e) {
+          endX = e.changedTouches[0].screenX;
+          var diff = startX - endX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              selectImage(currentIndex + 1);
+            } else {
+              selectImage(currentIndex - 1);
+            }
+          }
+        }, { passive: true });
+      }
+    })();
+  </script>
+</Layout>
+

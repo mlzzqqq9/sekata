@@ -1,0 +1,330 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { articles, wa } from '../../data/site';
+
+export function getStaticPaths() {
+  return articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props;
+
+const wedding = a.slug === 'panduan-memilih-souvenir-pernikahan';
+const personal = a.slug === 'hampers-yang-lebih-personal';
+const tips = a.slug === 'persiapan-souvenir-acara';
+
+const toc = wedding
+  ? [
+      ['makna', 'Souvenir adalah ucapan terima kasih.'],
+      ['anggaran', 'Rencanakan anggaran sebelum memilih barang.'],
+      ['pilihan', 'Pilih souvenir yang berguna dalam keseharian.'],
+      ['konsep', 'Satukan hadiah dengan konsep pernikahan.'],
+      ['pesan', 'Periksa detail sebelum memesan.']
+    ]
+  : personal
+  ? [
+      ['penerima', 'Mulai dari orang yang akan menerimanya.'],
+      ['isi', 'Kurasi isi yang saling melengkapi dan bernilai guna.'],
+      ['detail', 'Siapkan detail sebelum konsultasi.'],
+      ['langkah', 'Sepakati isi, tampilan, dan jadwal pengiriman.']
+    ]
+  : [
+      ['tujuan', 'Tetapkan tujuan pemberian dan profil penerima.'],
+      ['estimasi', 'Tentukan jumlah kebutuhan dan cadangan acara.'],
+      ['anggaran', 'Alokasikan batas belanja yang nyaman per paket.'],
+      ['timeline', 'Perhitungkan tenggat waktu produksi dan pengiriman.'],
+      ['branding', 'Siapkan file logo, inisial monogram, dan kartu ucapan.']
+    ];
+
+const relatedArticles = articles.filter((x) => x.slug !== a.slug);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: a.title,
+  description: a.excerpt,
+  image: 'https://sekata.web.id/images/' + a.image,
+  datePublished: '2026-11-07T09:00:00+07:00',
+  dateModified: '2026-11-09T09:00:00+07:00',
+  author: {
+    '@type': 'Person',
+    name: 'M. Maulana Ishaq',
+    url: 'https://sekata.web.id/penulis/m-maulana-ishaq/'
+  },
+  publisher: {
+    '@id': 'https://sekata.web.id/#organization'
+  },
+  mainEntityOfPage: 'https://sekata.web.id/blog/' + a.slug + '/'
+};
+---
+
+<Layout title={a.title + ' — Temukan Solusi | Sekata Malang'} description={a.excerpt} schema={schema}>
+  <!-- HEADER HERO DENGAN BANNER MAWAR PASTEL -->
+  <header class="page-hero" style="--page-hero-bg: url('/images/hero-mawar-pastel.png');">
+    <div class="breadcrumbs">
+      <a href="/">Beranda</a> / <a href="/blog/">Temukan Solusi</a> / {a.category}
+    </div>
+    <span class="eyebrow">{a.category}</span>
+    <h1>{a.title}</h1>
+    <p>{a.excerpt}</p>
+    <div class="article-meta">
+      Ditulis oleh <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a> · 7 November 2026 · {wedding ? '6' : '3'} menit baca
+    </div>
+  </header>
+
+  <!-- KONTEN ARTIKEL & SIDEBAR -->
+  <div class="article-layout">
+    <article class="prose">
+      <img
+        class="article-cover"
+        src={'/images/' + a.image}
+        alt={'Ilustrasi ' + a.category}
+        width="1000"
+        height="650"
+      />
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">Foto ilustrasi inspirasi hadiah Sekata.</p>
+
+      <!-- DESKRIPSI PERTAMA -->
+      {wedding ? (
+        <p class="first-desc-paragraph">
+          Souvenir pernikahan yang berkesan adalah hadiah yang sesuai dengan penerima, konsep acara, dan kemampuan anggaran pasangan. Mulailah dari jumlah kebutuhan dan kegunaan barang, kemudian pilih material serta kemasan yang mendukung cerita pernikahanmu.
+        </p>
+      ) : personal ? (
+        <p class="first-desc-paragraph">
+          Mulai dari penerima, pilih isi, lalu satukan cerita lewat kemasan. Hadiah yang terasa personal dimulai dari memahami kebutuhan, lalu memilih detail yang relevan. Dengan brief yang jelas, percakapan dengan vendor akan lebih mudah dan pilihan produk menjadi lebih terarah.
+        </p>
+      ) : (
+        <p class="first-desc-paragraph">
+          Sebelum memesan souvenir untuk acara kantor, syukuran keluarga, atau cinderamata pernikahan, menyiapkan brief sederhana akan menghemat banyak waktu. Informasi yang jelas sejak awal membantu vendor memberikan rekomendasi produk dan estimasi harga yang paling tepat.
+        </p>
+      )}
+
+      <!-- DAFTAR ISI DI BAWAH DESKRIPSI PERTAMA (SESUAI PERMINTAAN USER) -->
+      <div class="inline-toc-box">
+        <div class="inline-toc-head">
+          <span class="eyebrow">PANDUAN BACA</span>
+          <h3>Daftar Isi Artikel</h3>
+        </div>
+        <ol class="inline-toc-list">
+          {toc.map(([id, title]) => (
+            <li>
+              <a href={'#' + id}>{title}</a>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- ISI KONTEN LENGKAP -->
+      {wedding ? (
+        <>
+          <h2 id="makna">Souvenir adalah ucapan terima kasih.</h2>
+          <p>
+            Tamu datang membawa waktu, perhatian, dan doa. Souvenir menjadi salah satu cara menyampaikan apresiasi itu dalam bentuk yang bisa dibawa pulang. Nilainya tidak harus ditentukan oleh kemewahan, melainkan oleh perhatian saat memilihnya.
+          </p>
+
+          <h2 id="anggaran">Rencanakan anggaran sebelum memilih barang.</h2>
+          <p>
+            Tetapkan batas belanja yang nyaman bersama pasangan. Hitung kebutuhan souvenir berdasarkan cara pembagiannya—per tamu, per keluarga, atau per undangan—agar jumlah pesanan memiliki dasar yang jelas.
+          </p>
+          <ul>
+            <li>Catat jumlah penerima dan siapkan cadangan yang sesuai dengan skala acara.</li>
+            <li>Masukkan biaya personalisasi, kemasan, kartu ucapan, dan pengiriman ke dalam perhitungan.</li>
+            <li>Bandingkan penawaran berdasarkan spesifikasi yang setara, bukan harga barang saja.</li>
+            <li>Konfirmasikan minimum pesanan dan jadwal produksi sebelum menyepakati desain.</li>
+          </ul>
+          <p>
+            Pembagian persentase anggaran bukan aturan baku. Sesuaikan dengan prioritas acara dan kemampuanmu, lalu pilih alternatif produk jika penawaran melampaui batas yang telah disepakati.
+          </p>
+
+          <h2 id="pilihan">Pilih souvenir yang berguna dalam keseharian.</h2>
+          <p>
+            Souvenir fungsional memberi kesempatan kenangan itu hadir berulang kali. Pertimbangkan kebiasaan penerima dan kemudahan membawa pulang barang dari lokasi acara.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Inspirasi</th>
+                <th>Kegunaan</th>
+                <th>Hal yang diperiksa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pouch</td>
+                <td>Penyimpanan barang kecil</td>
+                <td>Material, jahitan, ukuran</td>
+              </tr>
+              <tr>
+                <td>Mug keramik</td>
+                <td>Minum sehari-hari</td>
+                <td>Material, finishing, kemasan pelindung</td>
+              </tr>
+              <tr>
+                <td>Alat makan</td>
+                <td>Perlengkapan makan</td>
+                <td>Material dan petunjuk perawatan</td>
+              </tr>
+              <tr>
+                <td>Reed diffuser</td>
+                <td>Pengharum ruangan</td>
+                <td>Aroma, volume, keamanan pengemasan</td>
+              </tr>
+              <tr>
+                <td>Tanaman mini</td>
+                <td>Dekorasi dan kegiatan merawat</td>
+                <td>Kondisi tanaman dan transportasi</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Harga setiap pilihan bergantung pada material, jumlah, personalisasi, dan kemasan. Minta penawaran aktual sebelum membuat keputusan.
+          </p>
+
+          <h2 id="konsep">Satukan hadiah dengan konsep pernikahan.</h2>
+          <h3>Sentuhan tradisional yang tetap personal</h3>
+          <p>
+            Aksen batik, tenun, atau anyaman dapat menghadirkan kedekatan dengan budaya. Pilih detail yang mendukung produk, misalnya pouch beraksen kain atau kemasan dengan kartu bermotif sederhana.
+          </p>
+          <h3>Konsep natural</h3>
+          <p>
+            Pertimbangkan material, daya pakai, dan kemasan secara menyeluruh. Sebutan ramah lingkungan perlu didukung informasi material serta prosesnya; warna cokelat atau tampilan natural saja belum cukup.
+          </p>
+          <h3>Konsep elegan</h3>
+          <p>
+            Palet warna yang tenang, tipografi rapi, dan kemasan proporsional dapat memberi kesan elegan. Untuk gift set, pastikan setiap isi saling melengkapi dan ukuran kemasan tidak berlebihan.
+          </p>
+
+          <h2 id="pesan">Periksa detail sebelum memesan.</h2>
+          <p>
+            Mintalah referensi produk aktual, spesifikasi, dan pratinjau personalisasi. Cek ejaan nama serta tanggal pernikahan. Pastikan jumlah, jadwal penyelesaian, biaya, dan pengiriman tercatat dalam kesepakatan.
+          </p>
+          <p>
+            Souvenir terbaik untuk acaramu adalah yang dipilih dengan tenang: bermanfaat, sesuai cerita, dan tetap nyaman dalam rencana anggaran.
+          </p>
+        </>
+      ) : personal ? (
+        <>
+          <h2 id="penerima">Mulai dari orang yang akan menerimanya.</h2>
+          <p>
+            Pertimbangkan hubunganmu dengan penerima, kebiasaan sehari-hari, dan konteks pemberian. Untuk perayaan personal, nama atau pesan singkat dapat menghadirkan kedekatan. Untuk acara perusahaan, warna dan identitas acara bisa menjadi titik awal.
+          </p>
+
+          <h2 id="isi">Kurasi isi yang saling melengkapi dan bernilai guna.</h2>
+          <p>
+            Hampers yang berkesan bukan tentang banyaknya isi, melainkan keharmonisan antar barang di dalamnya. Kombinasikan produk yang dapat langsung dinikmati (seperti teh artisan atau cookies) dengan cinderamata tahan lama (seperti mug keramik, pouch kulit, atau reed diffuser).
+          </p>
+          <p>
+            Hindari memasukkan barang pelengkap yang fungsinya tidak jelas hanya demi mengisi ruang kosong. Kemasan yang dirancang pas dengan ukuran isi justru menunjukkan kerapian dan niat tulus pemberi.
+          </p>
+
+          <h2 id="detail">Siapkan detail sebelum konsultasi.</h2>
+          <ul>
+            <li>Jenis acara dan pesan emosional yang ingin disampaikan.</li>
+            <li>Jumlah penerima dan pilihan isi yang diinginkan.</li>
+            <li>Kisaran anggaran termasuk kemasan dan pengiriman.</li>
+            <li>Tanggal kebutuhan serta kota tujuan penerima (Malang, Batu, Kepanjen, atau luar kota).</li>
+            <li>Referensi warna kemasan, nama inisial, logo instansi, dan kartu ucapan.</li>
+          </ul>
+
+          <h2 id="langkah">Sepakati isi, tampilan, dan jadwal pengiriman.</h2>
+          <p>
+            Minta konfirmasi tertulis mengenai spesifikasi, jumlah, personalisasi, pembayaran, dan jadwal. Periksa kembali ejaan nama serta desain mockup sebelum memberi persetujuan produksi massal.
+          </p>
+          <p>
+            Untuk souvenir atau hampers yang sesuai kebutuhanmu, diskusikan pilihan aktual bersama admin Sekata di WhatsApp.
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 id="tujuan">Tetapkan tujuan pemberian dan profil penerima.</h2>
+          <p>
+            Langkah pertama yang paling menentukan adalah mengetahui kepada siapa hadiah ini ditujukan. Cinderamata untuk mitra korporat membutuhkan pendekatan berbeda dibanding souvenir tasyakuran keluarga, wisuda, atau pernikahan.
+          </p>
+
+          <h2 id="estimasi">Tentukan jumlah kebutuhan dan cadangan acara.</h2>
+          <p>
+            Hitung daftar penerima utama, lalu tambahkan cadangan berkisar 5–10% untuk mengantisipasi kehadiran tamu tambahan tak terduga atau kebutuhan dokumentasi arsip panitia.
+          </p>
+
+          <h2 id="anggaran">Alokasikan batas belanja yang nyaman per paket.</h2>
+          <p>
+            Tentukan plafon anggaran per orang atau total pagu dana acara. Sampaikan kisaran ini kepada admin agar rekomendasi material, kemasan mika vs hardbox, dan opsi personalisasi disesuaikan sejak awal tanpa melampaui rencana anggaranmu.
+          </p>
+
+          <h2 id="timeline">Perhitungkan tenggat waktu produksi dan pengiriman.</h2>
+          <p>
+            Produksi souvenir custom berkualitas membutuhkan waktu untuk pembuatan proof sample, approval desain, pengerjaan fisik, quality check, dan durasi pengiriman ekspedisi kargo menuju kota tujuanmu.
+          </p>
+
+          <h2 id="branding">Siapkan file logo, inisial monogram, dan kartu ucapan.</h2>
+          <p>
+            Kumpulkan aset visual seperti file vektor logo instansi, ejaan nama kedua mempelai, tanggal acara, serta kalimat ucapan terima kasih yang ingin dicetak pada thank you card atau hangtag.
+          </p>
+        </>
+      )}
+
+      <!-- KOTAK KONSULTASI AKHIR ARTIKEL -->
+      <div class="detail-list" style="margin-top: 36px;">
+        <p>
+          Butuh rekomendasi untuk acaramu?{' '}
+          <a href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya selesai membaca artikel ' + a.title + ' dan ingin konsultasi pilihan souvenir.')} target="_blank" rel="noopener noreferrer">
+            Konsultasikan konsep dan penawaran bersama Ayu.
+          </a>
+        </p>
+      </div>
+      <p style="font-size: 13.5px; color: var(--muted); margin-top: 14px;">
+        Penulis: <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a>
+      </p>
+    </article>
+
+    <!-- SIDEBAR DENGAN ARTIKEL TERKAIT (SESUAI PERMINTAAN USER) -->
+    <aside class="article-sidebar" aria-label="Sidebar Rekomendasi">
+      <!-- ARTIKEL TERKAIT -->
+      <div class="sidebar-block sidebar-related-block">
+        <span class="eyebrow">REKOMENDASI BACA</span>
+        <h3 class="sidebar-title">Artikel Terkait</h3>
+        <div class="sidebar-related-list">
+          {relatedArticles.map((item) => (
+            <a href={'/blog/' + item.slug + '/'} class="sidebar-related-item">
+              <div class="related-thumb-wrap">
+                <img
+                  src={'/images/' + item.image}
+                  alt={'Thumbnail ' + item.title}
+                  width="280"
+                  height="160"
+                  loading="lazy"
+                  class="related-thumb"
+                />
+              </div>
+              <div class="related-info">
+                <span class="related-badge">{item.category}</span>
+                <h4 class="related-title">{item.title}</h4>
+                <span class="related-read-more">
+                  Baca artikel <Icon name="chevron" size={12} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- KONSULTASI VIA WHATSAPP DENGAN AYU -->
+      <div class="sidebar-block sidebar-consult-card">
+        <span class="consult-tag">KONSULTASI GRATIS</span>
+        <h3>Punya Cerita Sendiri?</h3>
+        <p>
+          Bicarakan kebutuhan souvenir, hampers, dan suasana yang ingin kamu hadirkan bersama Ayu di WhatsApp.
+        </p>
+        <a
+          href={wa + '?text=' + encodeURIComponent('Halo Kak Ayu, saya membaca artikel di blog Sekata dan ingin konsultasi persiapan souvenir.')}
+          class="button"
+          style="width: 100%; justify-content: center;"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Chat Ayu di WhatsApp <Icon name="chat" size={15} />
+        </a>
+      </div>
+    </aside>
+  </div>
+</Layout>
