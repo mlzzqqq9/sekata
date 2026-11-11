@@ -18,7 +18,8 @@ export function getStaticPaths() {
     { oldSlug: 'souvenir-wedding', newSlug: 'panduan-memilih-souvenir-wedding' },
     { oldSlug: 'souvenir-wedding-aesthetic', newSlug: 'desain-souvenir-wedding-modern' },
     { oldSlug: 'souvenir-wedding-earth-tone', newSlug: 'warna-souvenir-wedding-earth-tone' },
-    { oldSlug: 'souvenir-wedding-emboss-vs-printing', newSlug: 'emboss-vs-printing-souvenir-wedding' }
+    { oldSlug: 'souvenir-wedding-emboss-vs-printing', newSlug: 'emboss-vs-printing-souvenir-wedding' },
+    { oldSlug: 'hampers-lebaran', newSlug: 'panduan-memilih-hampers-lebaran' }
   ];
   legacyRedirects.forEach(({ oldSlug, newSlug }) => {
     const article = articles.find((art) => art.slug === newSlug);
@@ -44,6 +45,7 @@ const isWeddingCluster = [
   'souvenir-wedding-aesthetic',
   'souvenir-wedding-earth-tone',
   'souvenir-wedding-emboss-vs-printing',
+  'panduan-memilih-hampers-lebaran',
   'hampers-lebaran',
   'isi-hampers-lebaran',
   'hampers-lebaran-perusahaan',
@@ -55,6 +57,19 @@ const personal = a.slug === 'hampers-yang-lebih-personal';
 const tips = a.slug === 'persiapan-souvenir-acara';
 
 const tocMap: Record<string, [string, string][]> = {
+  'panduan-memilih-hampers-lebaran': [
+    ['apa-itu-hampers-lebaran', 'Apa Itu Hampers Lebaran dan Seberapa Umum Tradisinya?'],
+    ['penerima-umum', 'Siapa Saja Penerima Hampers Lebaran yang Paling Umum?'],
+    ['jenis-populer', 'Apa Saja Jenis Hampers Lebaran yang Populer?'],
+    ['cara-memilih', 'Bagaimana Cara Memilih Hampers Lebaran Sesuai Penerima?'],
+    ['anggaran-wajar', 'Berapa Anggaran yang Wajar untuk Hampers Lebaran?'],
+    ['custom-vs-ready', 'Apa Bedanya Hampers Lebaran Custom dengan Hampers Siap Beli?'],
+    ['waktu-terbaik', 'Kapan Waktu Terbaik Memesan Hampers Lebaran 2027?'],
+    ['kesalahan-umum', 'Apa Kesalahan Umum saat Memilih Hampers Lebaran?'],
+    ['kemasan-dan-kartu', 'Bagaimana Memilih Kemasan dan Kartu Ucapan Hampers Lebaran?'],
+    ['faq', 'Pertanyaan yang Sering Diajukan tentang Hampers Lebaran'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
   'hampers-lebaran': [
     ['apa-itu-hampers-lebaran', 'Apa Itu Hampers Lebaran dan Seberapa Umum Tradisinya?'],
     ['penerima-umum', 'Siapa Saja Penerima Hampers Lebaran yang Paling Umum?'],
@@ -270,7 +285,7 @@ const readTime = (a as any).readTime || (wedding ? '6' : '3');
       <p style="font-size:13px;color:var(--muted);margin-top:8px">Foto ilustrasi inspirasi hadiah Sekata.</p>
 
       <!-- DESKRIPSI PERTAMA -->
-      {a.slug === 'hampers-lebaran' ? (
+      {a.slug === 'panduan-memilih-hampers-lebaran' || a.slug === 'hampers-lebaran' ? (
         <p class="first-desc-paragraph">
           Hampers lebaran adalah paket hadiah berisi makanan atau barang pilihan yang dikirim saat Idulfitri untuk keluarga, kolega, dan klien sebagai simbol silaturahmi dan apresiasi.
         </p>
@@ -334,7 +349,7 @@ const readTime = (a as any).readTime || (wedding ? '6' : '3');
       )}
 
       <!-- ISI KONTEN LENGKAP -->
-      {a.slug === 'hampers-lebaran' ? (
+      {a.slug === 'panduan-memilih-hampers-lebaran' || a.slug === 'hampers-lebaran' ? (
         <ArticleHampersLebaran />
       ) : a.slug === 'isi-hampers-lebaran' ? (
         <ArticleIsiHampersLebaran />

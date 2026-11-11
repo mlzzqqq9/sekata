@@ -4,7 +4,7 @@ Brand: Sekata Malang (Spesialis Souvenir & Hampers Custom)
 Tanggal Pembaruan: 11 November 2026
 
 Dokumen ini memuat revisi lengkap 4 artikel Hampers Lebaran 2027 untuk memperkuat topical authority dan ranking komersial kategori hampers di Jawa Timur:
-1. Artikel Pilar: Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan (`/blog/hampers-lebaran/`)
+1. Artikel Pilar: Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan (`/blog/panduan-memilih-hampers-lebaran/`)
 2. Cluster 1: Isi Hampers Lebaran per Penerima dan Anggaran (`/blog/isi-hampers-lebaran/`)
 3. Cluster 2: Hampers Lebaran Perusahaan Custom Logo untuk Karyawan dan Klien (`/blog/hampers-lebaran-perusahaan/`)
 4. Cluster 3: Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027 (`/blog/hampers-lebaran-malang/`)
@@ -16,8 +16,8 @@ Semua judul dan heading 100% bebas dari tanda titik dua (`:`), teroptimasi untuk
 # BAGIAN 1: ARTIKEL PILAR
 
 **Meta Title:** Hampers Lebaran 2027 Panduan Memilih dan Memesan | Sekata
-**Slug:** hampers-lebaran
-**Canonical URL:** https://sekata.web.id/blog/hampers-lebaran/
+**Slug:** panduan-memilih-hampers-lebaran
+**Canonical URL:** https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/
 **Meta Description:** Panduan hampers lebaran 2027 meliputi jenis, cara memilih sesuai penerima, anggaran, kemasan, dan jadwal pesan ideal untuk Idulfitri.
 **Focus Keyphrase:** hampers lebaran
 **Search Intent:** Commercial Investigation dengan unsur Informational

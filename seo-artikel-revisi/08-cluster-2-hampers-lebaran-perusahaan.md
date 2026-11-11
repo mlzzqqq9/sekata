@@ -54,7 +54,7 @@ Menjelang Hari Raya Idulfitri, lanskap bisnis di Indonesia diselimuti tradisi si
 
 Fakta kebiasaan profesional ini tercermin dalam [Survei JakPat di Databoks Katadata](https://databoks.katadata.co.id/en/consumer-services/statistics/a65804643906d3c/jakpat-survey-sending-eid-hampers-is-a-tradition-in-society-this-is-the-purpose-of-sending-them) (20 April 2022, 2.225 responden), di mana 24,4% responden menyatakan mengirimkan bingkisan hari raya kepada kolega kerja, 18,2% kepada mitra bisnis atau klien korporat, dan 10,1% kepada jajaran pimpinan.
 
-Melalui bingkisan fisik yang dirancang apik, perusahaan menyampaikan ucapan terima kasih atas kolaborasi yang telah terjalin selama setahun penuh secara jauh lebih menyentuh dibandingkan kartu ucapan digital semata. Untuk konteks pembeli umum atau keluarga, Anda dapat meninjau [panduan utama hampers lebaran](/blog/hampers-lebaran/).
+Melalui bingkisan fisik yang dirancang apik, perusahaan menyampaikan ucapan terima kasih atas kolaborasi yang telah terjalin selama setahun penuh secara jauh lebih menyentuh dibandingkan kartu ucapan digital semata. Untuk konteks pembeli umum atau keluarga, Anda dapat meninjau [panduan utama hampers lebaran](/blog/panduan-memilih-hampers-lebaran/).
 
 ## Siapa Saja Penerima Hampers Lebaran Perusahaan?
 

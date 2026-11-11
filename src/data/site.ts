@@ -416,7 +416,7 @@ export const products: Product[] = [
 
 export const articles = [
   {
-    slug: 'hampers-lebaran',
+    slug: 'panduan-memilih-hampers-lebaran',
     metaTitle: 'Hampers Lebaran 2027 Panduan Memilih dan Memesan | Sekata',
     title: 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
     category: 'Hampers Guide',

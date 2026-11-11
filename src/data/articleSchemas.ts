@@ -421,12 +421,12 @@ export const articleSchemas: Record<string, any> = {
       }
     ]
   },
-  'hampers-lebaran': {
+  'panduan-memilih-hampers-lebaran': {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'BlogPosting',
-        '@id': 'https://sekata.web.id/blog/hampers-lebaran/#article',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#article',
         'headline': 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
         'description': 'Panduan hampers lebaran 2027 meliputi jenis, cara memilih sesuai penerima, anggaran, kemasan, dan jadwal pesan ideal untuk Idulfitri.',
         'image': [
@@ -435,7 +435,7 @@ export const articleSchemas: Record<string, any> = {
         ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
-          '@id': 'https://sekata.web.id/blog/hampers-lebaran/#webpage'
+          '@id': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#webpage'
         },
         'datePublished': '2026-11-11T09:00:00+07:00',
         'dateModified': '2026-11-11T09:00:00+07:00',
@@ -449,14 +449,14 @@ export const articleSchemas: Record<string, any> = {
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://sekata.web.id/blog/hampers-lebaran/#webpage',
-        'url': 'https://sekata.web.id/blog/hampers-lebaran/',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#webpage',
+        'url': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/',
         'name': 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
         'inLanguage': 'id-ID'
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': 'https://sekata.web.id/blog/hampers-lebaran/#breadcrumb',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#breadcrumb',
         'itemListElement': [
           {
             '@type': 'ListItem',
@@ -474,13 +474,13 @@ export const articleSchemas: Record<string, any> = {
             '@type': 'ListItem',
             'position': 3,
             'name': 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
-            'item': 'https://sekata.web.id/blog/hampers-lebaran/'
+            'item': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/'
           }
         ]
       },
       {
         '@type': 'FAQPage',
-        '@id': 'https://sekata.web.id/blog/hampers-lebaran/#faq',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#faq',
         'mainEntity': [
           {
             '@type': 'Question',
@@ -876,3 +876,4 @@ articleSchemas['souvenir-wedding'] = articleSchemas['panduan-memilih-souvenir-we
 articleSchemas['souvenir-wedding-aesthetic'] = articleSchemas['desain-souvenir-wedding-modern'];
 articleSchemas['souvenir-wedding-earth-tone'] = articleSchemas['warna-souvenir-wedding-earth-tone'];
 articleSchemas['souvenir-wedding-emboss-vs-printing'] = articleSchemas['emboss-vs-printing-souvenir-wedding'];
+articleSchemas['hampers-lebaran'] = articleSchemas['panduan-memilih-hampers-lebaran'];

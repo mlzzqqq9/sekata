@@ -67,7 +67,7 @@ Sementara pada kelompok non-makanan, kurasi berfokus pada barang yang awet dan b
 
 ![Isi hampers lebaran untuk keluarga berupa kue kering kurma dan sirup](/images/isi-hampers-lebaran-keluarga.jpg)
 
-Di Sekata, kombinasi ini dihadirkan secara harmonis dalam koleksi seperti boks gelas Botanical, set duo cangkir keramik Samica, dan mug kukis Jasmine. Untuk ulasan makro seputar penentuan anggaran dan jadwal musim hari raya, Anda dapat meninjau [panduan lengkap memilih hampers lebaran](/blog/hampers-lebaran/).
+Di Sekata, kombinasi ini dihadirkan secara harmonis dalam koleksi seperti boks gelas Botanical, set duo cangkir keramik Samica, dan mug kukis Jasmine. Untuk ulasan makro seputar penentuan anggaran dan jadwal musim hari raya, Anda dapat meninjau [panduan lengkap memilih hampers lebaran](/blog/panduan-memilih-hampers-lebaran/).
 
 ## Isi Hampers Lebaran Apa yang Cocok untuk Keluarga?
 

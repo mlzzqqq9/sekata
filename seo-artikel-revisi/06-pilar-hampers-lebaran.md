@@ -1,8 +1,8 @@
 **Meta Title:** Hampers Lebaran 2027 Panduan Memilih dan Memesan | Sekata
 
-**Slug:** hampers-lebaran
+**Slug:** panduan-memilih-hampers-lebaran
 
-**Canonical URL:** https://sekata.web.id/blog/hampers-lebaran/
+**Canonical URL:** https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/
 
 **Meta Description:** Panduan hampers lebaran 2027 meliputi jenis, cara memilih sesuai penerima, anggaran, kemasan, dan jadwal pesan ideal untuk Idulfitri.
 
@@ -187,7 +187,7 @@ Menyiapkan hampers lebaran yang berkesan membutuhkan perencanaan matang seputar 
   "@graph": [
     {
       "@type": "BlogPosting",
-      "@id": "https://sekata.web.id/blog/hampers-lebaran/#article",
+      "@id": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#article",
       "headline": "Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan",
       "description": "Panduan hampers lebaran 2027 meliputi jenis, cara memilih sesuai penerima, anggaran, kemasan, dan jadwal pesan ideal untuk Idulfitri.",
       "image": [
@@ -196,7 +196,7 @@ Menyiapkan hampers lebaran yang berkesan membutuhkan perencanaan matang seputar 
       ],
       "inLanguage": "id-ID",
       "mainEntityOfPage": {
-        "@id": "https://sekata.web.id/blog/hampers-lebaran/#webpage"
+        "@id": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#webpage"
       },
       "datePublished": "2026-11-11T09:00:00+07:00",
       "dateModified": "2026-11-11T09:00:00+07:00",
@@ -222,14 +222,14 @@ Menyiapkan hampers lebaran yang berkesan membutuhkan perencanaan matang seputar 
     },
     {
       "@type": "WebPage",
-      "@id": "https://sekata.web.id/blog/hampers-lebaran/#webpage",
-      "url": "https://sekata.web.id/blog/hampers-lebaran/",
+      "@id": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#webpage",
+      "url": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/",
       "name": "Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan",
       "inLanguage": "id-ID"
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://sekata.web.id/blog/hampers-lebaran/#breadcrumb",
+      "@id": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -247,13 +247,13 @@ Menyiapkan hampers lebaran yang berkesan membutuhkan perencanaan matang seputar 
           "@type": "ListItem",
           "position": 3,
           "name": "Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan",
-          "item": "https://sekata.web.id/blog/hampers-lebaran/"
+          "item": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/"
         }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://sekata.web.id/blog/hampers-lebaran/#faq",
+      "@id": "https://sekata.web.id/blog/panduan-memilih-hampers-lebaran/#faq",
       "mainEntity": [
         {
           "@type": "Question",
