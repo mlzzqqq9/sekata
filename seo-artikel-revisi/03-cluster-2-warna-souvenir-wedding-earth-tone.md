@@ -175,14 +175,29 @@ Keberhasilan memadukan warna souvenir wedding earth tone terletak pada ketelitia
       "@id": "https://sekata.web.id/blog/warna-souvenir-wedding-earth-tone/#article",
       "headline": "Inspirasi Perpaduan Warna Earth Tone untuk Souvenir Wedding",
       "description": "Temukan inspirasi perpaduan warna earth tone seperti sage green, cream, taupe, olive, dan terracotta untuk souvenir wedding beserta penerapan pada material dan pencahayaan.",
+      "image": [
+        "https://sekata.web.id/images/kombinasi-palet-sage-green-cream-dan-taupe.jpg",
+        "https://sekata.web.id/images/perpaduan-warna-terracotta-olive-dan-beige-outdoor.jpg"
+      ],
       "inLanguage": "id-ID",
       "mainEntityOfPage": {
         "@id": "https://sekata.web.id/blog/warna-souvenir-wedding-earth-tone/#webpage"
       },
-      "dateModified": "2026-11-10",
+      "datePublished": "2026-11-10T09:00:00+07:00",
+      "dateModified": "2026-11-10T09:00:00+07:00",
       "author": {
         "@type": "Organization",
-        "name": "Tim Editorial"
+        "name": "Tim Editorial",
+        "url": "https://sekata.web.id/sekata/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sekata",
+        "url": "https://sekata.web.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sekata.web.id/images/logo.webp"
+        }
       },
       "keywords": "warna souvenir wedding earth tone, palet warna earth tone, souvenir sage green",
       "about": {

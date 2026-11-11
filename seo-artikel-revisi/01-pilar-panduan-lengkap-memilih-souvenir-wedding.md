@@ -206,14 +206,29 @@ Menentukan souvenir wedding yang tepat dimulai dari memahami siapa penerimanya d
       "@id": "https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#article",
       "headline": "Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan",
       "description": "Pelajari panduan memilih souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.",
+      "image": [
+        "https://sekata.web.id/images/koleksi-souvenir-wedding-fungsional.jpg",
+        "https://sekata.web.id/images/alur-pemesanan-souvenir-pernikahan-custom.jpg"
+      ],
       "inLanguage": "id-ID",
       "mainEntityOfPage": {
         "@id": "https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#webpage"
       },
-      "dateModified": "2026-11-10",
+      "datePublished": "2026-11-10T09:00:00+07:00",
+      "dateModified": "2026-11-10T09:00:00+07:00",
       "author": {
         "@type": "Organization",
-        "name": "Tim Editorial"
+        "name": "Tim Editorial",
+        "url": "https://sekata.web.id/sekata/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sekata",
+        "url": "https://sekata.web.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sekata.web.id/images/logo.webp"
+        }
       },
       "keywords": "souvenir wedding, memilih souvenir wedding, souvenir pernikahan custom",
       "about": {

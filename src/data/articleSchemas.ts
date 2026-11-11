@@ -1,4 +1,20 @@
-// JSON-LD Schemas untuk 4 artikel pilar dan kluster souvenir wedding (Revisi Final SEO)
+// JSON-LD Schemas untuk 4 artikel pilar dan kluster souvenir wedding (Revisi Final SEO & Google Rich Results Valid)
+
+const publisher = {
+  '@type': 'Organization',
+  'name': 'Sekata',
+  'url': 'https://sekata.web.id/',
+  'logo': {
+    '@type': 'ImageObject',
+    'url': 'https://sekata.web.id/images/logo.webp'
+  }
+};
+
+const author = {
+  '@type': 'Organization',
+  'name': 'Tim Editorial',
+  'url': 'https://sekata.web.id/sekata/'
+};
 
 export const articleSchemas: Record<string, any> = {
   'panduan-memilih-souvenir-wedding': {
@@ -9,15 +25,18 @@ export const articleSchemas: Record<string, any> = {
         '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#article',
         'headline': 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
         'description': 'Pelajari panduan memilih souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.',
+        'image': [
+          'https://sekata.web.id/images/koleksi-souvenir-wedding-fungsional.jpg',
+          'https://sekata.web.id/images/alur-pemesanan-souvenir-pernikahan-custom.jpg'
+        ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
           '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#webpage'
         },
-        'dateModified': '2026-11-10',
-        'author': {
-          '@type': 'Organization',
-          'name': 'Tim Editorial'
-        },
+        'datePublished': '2026-11-10T09:00:00+07:00',
+        'dateModified': '2026-11-10T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
         'keywords': 'souvenir wedding, memilih souvenir wedding, souvenir pernikahan custom',
         'about': {
           '@type': 'Thing',
@@ -111,15 +130,18 @@ export const articleSchemas: Record<string, any> = {
         '@id': 'https://sekata.web.id/blog/desain-souvenir-wedding-modern/#article',
         'headline': '7 Detail Desain Souvenir Wedding Modern yang Membuatnya Lebih Elegan',
         'description': 'Pelajari tujuh detail desain souvenir wedding modern mulai dari hierarki tipografi, skala monogram, ruang kosong, keselarasan komponen, hingga finishing agar tampak elegan.',
+        'image': [
+          'https://sekata.web.id/images/detail-monogram-dan-tipografi-souvenir-modern.jpg',
+          'https://sekata.web.id/images/finishing-jahitan-dan-proporsi-kemasan-souvenir.jpg'
+        ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
           '@id': 'https://sekata.web.id/blog/desain-souvenir-wedding-modern/#webpage'
         },
-        'dateModified': '2026-11-10',
-        'author': {
-          '@type': 'Organization',
-          'name': 'Tim Editorial'
-        },
+        'datePublished': '2026-11-10T09:00:00+07:00',
+        'dateModified': '2026-11-10T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
         'keywords': 'desain souvenir wedding modern, detail desain souvenir pernikahan, monogram souvenir',
         'about': {
           '@type': 'Thing',
@@ -205,15 +227,18 @@ export const articleSchemas: Record<string, any> = {
         '@id': 'https://sekata.web.id/blog/warna-souvenir-wedding-earth-tone/#article',
         'headline': 'Inspirasi Perpaduan Warna Earth Tone untuk Souvenir Wedding',
         'description': 'Temukan inspirasi perpaduan warna earth tone seperti sage green, cream, taupe, olive, dan terracotta untuk souvenir wedding beserta penerapan pada material dan pencahayaan.',
+        'image': [
+          'https://sekata.web.id/images/kombinasi-palet-sage-green-cream-dan-taupe.jpg',
+          'https://sekata.web.id/images/perpaduan-warna-terracotta-olive-dan-beige-outdoor.jpg'
+        ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
           '@id': 'https://sekata.web.id/blog/warna-souvenir-wedding-earth-tone/#webpage'
         },
-        'dateModified': '2026-11-10',
-        'author': {
-          '@type': 'Organization',
-          'name': 'Tim Editorial'
-        },
+        'datePublished': '2026-11-10T09:00:00+07:00',
+        'dateModified': '2026-11-10T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
         'keywords': 'warna souvenir wedding earth tone, palet warna earth tone, souvenir sage green',
         'about': {
           '@type': 'Thing',
@@ -299,15 +324,18 @@ export const articleSchemas: Record<string, any> = {
         '@id': 'https://sekata.web.id/blog/emboss-vs-printing-souvenir-wedding/#article',
         'headline': 'Perbedaan Emboss dan Printing untuk Souvenir Wedding Custom',
         'description': 'Pahami perbedaan emboss, deboss, dan printing untuk souvenir wedding custom dari sisi tekstur, ketahanan, kecocokan bahan, syarat file artwork, dan faktor biaya.',
+        'image': [
+          'https://sekata.web.id/images/perbandingan-hasil-deboss-dan-printing-tinta.jpg',
+          'https://sekata.web.id/images/matras-kuningan-dan-artwork-vektor-emboss.jpg'
+        ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
           '@id': 'https://sekata.web.id/blog/emboss-vs-printing-souvenir-wedding/#webpage'
         },
-        'dateModified': '2026-11-10',
-        'author': {
-          '@type': 'Organization',
-          'name': 'Tim Editorial'
-        },
+        'datePublished': '2026-11-10T09:00:00+07:00',
+        'dateModified': '2026-11-10T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
         'keywords': 'emboss dan printing souvenir wedding, perbedaan emboss dan deboss, sablon souvenir wedding',
         'about': {
           '@type': 'Thing',
@@ -394,3 +422,9 @@ export const articleSchemas: Record<string, any> = {
     ]
   }
 };
+
+// Aliases untuk slug lama agar jika ada sistem yang mengakses via key lama tetap valid
+articleSchemas['souvenir-wedding'] = articleSchemas['panduan-memilih-souvenir-wedding'];
+articleSchemas['souvenir-wedding-aesthetic'] = articleSchemas['desain-souvenir-wedding-modern'];
+articleSchemas['souvenir-wedding-earth-tone'] = articleSchemas['warna-souvenir-wedding-earth-tone'];
+articleSchemas['souvenir-wedding-emboss-vs-printing'] = articleSchemas['emboss-vs-printing-souvenir-wedding'];

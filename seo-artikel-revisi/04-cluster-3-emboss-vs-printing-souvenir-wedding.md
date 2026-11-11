@@ -204,14 +204,29 @@ Menentukan antara teknik emboss, deboss, atau printing bermuara pada kecocokan m
       "@id": "https://sekata.web.id/blog/emboss-vs-printing-souvenir-wedding/#article",
       "headline": "Perbedaan Emboss dan Printing untuk Souvenir Wedding Custom",
       "description": "Pahami perbedaan emboss, deboss, dan printing untuk souvenir wedding custom dari sisi tekstur, ketahanan, kecocokan bahan, syarat file artwork, dan faktor biaya.",
+      "image": [
+        "https://sekata.web.id/images/perbandingan-hasil-deboss-dan-printing-tinta.jpg",
+        "https://sekata.web.id/images/matras-kuningan-dan-artwork-vektor-emboss.jpg"
+      ],
       "inLanguage": "id-ID",
       "mainEntityOfPage": {
         "@id": "https://sekata.web.id/blog/emboss-vs-printing-souvenir-wedding/#webpage"
       },
-      "dateModified": "2026-11-10",
+      "datePublished": "2026-11-10T09:00:00+07:00",
+      "dateModified": "2026-11-10T09:00:00+07:00",
       "author": {
         "@type": "Organization",
-        "name": "Tim Editorial"
+        "name": "Tim Editorial",
+        "url": "https://sekata.web.id/sekata/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sekata",
+        "url": "https://sekata.web.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sekata.web.id/images/logo.webp"
+        }
       },
       "keywords": "emboss dan printing souvenir wedding, perbedaan emboss dan deboss, sablon souvenir wedding",
       "about": {

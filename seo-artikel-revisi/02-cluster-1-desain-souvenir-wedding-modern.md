@@ -163,14 +163,29 @@ Kesan elegan pada desain souvenir wedding modern lahir dari disiplin menahan dir
       "@id": "https://sekata.web.id/blog/desain-souvenir-wedding-modern/#article",
       "headline": "7 Detail Desain Souvenir Wedding Modern yang Membuatnya Lebih Elegan",
       "description": "Pelajari tujuh detail desain souvenir wedding modern mulai dari hierarki tipografi, skala monogram, ruang kosong, keselarasan komponen, hingga finishing agar tampak elegan.",
+      "image": [
+        "https://sekata.web.id/images/detail-monogram-dan-tipografi-souvenir-modern.jpg",
+        "https://sekata.web.id/images/finishing-jahitan-dan-proporsi-kemasan-souvenir.jpg"
+      ],
       "inLanguage": "id-ID",
       "mainEntityOfPage": {
         "@id": "https://sekata.web.id/blog/desain-souvenir-wedding-modern/#webpage"
       },
-      "dateModified": "2026-11-10",
+      "datePublished": "2026-11-10T09:00:00+07:00",
+      "dateModified": "2026-11-10T09:00:00+07:00",
       "author": {
         "@type": "Organization",
-        "name": "Tim Editorial"
+        "name": "Tim Editorial",
+        "url": "https://sekata.web.id/sekata/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sekata",
+        "url": "https://sekata.web.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sekata.web.id/images/logo.webp"
+        }
       },
       "keywords": "desain souvenir wedding modern, detail desain souvenir pernikahan, monogram souvenir",
       "about": {
