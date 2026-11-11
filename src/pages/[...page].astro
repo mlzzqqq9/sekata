@@ -16,6 +16,10 @@ export function getStaticPaths() {
     'kebijakan-privasi',
     'syarat-ketentuan',
     'penulis/m-maulana-ishaq',
+    // Rute redirect artikel kluster ke blog
+    'souvenir-wedding-aesthetic',
+    'souvenir-wedding-earth-tone',
+    'souvenir-wedding-emboss-vs-printing',
     // Rute kategori mandiri tingkat atas (contoh: /hampers-lebaran/, /souvenir-wedding/)
     ...categories.map((c) => c.slug),
     // Rute dengan prefix /gift/ untuk kompatibilitas tautan lama agar tidak ada yang 404
@@ -28,6 +32,17 @@ const { page } = Astro.params;
 // Redirect otomatis dari format lama /temukan-solusi/ ke format baru /blog/
 if (page === 'temukan-solusi') {
   return Astro.redirect('/blog/', 301);
+}
+
+// Redirect otomatis artikel kluster ke /blog/[slug-baru]/
+if (page === 'souvenir-wedding-aesthetic') {
+  return Astro.redirect('/blog/desain-souvenir-wedding-modern/', 301);
+}
+if (page === 'souvenir-wedding-earth-tone') {
+  return Astro.redirect('/blog/warna-souvenir-wedding-earth-tone/', 301);
+}
+if (page === 'souvenir-wedding-emboss-vs-printing') {
+  return Astro.redirect('/blog/emboss-vs-printing-souvenir-wedding/', 301);
 }
 
 // Redirect otomatis dari format lama /gift/[kategori]/ ke format baru /[kategori]/
@@ -666,6 +681,16 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
             <p>Sampaikan estimasi jumlah, tanggal acara, kota pengiriman (Malang, Batu, Kepanjen, Jawa Timur, atau luar pulau), kisaran anggaran, dan referensi desain kepada Ayu. Penawaran serta jadwal dikonfirmasi sebelum produksi.</p>
             <h3>Berapa harga dan minimum pesanannya?</h3>
             <p>Harga dan minimum pesanan mengikuti pilihan produk, jumlah, dan personalisasi. <a href={wa}>Hubungi Ayu untuk penawaran sesuai kebutuhan.</a></p>
+
+            {isWedding && (
+              <div style="background: #fbf8f3; border: 1px solid #e7ded4; border-left: 4px solid var(--rust); border-radius: 8px; padding: 18px 22px; margin-top: 24px;">
+                <span class="eyebrow" style="display:block;font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--rust);margin-bottom:6px;">PANDUAN LENGKAP</span>
+                <h4 style="margin: 0 0 6px; font-size: 16px; color: var(--ink);">Panduan Memilih, Custom, dan Menyesuaikan Souvenir Wedding</h4>
+                <p style="margin: 0; font-size: 14px; color: var(--muted); line-height: 1.6;">
+                  Pelajari rekomendasi produk, tips pemilihan bahan kanvas & kulit, teknik emboss vs printing, serta panduan warna aesthetic & earth tone dalam <a href="/blog/souvenir-wedding/" style="color: var(--rust); font-weight: 500; text-decoration: underline;">artikel panduan lengkap souvenir wedding</a>.
+                </p>
+              </div>
+            )}
           </div>
         </main>
       </div>
@@ -677,7 +702,7 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
           <a class="article-card" href={'/blog/' + a.slug + '/'}>
             <img src={'/images/' + a.image} alt={'Ilustrasi ' + a.category} width="700" height="500" loading="lazy" />
             <span class="eyebrow">{a.category}</span>
-            <h2 style="font-size:26px">{a.title}</h2>
+            <h2 style="font-size:26px">{a.title.replace(/:\s*/g, ' ')}</h2>
             <p>{a.excerpt}</p>
             <span class="text-link">Baca artikel <Icon /></span>
           </a>
@@ -744,7 +769,7 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
           <h2>Penulis artikel Sekata</h2>
           <p>M. Maulana Ishaq menulis panduan dan inspirasi seputar souvenir pernikahan, hampers, serta perencanaan hadiah di Sekata.</p>
           <h2>Artikel</h2>
-          <ul>{articles.map((a) => <li><a href={'/blog/' + a.slug + '/'}>{a.title}</a></li>)}</ul>
+          <ul>{articles.map((a) => <li><a href={'/blog/' + a.slug + '/'}>{a.title.replace(/:\s*/g, ' ')}</a></li>)}</ul>
         </>
       )}
     </div>

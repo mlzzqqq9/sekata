@@ -416,6 +416,54 @@ export const products: Product[] = [
 
 export const articles = [
   {
+    slug: 'panduan-memilih-souvenir-wedding',
+    metaTitle: 'Panduan Memilih Souvenir Wedding yang Tepat dan Fungsional',
+    title: 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
+    category: 'Wedding Guide',
+    image: 'koleksi-souvenir-wedding-fungsional.jpg',
+    excerpt: 'Pelajari panduan memilih souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-10',
+    readTime: '8'
+  },
+  {
+    slug: 'desain-souvenir-wedding-modern',
+    metaTitle: '7 Detail Desain Souvenir Wedding Modern agar Tampak Elegan',
+    title: '7 Detail Desain Souvenir Wedding Modern yang Membuatnya Lebih Elegan',
+    category: 'Wedding Guide',
+    image: 'detail-monogram-dan-tipografi-souvenir-modern.jpg',
+    excerpt: 'Pelajari tujuh detail desain souvenir wedding modern mulai dari hierarki tipografi, skala monogram, ruang kosong, keselarasan komponen, hingga finishing agar tampak elegan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-10',
+    readTime: '6'
+  },
+  {
+    slug: 'warna-souvenir-wedding-earth-tone',
+    metaTitle: 'Inspirasi Perpaduan Warna Earth Tone untuk Souvenir Wedding',
+    title: 'Inspirasi Perpaduan Warna Earth Tone untuk Souvenir Wedding',
+    category: 'Wedding Guide',
+    image: 'kombinasi-palet-sage-green-cream-dan-taupe.jpg',
+    excerpt: 'Temukan inspirasi perpaduan warna earth tone seperti sage green, cream, taupe, olive, dan terracotta untuk souvenir wedding beserta penerapan pada material dan pencahayaan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-10',
+    readTime: '6'
+  },
+  {
+    slug: 'emboss-vs-printing-souvenir-wedding',
+    metaTitle: 'Perbedaan Emboss dan Printing untuk Souvenir Wedding Custom',
+    title: 'Perbedaan Emboss dan Printing untuk Souvenir Wedding Custom',
+    category: 'Wedding Guide',
+    image: 'perbandingan-hasil-deboss-dan-printing-tinta.jpg',
+    excerpt: 'Pahami perbedaan emboss, deboss, dan printing untuk souvenir wedding custom dari sisi tekstur, ketahanan, kecocokan bahan, syarat file artwork, dan faktor biaya.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-10',
+    readTime: '7'
+  },
+  {
     slug: 'panduan-memilih-souvenir-pernikahan',
     title: 'Souvenir kecil, kenangan yang panjang.',
     category: 'Wedding Guide',

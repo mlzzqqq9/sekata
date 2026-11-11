@@ -2,43 +2,167 @@
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import { articles, wa } from '../../data/site';
+import { articleSchemas } from '../../data/articleSchemas';
+import ArticleSouvenirWedding from '../../components/articles/ArticleSouvenirWedding.astro';
+import ArticleSouvenirWeddingAesthetic from '../../components/articles/ArticleSouvenirWeddingAesthetic.astro';
+import ArticleSouvenirWeddingEarthTone from '../../components/articles/ArticleSouvenirWeddingEarthTone.astro';
+import ArticleSouvenirWeddingEmbossVsPrinting from '../../components/articles/ArticleSouvenirWeddingEmbossVsPrinting.astro';
 
 export function getStaticPaths() {
-  return articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+  const paths: any[] = articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+  const legacyRedirects = [
+    { oldSlug: 'souvenir-wedding', newSlug: 'panduan-memilih-souvenir-wedding' },
+    { oldSlug: 'souvenir-wedding-aesthetic', newSlug: 'desain-souvenir-wedding-modern' },
+    { oldSlug: 'souvenir-wedding-earth-tone', newSlug: 'warna-souvenir-wedding-earth-tone' },
+    { oldSlug: 'souvenir-wedding-emboss-vs-printing', newSlug: 'emboss-vs-printing-souvenir-wedding' }
+  ];
+  legacyRedirects.forEach(({ oldSlug, newSlug }) => {
+    const article = articles.find((art) => art.slug === newSlug);
+    if (article) {
+      paths.push({ params: { slug: oldSlug }, props: { a: article, isRedirect: true, targetSlug: newSlug } });
+    }
+  });
+  return paths;
 }
 
-const { a } = Astro.props;
+const { a, isRedirect, targetSlug } = Astro.props as any;
+
+if (isRedirect && targetSlug) {
+  return Astro.redirect(`/blog/${targetSlug}/`, 301);
+}
+
+const isWeddingCluster = [
+  'panduan-memilih-souvenir-wedding',
+  'desain-souvenir-wedding-modern',
+  'warna-souvenir-wedding-earth-tone',
+  'emboss-vs-printing-souvenir-wedding',
+  'souvenir-wedding',
+  'souvenir-wedding-aesthetic',
+  'souvenir-wedding-earth-tone',
+  'souvenir-wedding-emboss-vs-printing'
+].includes(a.slug);
 
 const wedding = a.slug === 'panduan-memilih-souvenir-pernikahan';
 const personal = a.slug === 'hampers-yang-lebih-personal';
 const tips = a.slug === 'persiapan-souvenir-acara';
 
-const toc = wedding
-  ? [
-      ['makna', 'Souvenir adalah ucapan terima kasih.'],
-      ['anggaran', 'Rencanakan anggaran sebelum memilih barang.'],
-      ['pilihan', 'Pilih souvenir yang berguna dalam keseharian.'],
-      ['konsep', 'Satukan hadiah dengan konsep pernikahan.'],
-      ['pesan', 'Periksa detail sebelum memesan.']
-    ]
-  : personal
-  ? [
-      ['penerima', 'Mulai dari orang yang akan menerimanya.'],
-      ['isi', 'Kurasi isi yang saling melengkapi dan bernilai guna.'],
-      ['detail', 'Siapkan detail sebelum konsultasi.'],
-      ['langkah', 'Sepakati isi, tampilan, dan jadwal pengiriman.']
-    ]
-  : [
-      ['tujuan', 'Tetapkan tujuan pemberian dan profil penerima.'],
-      ['estimasi', 'Tentukan jumlah kebutuhan dan cadangan acara.'],
-      ['anggaran', 'Alokasikan batas belanja yang nyaman per paket.'],
-      ['timeline', 'Perhitungkan tenggat waktu produksi dan pengiriman.'],
-      ['branding', 'Siapkan file logo, inisial monogram, dan kartu ucapan.']
-    ];
+const tocMap: Record<string, [string, string][]> = {
+  'panduan-memilih-souvenir-wedding': [
+    ['mengapa-direncanakan', 'Mengapa Pemilihan Souvenir Wedding Perlu Direncanakan Sejak Awal'],
+    ['klasifikasi-fungsi', 'Klasifikasi Souvenir Wedding Berdasarkan Fungsi Pakai'],
+    ['skala-dan-logistik', 'Menyesuaikan Pilihan dengan Skala dan Logistik Acara'],
+    ['metode-alokasi-biaya', 'Tiga Metode Alokasi Anggaran yang Realistis'],
+    ['formula-jumlah', 'Formula Menghitung Jumlah Kebutuhan dan Cadangan Acara'],
+    ['evaluasi-material', 'Panduan Memilih Material Berdasarkan Karakter dan Daya Tahan'],
+    ['tahapan-alur-pemesanan', 'Tahapan Alur Pemesanan Souvenir Custom yang Aman'],
+    ['kesalahan-pengadaan', 'Enam Kesalahan Umum Pengadaan yang Harus Dihindari'],
+    ['faq', 'Pertanyaan Seputar Pemilihan Souvenir Wedding'],
+    ['kesimpulan', 'Kesimpulan Praktis'],
+    ['paket', 'Rekomendasi Pilihan Souvenir Wedding Berdasarkan Kebutuhan']
+  ],
+  'desain-souvenir-wedding-modern': [
+    ['tuntutan-ketelitian', 'Mengapa Gaya Modern Menuntut Ketelitian Detail Lebih Tinggi'],
+    ['tujuh-detail', 'Tujuh Detail Visual yang Membentuk Kesan Elegan'],
+    ['matriks-proporsi', 'Matriks Panduan Proporsi dan Elemen Desain Modern'],
+    ['uji-keterbacaan', 'Cara Menguji Keterbacaan Mockup Sebelum Produksi'],
+    ['faq', 'Pertanyaan Seputar Desain Souvenir Wedding Modern'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'warna-souvenir-wedding-earth-tone': [
+    ['spektrum-dan-undertone', 'Mengenal Spektrum Warna Earth Tone dan Undertone Dasarnya'],
+    ['karakter-enam-warna', 'Karakter Enam Warna Earth Tone Utama pada Souvenir'],
+    ['empat-resep-kombinasi', 'Empat Resep Kombinasi Warna Berdasarkan Tema Pernikahan'],
+    ['pergeseran-warna-material', 'Mengapa Warna yang Sama Berubah pada Material Berbeda'],
+    ['pengaruh-pencahayaan', 'Pengaruh Pencahayaan Ruangan terhadap Persepsi Warna'],
+    ['tiga-peran-warna', 'Menerapkan Pembagian Tiga Peran Warna'],
+    ['kesalahan-kombinasi', 'Kesalahan Umum dalam Memadukan Warna Earth Tone'],
+    ['faq', 'Pertanyaan Umum Seputar Warna Earth Tone Souvenir'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'emboss-vs-printing-souvenir-wedding': [
+    ['memahami-istilah', 'Memahami Istilah Emboss, Deboss, dan Hot Stamping Foil'],
+    ['metode-printing', 'Karakteristik Ragam Metode Printing pada Souvenir'],
+    ['matriks-perbandingan', 'Matriks Perbandingan Teknis Emboss dan Printing'],
+    ['kecocokan-bahan', 'Kecocokan Karakter Bahan terhadap Panas dan Tinta'],
+    ['syarat-file-artwork', 'Persyaratan File Artwork dan Batas Ketebalan Garis'],
+    ['ketahanan-pemakaian', 'Ketahanan Hasil Personalisasi dalam Pemakaian Sehari-hari'],
+    ['struktur-biaya', 'Memahami Struktur Pembentukan Biaya Produksi'],
+    ['matriks-panduan-desain', 'Matriks Panduan Pemilihan Berdasarkan Karakter Desain'],
+    ['kesalahan-teknis', 'Kesalahan Teknis yang Sering Terjadi pada Tahap Produksi'],
+    ['faq', 'Pertanyaan Seputar Teknik Emboss dan Printing Souvenir'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'souvenir-wedding': [
+    ['mengapa-direncanakan', 'Mengapa Pemilihan Souvenir Wedding Perlu Direncanakan Sejak Awal'],
+    ['klasifikasi-fungsi', 'Klasifikasi Souvenir Wedding Berdasarkan Fungsi Pakai'],
+    ['skala-dan-logistik', 'Menyesuaikan Pilihan dengan Skala dan Logistik Acara'],
+    ['metode-alokasi-biaya', 'Tiga Metode Alokasi Anggaran yang Realistis'],
+    ['formula-jumlah', 'Formula Menghitung Jumlah Kebutuhan dan Cadangan Acara'],
+    ['evaluasi-material', 'Panduan Memilih Material Berdasarkan Karakter dan Daya Tahan'],
+    ['tahapan-alur-pemesanan', 'Tahapan Alur Pemesanan Souvenir Custom yang Aman'],
+    ['kesalahan-pengadaan', 'Enam Kesalahan Umum Pengadaan yang Harus Dihindari'],
+    ['faq', 'Pertanyaan Seputar Pemilihan Souvenir Wedding'],
+    ['kesimpulan', 'Kesimpulan Praktis'],
+    ['paket', 'Rekomendasi Pilihan Souvenir Wedding Berdasarkan Kebutuhan']
+  ],
+  'souvenir-wedding-aesthetic': [
+    ['tuntutan-ketelitian', 'Mengapa Gaya Modern Menuntut Ketelitian Detail Lebih Tinggi'],
+    ['tujuh-detail', 'Tujuh Detail Visual yang Membentuk Kesan Elegan'],
+    ['matriks-proporsi', 'Matriks Panduan Proporsi dan Elemen Desain Modern'],
+    ['uji-keterbacaan', 'Cara Menguji Keterbacaan Mockup Sebelum Produksi'],
+    ['faq', 'Pertanyaan Seputar Desain Souvenir Wedding Modern'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'souvenir-wedding-earth-tone': [
+    ['spektrum-dan-undertone', 'Mengenal Spektrum Warna Earth Tone dan Undertone Dasarnya'],
+    ['karakter-enam-warna', 'Karakter Enam Warna Earth Tone Utama pada Souvenir'],
+    ['empat-resep-kombinasi', 'Empat Resep Kombinasi Warna Berdasarkan Tema Pernikahan'],
+    ['pergeseran-warna-material', 'Mengapa Warna yang Sama Berubah pada Material Berbeda'],
+    ['pengaruh-pencahayaan', 'Pengaruh Pencahayaan Ruangan terhadap Persepsi Warna'],
+    ['tiga-peran-warna', 'Menerapkan Pembagian Tiga Peran Warna'],
+    ['kesalahan-kombinasi', 'Kesalahan Umum dalam Memadukan Warna Earth Tone'],
+    ['faq', 'Pertanyaan Umum Seputar Warna Earth Tone Souvenir'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'souvenir-wedding-emboss-vs-printing': [
+    ['memahami-istilah', 'Memahami Istilah Emboss, Deboss, dan Hot Stamping Foil'],
+    ['metode-printing', 'Karakteristik Ragam Metode Printing pada Souvenir'],
+    ['matriks-perbandingan', 'Matriks Perbandingan Teknis Emboss dan Printing'],
+    ['kecocokan-bahan', 'Kecocokan Karakter Bahan terhadap Panas dan Tinta'],
+    ['syarat-file-artwork', 'Persyaratan File Artwork dan Batas Ketebalan Garis'],
+    ['ketahanan-pemakaian', 'Ketahanan Hasil Personalisasi dalam Pemakaian Sehari-hari'],
+    ['struktur-biaya', 'Memahami Struktur Pembentukan Biaya Produksi'],
+    ['matriks-panduan-desain', 'Matriks Panduan Pemilihan Berdasarkan Karakter Desain'],
+    ['kesalahan-teknis', 'Kesalahan Teknis yang Sering Terjadi pada Tahap Produksi'],
+    ['faq', 'Pertanyaan Seputar Teknik Emboss dan Printing Souvenir'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'panduan-memilih-souvenir-pernikahan': [
+    ['makna', 'Souvenir adalah ucapan terima kasih.'],
+    ['anggaran', 'Rencanakan anggaran sebelum memilih barang.'],
+    ['pilihan', 'Pilih souvenir yang berguna dalam keseharian.'],
+    ['konsep', 'Satukan hadiah dengan konsep pernikahan.'],
+    ['pesan', 'Periksa detail sebelum memesan.']
+  ],
+  'hampers-yang-lebih-personal': [
+    ['penerima', 'Mulai dari orang yang akan menerimanya.'],
+    ['isi', 'Kurasi isi yang saling melengkapi dan bernilai guna.'],
+    ['detail', 'Siapkan detail sebelum konsultasi.'],
+    ['langkah', 'Sepakati isi, tampilan, dan jadwal pengiriman.']
+  ],
+  'persiapan-souvenir-acara': [
+    ['tujuan', 'Tetapkan tujuan pemberian dan profil penerima.'],
+    ['estimasi', 'Tentukan jumlah kebutuhan dan cadangan acara.'],
+    ['anggaran', 'Alokasikan batas belanja yang nyaman per paket.'],
+    ['timeline', 'Perhitungkan tenggat waktu produksi dan pengiriman.'],
+    ['branding', 'Siapkan file logo, inisial monogram, dan kartu ucapan.']
+  ]
+};
 
+const toc = tocMap[a.slug] || [];
 const relatedArticles = articles.filter((x) => x.slug !== a.slug);
 
-const schema = {
+const schema = articleSchemas[a.slug] || {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: a.title,
@@ -56,19 +180,29 @@ const schema = {
   },
   mainEntityOfPage: 'https://sekata.web.id/blog/' + a.slug + '/'
 };
+
+const displayTitle = a.title.replace(/:\s*/g, ' ');
+const displayMetaTitle = (a as any).metaTitle ? (a as any).metaTitle.replace(/:\s*/g, ' ') : displayTitle;
+const pageTitle = (a as any).metaTitle ? `${displayMetaTitle} | Sekata Malang` : `${displayTitle} — Temukan Solusi | Sekata Malang`;
+const authorDisplay = (a as any).author || 'M. Maulana Ishaq';
+const readTime = (a as any).readTime || (wedding ? '6' : '3');
 ---
 
-<Layout title={a.title + ' — Temukan Solusi | Sekata Malang'} description={a.excerpt} schema={schema}>
+<Layout title={pageTitle} description={a.excerpt} schema={schema}>
   <!-- HEADER HERO DENGAN BANNER MAWAR PASTEL -->
   <header class="page-hero" style="--page-hero-bg: url('/images/hero-mawar-pastel.png');">
     <div class="breadcrumbs">
       <a href="/">Beranda</a> / <a href="/blog/">Temukan Solusi</a> / {a.category}
     </div>
     <span class="eyebrow">{a.category}</span>
-    <h1>{a.title}</h1>
+    <h1>{displayTitle}</h1>
     <p>{a.excerpt}</p>
     <div class="article-meta">
-      Ditulis oleh <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a> · 7 November 2026 · {wedding ? '6' : '3'} menit baca
+      {isWeddingCluster ? (
+        <span>Ditulis oleh {authorDisplay} · Direview oleh {(a as any).reviewedBy || 'Editor Konten'} · {(a as any).dateModified || '2026-11-10'} · {readTime} menit baca</span>
+      ) : (
+        <span>Ditulis oleh <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a> · 7 November 2026 · {readTime} menit baca</span>
+      )}
     </div>
   </header>
 
@@ -78,14 +212,30 @@ const schema = {
       <img
         class="article-cover"
         src={'/images/' + a.image}
-        alt={'Ilustrasi ' + a.category}
+        alt={'Ilustrasi ' + a.title}
         width="1000"
         height="650"
       />
       <p style="font-size:13px;color:var(--muted);margin-top:8px">Foto ilustrasi inspirasi hadiah Sekata.</p>
 
       <!-- DESKRIPSI PERTAMA -->
-      {wedding ? (
+      {a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
+        <p class="first-desc-paragraph">
+          Souvenir wedding adalah hadiah apresiasi untuk tamu pernikahan yang dapat dipersonalisasi melalui pilihan produk, warna, desain, dan kemasan sesuai konsep acara.
+        </p>
+      ) : a.slug === 'desain-souvenir-wedding-modern' || a.slug === 'souvenir-wedding-aesthetic' ? (
+        <p class="first-desc-paragraph">
+          Desain souvenir wedding modern bertumpu pada pengendalian proporsi visual, pemilihan tipografi yang bersih, pengaturan ruang kosong, keselarasan komponen kecil, serta kerapian pengerjaan fisik dibandingkan penggunaan banyak hiasan.
+        </p>
+      ) : a.slug === 'warna-souvenir-wedding-earth-tone' || a.slug === 'souvenir-wedding-earth-tone' ? (
+        <p class="first-desc-paragraph">
+          Warna souvenir wedding earth tone mengacu pada spektrum warna turunan alam seperti sage green, cream, beige, taupe, olive, dan terracotta yang dipadukan berdasarkan kesamaan suhu warna (undertone) untuk menciptakan suasana pernikahan yang hangat dan menyatu dengan dekorasi.
+        </p>
+      ) : a.slug === 'emboss-vs-printing-souvenir-wedding' || a.slug === 'souvenir-wedding-emboss-vs-printing' ? (
+        <p class="first-desc-paragraph">
+          Emboss dan printing pada souvenir wedding custom merupakan dua pendekatan personalisasi yang berbeda secara mendasar, di mana emboss membentuk tekstur fisik timbul atau tertekan pada permukaan material, sedangkan printing mengaplikasikan pigmen tinta berwarna melalui proses transfer.
+        </p>
+      ) : wedding ? (
         <p class="first-desc-paragraph">
           Souvenir pernikahan yang berkesan adalah hadiah yang sesuai dengan penerima, konsep acara, dan kemampuan anggaran pasangan. Mulailah dari jumlah kebutuhan dan kegunaan barang, kemudian pilih material serta kemasan yang mendukung cerita pernikahanmu.
         </p>
@@ -100,22 +250,32 @@ const schema = {
       )}
 
       <!-- DAFTAR ISI DI BAWAH DESKRIPSI PERTAMA (SESUAI PERMINTAAN USER) -->
-      <div class="inline-toc-box">
-        <div class="inline-toc-head">
-          <span class="eyebrow">PANDUAN BACA</span>
-          <h3>Daftar Isi Artikel</h3>
+      {toc.length > 0 && (
+        <div class="inline-toc-box">
+          <div class="inline-toc-head">
+            <span class="eyebrow">PANDUAN BACA</span>
+            <h3>Daftar Isi Artikel</h3>
+          </div>
+          <ol class="inline-toc-list">
+            {toc.map(([id, itemTitle]) => (
+              <li>
+                <a href={'#' + id}>{itemTitle}</a>
+              </li>
+            ))}
+          </ol>
         </div>
-        <ol class="inline-toc-list">
-          {toc.map(([id, title]) => (
-            <li>
-              <a href={'#' + id}>{title}</a>
-            </li>
-          ))}
-        </ol>
-      </div>
+      )}
 
       <!-- ISI KONTEN LENGKAP -->
-      {wedding ? (
+      {a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
+        <ArticleSouvenirWedding />
+      ) : a.slug === 'desain-souvenir-wedding-modern' || a.slug === 'souvenir-wedding-aesthetic' ? (
+        <ArticleSouvenirWeddingAesthetic />
+      ) : a.slug === 'warna-souvenir-wedding-earth-tone' || a.slug === 'souvenir-wedding-earth-tone' ? (
+        <ArticleSouvenirWeddingEarthTone />
+      ) : a.slug === 'emboss-vs-printing-souvenir-wedding' || a.slug === 'souvenir-wedding-emboss-vs-printing' ? (
+        <ArticleSouvenirWeddingEmbossVsPrinting />
+      ) : wedding ? (
         <>
           <h2 id="makna">Souvenir adalah ucapan terima kasih.</h2>
           <p>
@@ -272,14 +432,18 @@ const schema = {
           </a>
         </p>
       </div>
+
       <p style="font-size: 13.5px; color: var(--muted); margin-top: 14px;">
-        Penulis: <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a>
+        {isWeddingCluster ? (
+          <>Penulis: <strong>{authorDisplay}</strong> · Direview oleh: <strong>{(a as any).reviewedBy || 'Editor Konten'}</strong> · Terakhir diperbarui: {(a as any).dateModified || '2026-11-10'}</>
+        ) : (
+          <>Penulis: <a href="/penulis/m-maulana-ishaq/">M. Maulana Ishaq</a></>
+        )}
       </p>
     </article>
 
-    <!-- SIDEBAR DENGAN ARTIKEL TERKAIT (SESUAI PERMINTAAN USER) -->
+    <!-- SIDEBAR DENGAN ARTIKEL TERKAIT -->
     <aside class="article-sidebar" aria-label="Sidebar Rekomendasi">
-      <!-- ARTIKEL TERKAIT -->
       <div class="sidebar-block sidebar-related-block">
         <span class="eyebrow">REKOMENDASI BACA</span>
         <h3 class="sidebar-title">Artikel Terkait</h3>
@@ -298,7 +462,7 @@ const schema = {
               </div>
               <div class="related-info">
                 <span class="related-badge">{item.category}</span>
-                <h4 class="related-title">{item.title}</h4>
+                <h4 class="related-title">{item.title.replace(/:\s*/g, ' ')}</h4>
                 <span class="related-read-more">
                   Baca artikel <Icon name="chevron" size={12} />
                 </span>
