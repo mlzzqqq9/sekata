@@ -416,6 +416,54 @@ export const products: Product[] = [
 
 export const articles = [
   {
+    slug: 'hampers-lebaran',
+    metaTitle: 'Hampers Lebaran 2027 Panduan Memilih dan Memesan | Sekata',
+    title: 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
+    category: 'Hampers Guide',
+    image: 'hampers-lebaran-custom-sekata.jpg',
+    excerpt: 'Panduan hampers lebaran 2027 meliputi jenis, cara memilih sesuai penerima, anggaran, kemasan, dan jadwal pesan ideal untuk Idulfitri.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-11',
+    readTime: '8'
+  },
+  {
+    slug: 'isi-hampers-lebaran',
+    metaTitle: 'Isi Hampers Lebaran Ide per Penerima dan Budget | Sekata',
+    title: 'Isi Hampers Lebaran per Penerima dan Anggaran',
+    category: 'Hampers Guide',
+    image: 'isi-hampers-lebaran-keluarga.jpg',
+    excerpt: 'Bingung memilih isi hampers lebaran? Simak ide isi per penerima, tips menjaga mutu makanan, dan cara memastikan status halal produk.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-11',
+    readTime: '6'
+  },
+  {
+    slug: 'hampers-lebaran-perusahaan',
+    metaTitle: 'Hampers Lebaran Perusahaan Panduan Custom Logo | Sekata',
+    title: 'Hampers Lebaran Perusahaan Custom Logo untuk Karyawan dan Klien',
+    category: 'Corporate Gifting',
+    image: 'hampers-lebaran-perusahaan-logo.jpg',
+    excerpt: 'Panduan hampers lebaran perusahaan untuk karyawan dan klien meliputi kurasi isi, desain logo, kartu ucapan, dan jadwal produksi tepat waktu.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-11',
+    readTime: '7'
+  },
+  {
+    slug: 'hampers-lebaran-malang',
+    metaTitle: 'Pesan Hampers Lebaran Malang Jadwal dan Pengiriman | Sekata',
+    title: 'Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027',
+    category: 'Hampers Guide',
+    image: 'pesan-hampers-lebaran-malang.jpg',
+    excerpt: 'Cara pesan hampers lebaran Malang dengan jadwal ideal, alur dari konsultasi WhatsApp hingga kirim, serta jangkauan area Malang, Batu, dan Kepanjen.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-11',
+    readTime: '6'
+  },
+  {
     slug: 'panduan-memilih-souvenir-wedding',
     metaTitle: 'Panduan Memilih Souvenir Wedding yang Tepat dan Fungsional',
     title: 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
