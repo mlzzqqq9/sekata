@@ -17,42 +17,42 @@ const author = {
 };
 
 export const articleSchemas: Record<string, any> = {
-  'panduan-memilih-souvenir-wedding': {
+  'panduan-memilih-souvenir-pernikahan': {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'BlogPosting',
-        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#article',
-        'headline': 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
-        'description': 'Pelajari panduan memilih souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/#article',
+        'headline': 'Panduan Memilih Souvenir Pernikahan yang Tepat dan Bermanfaat',
+        'description': 'Pelajari panduan memilih souvenir pernikahan dan souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.',
         'image': [
           'https://sekata.web.id/images/koleksi-souvenir-wedding-fungsional.jpg',
           'https://sekata.web.id/images/alur-pemesanan-souvenir-pernikahan-custom.jpg'
         ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
-          '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#webpage'
+          '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/#webpage'
         },
         'datePublished': '2026-11-10T09:00:00+07:00',
-        'dateModified': '2026-11-10T09:00:00+07:00',
+        'dateModified': '2026-11-12T09:00:00+07:00',
         'author': author,
         'publisher': publisher,
-        'keywords': 'souvenir wedding, memilih souvenir wedding, souvenir pernikahan custom',
+        'keywords': 'souvenir pernikahan, souvenir wedding, memilih souvenir pernikahan, cinderamata pernikahan, souvenir pernikahan fungsional',
         'about': {
           '@type': 'Thing',
-          'name': 'Souvenir Wedding'
+          'name': 'Souvenir Pernikahan'
         }
       },
       {
         '@type': 'WebPage',
-        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#webpage',
-        'url': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/',
-        'name': 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/#webpage',
+        'url': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/',
+        'name': 'Panduan Memilih Souvenir Pernikahan yang Tepat dan Bermanfaat',
         'inLanguage': 'id-ID'
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#breadcrumb',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/#breadcrumb',
         'itemListElement': [
           {
             '@type': 'ListItem',
@@ -69,14 +69,14 @@ export const articleSchemas: Record<string, any> = {
           {
             '@type': 'ListItem',
             'position': 3,
-            'name': 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
-            'item': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/'
+            'name': 'Panduan Memilih Souvenir Pernikahan',
+            'item': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/'
           }
         ]
       },
       {
         '@type': 'FAQPage',
-        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-wedding/#faq',
+        '@id': 'https://sekata.web.id/blog/panduan-memilih-souvenir-pernikahan/#faq',
         'mainEntity': [
           {
             '@type': 'Question',
@@ -116,6 +116,102 @@ export const articleSchemas: Record<string, any> = {
             'acceptedAnswer': {
               '@type': 'Answer',
               'text': 'Tidak selalu identik seratus persen. Perbedaan pengaturan layar gawai, pencahayaan pemotretan studio, serta pergantian batch pewarnaan gulungan kain atau kulit di pabrik dapat memengaruhi tampilan warna akhir. Memeriksa sampel bahan asli sangat dianjurkan sebelum menyepakati produksi.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'souvenir-pernikahan-fungsional': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/#article',
+        'headline': '10 Ide Souvenir Pernikahan Fungsional yang Pasti Dipakai Tamu (Budget 50rb–100rb)',
+        'description': 'Cari souvenir pernikahan murah tapi bermanfaat? Ini 10 ide fungsional budget 50–100 ribu dengan Skor Pakai, supaya tidak berakhir di laci tamu.',
+        'image': [
+          'https://sekata.web.id/images/souvenir-pernikahan-fungsional.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/#webpage'
+        },
+        'datePublished': '2026-11-12T09:00:00+07:00',
+        'dateModified': '2026-11-12T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'souvenir pernikahan fungsional, ide souvenir pernikahan, souvenir pernikahan bermanfaat, souvenir pernikahan 50rb 100rb, souvenir wedding fungsional',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Souvenir Pernikahan'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/#webpage',
+        'url': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/',
+        'name': '10 Ide Souvenir Pernikahan Fungsional yang Pasti Dipakai Tamu (Budget 50rb–100rb)',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': '10 Ide Souvenir Pernikahan Fungsional',
+            'item': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-fungsional/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Souvenir pernikahan apa yang paling sering dipakai tamu?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Barang yang dipakai hampir tiap hari, seperti tote bag, tumbler, dan pouch. Semakin jelas fungsinya dalam rutinitas harian, semakin kecil kemungkinan souvenir itu disimpan di laci.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Berapa budget souvenir pernikahan yang wajar?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak ada angka tunggal. Rp50.000–Rp100.000 per pcs adalah kisaran yang umum dicari, tetapi yang penting adalah total anggaran dibagi jumlah undangan, setelah dikurangi alokasi cadangan sekitar 5–10%.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana menghitung budget souvenir untuk 300 tamu?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Kalikan harga per pcs dengan jumlah souvenir. Misalnya 300 pcs di Rp50.000 adalah Rp15.000.000, dan di Rp100.000 adalah Rp30.000.000. Hitung per undangan atau keluarga, bukan per kepala, untuk menghemat.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apa bedanya souvenir 50 ribuan dan 100 ribuan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Secara umum, kisaran 100 ribuan memberi ruang untuk bahan lebih baik, kemasan lebih rapi, dan personalisasi lebih detail. Barang di kisaran 50 ribuan tetap bisa bagus asalkan fungsinya tepat dan desainnya rapi.'
             }
           }
         ]
@@ -872,7 +968,8 @@ export const articleSchemas: Record<string, any> = {
 };
 
 // Aliases untuk slug lama agar jika ada sistem yang mengakses via key lama tetap valid
-articleSchemas['souvenir-wedding'] = articleSchemas['panduan-memilih-souvenir-wedding'];
+articleSchemas['souvenir-wedding'] = articleSchemas['panduan-memilih-souvenir-pernikahan'];
+articleSchemas['panduan-memilih-souvenir-wedding'] = articleSchemas['panduan-memilih-souvenir-pernikahan'];
 articleSchemas['souvenir-wedding-aesthetic'] = articleSchemas['desain-souvenir-wedding-modern'];
 articleSchemas['souvenir-wedding-earth-tone'] = articleSchemas['warna-souvenir-wedding-earth-tone'];
 articleSchemas['souvenir-wedding-emboss-vs-printing'] = articleSchemas['emboss-vs-printing-souvenir-wedding'];

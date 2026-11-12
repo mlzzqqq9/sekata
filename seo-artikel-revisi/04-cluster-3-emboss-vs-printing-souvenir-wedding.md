@@ -106,7 +106,7 @@ Kain tenun tidak dapat menahan bentuk lekukan deboss karena serat benangnya akan
 
 ### Kertas Tebal dan Karton Kemasan
 
-Kertas kemasan dapat diproses dengan teknik cetak tinta maupun emboss timbul. Untuk kartu ucapan atau kotak hadiah bertekstur mewah, blind deboss atau hot print foil emas di atas kertas karton bergramatur tebal memberikan sentuhan eksklusif yang menyempurnakan paket hadiah. Untuk panduan memilih material dasar produk sebelum menentukan teknik cetak, pelajari ulasan pada [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Kertas kemasan dapat diproses dengan teknik cetak tinta maupun emboss timbul. Untuk kartu ucapan atau kotak hadiah bertekstur mewah, blind deboss atau hot print foil emas di atas kertas karton bergramatur tebal memberikan sentuhan eksklusif yang menyempurnakan paket hadiah. Untuk panduan memilih material dasar produk sebelum menentukan teknik cetak, pelajari ulasan pada [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ## Persyaratan File Artwork dan Batas Ketebalan Garis
 

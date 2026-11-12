@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 import { articles, wa } from '../../data/site';
 import { articleSchemas } from '../../data/articleSchemas';
-import ArticleSouvenirWedding from '../../components/articles/ArticleSouvenirWedding.astro';
+import ArticlePanduanSouvenirPernikahan from '../../components/articles/ArticlePanduanSouvenirPernikahan.astro';
+import ArticleSouvenirPernikahanFungsional from '../../components/articles/ArticleSouvenirPernikahanFungsional.astro';
 import ArticleSouvenirWeddingAesthetic from '../../components/articles/ArticleSouvenirWeddingAesthetic.astro';
 import ArticleSouvenirWeddingEarthTone from '../../components/articles/ArticleSouvenirWeddingEarthTone.astro';
 import ArticleSouvenirWeddingEmbossVsPrinting from '../../components/articles/ArticleSouvenirWeddingEmbossVsPrinting.astro';
@@ -15,7 +16,8 @@ import ArticleHampersLebaranMalang from '../../components/articles/ArticleHamper
 export function getStaticPaths() {
   const paths: any[] = articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
   const legacyRedirects = [
-    { oldSlug: 'souvenir-wedding', newSlug: 'panduan-memilih-souvenir-wedding' },
+    { oldSlug: 'souvenir-wedding', newSlug: 'panduan-memilih-souvenir-pernikahan' },
+    { oldSlug: 'panduan-memilih-souvenir-wedding', newSlug: 'panduan-memilih-souvenir-pernikahan' },
     { oldSlug: 'souvenir-wedding-aesthetic', newSlug: 'desain-souvenir-wedding-modern' },
     { oldSlug: 'souvenir-wedding-earth-tone', newSlug: 'warna-souvenir-wedding-earth-tone' },
     { oldSlug: 'souvenir-wedding-emboss-vs-printing', newSlug: 'emboss-vs-printing-souvenir-wedding' },
@@ -37,6 +39,8 @@ if (isRedirect && targetSlug) {
 }
 
 const isWeddingCluster = [
+  'panduan-memilih-souvenir-pernikahan',
+  'souvenir-pernikahan-fungsional',
   'panduan-memilih-souvenir-wedding',
   'desain-souvenir-wedding-modern',
   'warna-souvenir-wedding-earth-tone',
@@ -52,7 +56,6 @@ const isWeddingCluster = [
   'hampers-lebaran-malang'
 ].includes(a.slug);
 
-const wedding = a.slug === 'panduan-memilih-souvenir-pernikahan';
 const personal = a.slug === 'hampers-yang-lebih-personal';
 const tips = a.slug === 'persiapan-souvenir-acara';
 
@@ -204,11 +207,27 @@ const tocMap: Record<string, [string, string][]> = {
     ['kesimpulan', 'Kesimpulan Praktis']
   ],
   'panduan-memilih-souvenir-pernikahan': [
-    ['makna', 'Souvenir adalah ucapan terima kasih.'],
-    ['anggaran', 'Rencanakan anggaran sebelum memilih barang.'],
-    ['pilihan', 'Pilih souvenir yang berguna dalam keseharian.'],
-    ['konsep', 'Satukan hadiah dengan konsep pernikahan.'],
-    ['pesan', 'Periksa detail sebelum memesan.']
+    ['makna', 'Souvenir Pernikahan sebagai Tanda Apresiasi dan Cerita Bersama'],
+    ['anggaran', 'Rencanakan Anggaran dan Rumus Perhitungan Biaya Total'],
+    ['klasifikasi-fungsi', 'Klasifikasi Souvenir Berdasarkan Fungsi Pakai Sehari-hari'],
+    ['skala-dan-logistik', 'Menyesuaikan Pilihan dengan Skala dan Logistik Acara'],
+    ['custom-vs-standar', 'Perbandingan Souvenir Custom Penuh dan Produk Standar'],
+    ['karakter-material', 'Memahami Karakter Material Dasar Souvenir'],
+    ['konsep', 'Satukan Hadiah dengan Konsep Pernikahan'],
+    ['alur-pemesanan', 'Alur Pemesanan Souvenir dari Awal hingga Pengiriman'],
+    ['kesalahan-pengadaan', 'Kesalahan Manajemen Pengadaan yang Perlu Dihindari'],
+    ['skenario-souvenir-wedding', 'Matriks Skenario Kebutuhan Souvenir Wedding'],
+    ['faq', 'Pertanyaan Seputar Pemilihan Souvenir Pernikahan'],
+    ['kesimpulan', 'Kesimpulan Praktis']
+  ],
+  'souvenir-pernikahan-fungsional': [
+    ['skor-pakai', 'Cara Menilai Souvenir Fungsional dengan Skor Pakai'],
+    ['rincian-budget', 'Rincian Budget 50rb–100rb dan Komponen yang Termasuk'],
+    ['ide-souvenir', '10 Ide Souvenir Pernikahan Fungsional'],
+    ['penghuni-laci', '3 Jenis Souvenir yang Sering Jadi Penghuni Laci'],
+    ['memilih-berdasarkan-tamu', 'Cara Memilih Souvenir Berdasarkan Karakter Tamu'],
+    ['faq', 'Pertanyaan yang Sering Diajukan tentang Souvenir Fungsional'],
+    ['kesimpulan', 'Siap Memilih Souvenir yang Benar-benar Dipakai?']
   ],
   'hampers-yang-lebih-personal': [
     ['penerima', 'Mulai dari orang yang akan menerimanya.'],
@@ -251,7 +270,7 @@ const displayTitle = a.title.replace(/:\s*/g, ' ');
 const displayMetaTitle = (a as any).metaTitle ? (a as any).metaTitle.replace(/:\s*/g, ' ') : displayTitle;
 const pageTitle = (a as any).metaTitle ? `${displayMetaTitle} | Sekata Malang` : `${displayTitle} — Temukan Solusi | Sekata Malang`;
 const authorDisplay = (a as any).author || 'M. Maulana Ishaq';
-const readTime = (a as any).readTime || (wedding ? '6' : '3');
+const readTime = (a as any).readTime || '6';
 ---
 
 <Layout title={pageTitle} description={a.excerpt} schema={schema}>
@@ -301,9 +320,13 @@ const readTime = (a as any).readTime || (wedding ? '6' : '3');
         <p class="first-desc-paragraph">
           Pesan hampers lebaran Malang dengan menghubungi penyedia via WhatsApp, menentukan isi dan desain, menyetujui mockup, membayar DP 50 persen, lalu menunggu produksi dan pengiriman.
         </p>
-      ) : a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
+      ) : a.slug === 'panduan-memilih-souvenir-pernikahan' || a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
         <p class="first-desc-paragraph">
-          Souvenir wedding adalah hadiah apresiasi untuk tamu pernikahan yang dapat dipersonalisasi melalui pilihan produk, warna, desain, dan kemasan sesuai konsep acara.
+          Souvenir pernikahan yang berkesan adalah hadiah yang sesuai dengan penerima, konsep acara, dan kemampuan anggaran pasangan. Mulailah dari jumlah kebutuhan dan kegunaan barang, kemudian pilih material serta kemasan yang mendukung cerita pernikahanmu.
+        </p>
+      ) : a.slug === 'souvenir-pernikahan-fungsional' ? (
+        <p class="first-desc-paragraph">
+          Pernah pulang dari pernikahan membawa souvenir yang cantik, lalu tiga bulan kemudian menemukannya masih utuh di dasar laci? Berikut 10 ide souvenir pernikahan fungsional budget 50–100 ribu dengan Skor Pakai agar benar-benar dipakai tamu.
         </p>
       ) : a.slug === 'desain-souvenir-wedding-modern' || a.slug === 'souvenir-wedding-aesthetic' ? (
         <p class="first-desc-paragraph">
@@ -317,10 +340,7 @@ const readTime = (a as any).readTime || (wedding ? '6' : '3');
         <p class="first-desc-paragraph">
           Emboss dan printing pada souvenir wedding custom merupakan dua pendekatan personalisasi yang berbeda secara mendasar, di mana emboss membentuk tekstur fisik timbul atau tertekan pada permukaan material, sedangkan printing mengaplikasikan pigmen tinta berwarna melalui proses transfer.
         </p>
-      ) : wedding ? (
-        <p class="first-desc-paragraph">
-          Souvenir pernikahan yang berkesan adalah hadiah yang sesuai dengan penerima, konsep acara, dan kemampuan anggaran pasangan. Mulailah dari jumlah kebutuhan dan kegunaan barang, kemudian pilih material serta kemasan yang mendukung cerita pernikahanmu.
-        </p>
+
       ) : personal ? (
         <p class="first-desc-paragraph">
           Mulai dari penerima, pilih isi, lalu satukan cerita lewat kemasan. Hadiah yang terasa personal dimulai dari memahami kebutuhan, lalu memilih detail yang relevan. Dengan brief yang jelas, percakapan dengan vendor akan lebih mudah dan pilihan produk menjadi lebih terarah.
@@ -357,101 +377,16 @@ const readTime = (a as any).readTime || (wedding ? '6' : '3');
         <ArticleHampersLebaranPerusahaan />
       ) : a.slug === 'hampers-lebaran-malang' ? (
         <ArticleHampersLebaranMalang />
-      ) : a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
-        <ArticleSouvenirWedding />
+      ) : a.slug === 'panduan-memilih-souvenir-pernikahan' || a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
+        <ArticlePanduanSouvenirPernikahan />
+      ) : a.slug === 'souvenir-pernikahan-fungsional' ? (
+        <ArticleSouvenirPernikahanFungsional />
       ) : a.slug === 'desain-souvenir-wedding-modern' || a.slug === 'souvenir-wedding-aesthetic' ? (
         <ArticleSouvenirWeddingAesthetic />
       ) : a.slug === 'warna-souvenir-wedding-earth-tone' || a.slug === 'souvenir-wedding-earth-tone' ? (
         <ArticleSouvenirWeddingEarthTone />
       ) : a.slug === 'emboss-vs-printing-souvenir-wedding' || a.slug === 'souvenir-wedding-emboss-vs-printing' ? (
         <ArticleSouvenirWeddingEmbossVsPrinting />
-      ) : wedding ? (
-        <>
-          <h2 id="makna">Souvenir adalah ucapan terima kasih.</h2>
-          <p>
-            Tamu datang membawa waktu, perhatian, dan doa. Souvenir menjadi salah satu cara menyampaikan apresiasi itu dalam bentuk yang bisa dibawa pulang. Nilainya tidak harus ditentukan oleh kemewahan, melainkan oleh perhatian saat memilihnya.
-          </p>
-
-          <h2 id="anggaran">Rencanakan anggaran sebelum memilih barang.</h2>
-          <p>
-            Tetapkan batas belanja yang nyaman bersama pasangan. Hitung kebutuhan souvenir berdasarkan cara pembagiannya—per tamu, per keluarga, atau per undangan—agar jumlah pesanan memiliki dasar yang jelas.
-          </p>
-          <ul>
-            <li>Catat jumlah penerima dan siapkan cadangan yang sesuai dengan skala acara.</li>
-            <li>Masukkan biaya personalisasi, kemasan, kartu ucapan, dan pengiriman ke dalam perhitungan.</li>
-            <li>Bandingkan penawaran berdasarkan spesifikasi yang setara, bukan harga barang saja.</li>
-            <li>Konfirmasikan minimum pesanan dan jadwal produksi sebelum menyepakati desain.</li>
-          </ul>
-          <p>
-            Pembagian persentase anggaran bukan aturan baku. Sesuaikan dengan prioritas acara dan kemampuanmu, lalu pilih alternatif produk jika penawaran melampaui batas yang telah disepakati.
-          </p>
-
-          <h2 id="pilihan">Pilih souvenir yang berguna dalam keseharian.</h2>
-          <p>
-            Souvenir fungsional memberi kesempatan kenangan itu hadir berulang kali. Pertimbangkan kebiasaan penerima dan kemudahan membawa pulang barang dari lokasi acara.
-          </p>
-          <table>
-            <thead>
-              <tr>
-                <th>Inspirasi</th>
-                <th>Kegunaan</th>
-                <th>Hal yang diperiksa</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Pouch</td>
-                <td>Penyimpanan barang kecil</td>
-                <td>Material, jahitan, ukuran</td>
-              </tr>
-              <tr>
-                <td>Mug keramik</td>
-                <td>Minum sehari-hari</td>
-                <td>Material, finishing, kemasan pelindung</td>
-              </tr>
-              <tr>
-                <td>Alat makan</td>
-                <td>Perlengkapan makan</td>
-                <td>Material dan petunjuk perawatan</td>
-              </tr>
-              <tr>
-                <td>Reed diffuser</td>
-                <td>Pengharum ruangan</td>
-                <td>Aroma, volume, keamanan pengemasan</td>
-              </tr>
-              <tr>
-                <td>Tanaman mini</td>
-                <td>Dekorasi dan kegiatan merawat</td>
-                <td>Kondisi tanaman dan transportasi</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>
-            Harga setiap pilihan bergantung pada material, jumlah, personalisasi, dan kemasan. Minta penawaran aktual sebelum membuat keputusan.
-          </p>
-
-          <h2 id="konsep">Satukan hadiah dengan konsep pernikahan.</h2>
-          <h3>Sentuhan tradisional yang tetap personal</h3>
-          <p>
-            Aksen batik, tenun, atau anyaman dapat menghadirkan kedekatan dengan budaya. Pilih detail yang mendukung produk, misalnya pouch beraksen kain atau kemasan dengan kartu bermotif sederhana.
-          </p>
-          <h3>Konsep natural</h3>
-          <p>
-            Pertimbangkan material, daya pakai, dan kemasan secara menyeluruh. Sebutan ramah lingkungan perlu didukung informasi material serta prosesnya; warna cokelat atau tampilan natural saja belum cukup.
-          </p>
-          <h3>Konsep elegan</h3>
-          <p>
-            Palet warna yang tenang, tipografi rapi, dan kemasan proporsional dapat memberi kesan elegan. Untuk gift set, pastikan setiap isi saling melengkapi dan ukuran kemasan tidak berlebihan.
-          </p>
-
-          <h2 id="pesan">Periksa detail sebelum memesan.</h2>
-          <p>
-            Mintalah referensi produk aktual, spesifikasi, dan pratinjau personalisasi. Cek ejaan nama serta tanggal pernikahan. Pastikan jumlah, jadwal penyelesaian, biaya, dan pengiriman tercatat dalam kesepakatan.
-          </p>
-          <p>
-            Souvenir terbaik untuk acaramu adalah yang dipilih dengan tenang: bermanfaat, sesuai cerita, dan tetap nyaman dalam rencana anggaran.
-          </p>
-        </>
       ) : personal ? (
         <>
           <h2 id="penerima">Mulai dari orang yang akan menerimanya.</h2>

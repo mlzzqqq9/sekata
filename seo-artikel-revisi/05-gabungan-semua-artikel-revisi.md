@@ -609,7 +609,7 @@ Sementara pada aksesori berbahan kulit atau kulit sintetis, perhatikan perlakuan
 
 Kemasan modern berfungsi sebagai bingkai penyajian pertama sebelum tamu melihat isi di dalamnya. Kotak atau pembungkus yang terlalu longgar membuat isi bergeser saat pengiriman dan menimbulkan kesan kosong, sementara kemasan yang terlalu sempit berisiko meninggalkan bekas lipatan permanen pada bahan lentur.
 
-Pilih bentuk pembungkus yang menyisakan ruang toleransi secukupnya agar barang mudah dikeluarkan tanpa tersangkut, dan gunakan sekat kertas atau tatakan bila paket berisi lebih dari satu benda. Untuk gambaran pemilihan jenis kemasan yang lebih luas berdasarkan skenario acara, Anda dapat membaca [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Pilih bentuk pembungkus yang menyisakan ruang toleransi secukupnya agar barang mudah dikeluarkan tanpa tersangkut, dan gunakan sekat kertas atau tatakan bila paket berisi lebih dari satu benda. Untuk gambaran pemilihan jenis kemasan yang lebih luas berdasarkan skenario acara, Anda dapat membaca [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ![Detail kerapian jahitan sudut, warna resleting senada, dan ukuran paper sleeve yang pas membalut souvenir pernikahan](/images/finishing-jahitan-dan-proporsi-kemasan-souvenir.jpg)
 
@@ -890,7 +890,7 @@ Calon pengantin sering terkejut ketika warna cream atau sage green yang dipilih 
 - **Kulit sintetis (PU leather):** Memiliki lapisan pelindung di permukaan luar sehingga memantulkan sebagian cahaya. Akibatnya, warna taupe atau beige pada kulit sintetis sering terlihat sedikit lebih cerah dan licin dibandingkan warna serupa pada kain.
 - **Kertas kemasan dan kertas kraft:** Serat kertas cokelat alami (kraft) akan memengaruhi warna tinta di atasnya. Tinta warna terang yang dicetak langsung di atas kertas cokelat akan terserap dan menggelap, sehingga kombinasi kertas cokelat sebaiknya memakai tinta gelap seperti cokelat tua atau hitam.
 
-Oleh karena itu, menyandingkan potongan sampel bahan fisik jauh lebih akurat daripada hanya mengandalkan kesamaan kode warna hex di layar desain. Bila Anda ingin melihat bagaimana pemilihan material dasar memengaruhi ketahanan penggunaan suvenir, rujuk kembali bagian material pada [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Oleh karena itu, menyandingkan potongan sampel bahan fisik jauh lebih akurat daripada hanya mengandalkan kesamaan kode warna hex di layar desain. Bila Anda ingin melihat bagaimana pemilihan material dasar memengaruhi ketahanan penggunaan suvenir, rujuk kembali bagian material pada [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ## Pengaruh Pencahayaan Ruangan terhadap Persepsi Warna
 
@@ -1167,7 +1167,7 @@ Kain tenun tidak dapat menahan bentuk lekukan deboss karena serat benangnya akan
 
 ### Kertas Tebal dan Karton Kemasan
 
-Kertas kemasan dapat diproses dengan teknik cetak tinta maupun emboss timbul. Untuk kartu ucapan atau kotak hadiah bertekstur mewah, blind deboss atau hot print foil emas di atas kertas karton bergramatur tebal memberikan sentuhan eksklusif yang menyempurnakan paket hadiah. Untuk panduan memilih material dasar produk sebelum menentukan teknik cetak, pelajari ulasan pada [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Kertas kemasan dapat diproses dengan teknik cetak tinta maupun emboss timbul. Untuk kartu ucapan atau kotak hadiah bertekstur mewah, blind deboss atau hot print foil emas di atas kertas karton bergramatur tebal memberikan sentuhan eksklusif yang menyempurnakan paket hadiah. Untuk panduan memilih material dasar produk sebelum menentukan teknik cetak, pelajari ulasan pada [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ## Persyaratan File Artwork dan Batas Ketebalan Garis
 

@@ -98,7 +98,7 @@ Sementara pada aksesori berbahan kulit atau kulit sintetis, perhatikan perlakuan
 
 Kemasan modern berfungsi sebagai bingkai penyajian pertama sebelum tamu melihat isi di dalamnya. Kotak atau pembungkus yang terlalu longgar membuat isi bergeser saat pengiriman dan menimbulkan kesan kosong, sementara kemasan yang terlalu sempit berisiko meninggalkan bekas lipatan permanen pada bahan lentur.
 
-Pilih bentuk pembungkus yang menyisakan ruang toleransi secukupnya agar barang mudah dikeluarkan tanpa tersangkut, dan gunakan sekat kertas atau tatakan bila paket berisi lebih dari satu benda. Untuk gambaran pemilihan jenis kemasan yang lebih luas berdasarkan skenario acara, Anda dapat membaca [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Pilih bentuk pembungkus yang menyisakan ruang toleransi secukupnya agar barang mudah dikeluarkan tanpa tersangkut, dan gunakan sekat kertas atau tatakan bila paket berisi lebih dari satu benda. Untuk gambaran pemilihan jenis kemasan yang lebih luas berdasarkan skenario acara, Anda dapat membaca [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ![Detail kerapian jahitan sudut, warna resleting senada, dan ukuran paper sleeve yang pas membalut souvenir pernikahan](/images/finishing-jahitan-dan-proporsi-kemasan-souvenir.jpg)
 

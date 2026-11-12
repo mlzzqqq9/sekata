@@ -464,16 +464,28 @@ export const articles = [
     readTime: '6'
   },
   {
-    slug: 'panduan-memilih-souvenir-wedding',
-    metaTitle: 'Panduan Memilih Souvenir Wedding yang Tepat dan Fungsional',
-    title: 'Panduan Lengkap Memilih Souvenir Wedding yang Tepat untuk Pernikahan',
+    slug: 'panduan-memilih-souvenir-pernikahan',
+    metaTitle: 'Panduan Memilih Souvenir Pernikahan yang Tepat dan Bermanfaat | Sekata',
+    title: 'Souvenir kecil, kenangan yang panjang.',
     category: 'Wedding Guide',
     image: 'koleksi-souvenir-wedding-fungsional.jpg',
-    excerpt: 'Pelajari panduan memilih souvenir wedding berdasarkan fungsi, tema pernikahan, jumlah tamu, anggaran, material, dan alur pemesanan custom yang terukur.',
+    excerpt: 'Panduan memilih souvenir pernikahan dan souvenir wedding yang berguna, personal, dan sesuai rencana anggaran.',
     author: 'Tim Editorial',
     reviewedBy: 'Editor Konten',
-    dateModified: '2026-11-10',
+    dateModified: '2026-11-12',
     readTime: '8'
+  },
+  {
+    slug: 'souvenir-pernikahan-fungsional',
+    metaTitle: '10 Souvenir Pernikahan Fungsional 50rb–100rb yang Pasti Dipakai Tamu | Sekata',
+    title: '10 Ide Souvenir Pernikahan Fungsional yang Pasti Dipakai Tamu (Budget 50rb–100rb)',
+    category: 'Wedding Guide',
+    image: 'souvenir-pernikahan-fungsional.jpg',
+    excerpt: 'Cari souvenir pernikahan murah tapi bermanfaat? Ini 10 ide fungsional budget 50–100 ribu dengan Skor Pakai, supaya tidak berakhir di laci tamu.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-12',
+    readTime: '7'
   },
   {
     slug: 'desain-souvenir-wedding-modern',
@@ -510,13 +522,6 @@ export const articles = [
     reviewedBy: 'Editor Konten',
     dateModified: '2026-11-10',
     readTime: '7'
-  },
-  {
-    slug: 'panduan-memilih-souvenir-pernikahan',
-    title: 'Souvenir kecil, kenangan yang panjang.',
-    category: 'Wedding Guide',
-    image: 'products/wedding-quilted-pouch.jpg',
-    excerpt: 'Panduan memilih souvenir pernikahan yang berguna, personal, dan sesuai rencana anggaran.'
   },
   {
     slug: 'hampers-yang-lebih-personal',

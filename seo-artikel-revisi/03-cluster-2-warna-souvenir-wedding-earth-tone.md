@@ -110,7 +110,7 @@ Calon pengantin sering terkejut ketika warna cream atau sage green yang dipilih 
 - **Kulit sintetis (PU leather):** Memiliki lapisan pelindung di permukaan luar sehingga memantulkan sebagian cahaya. Akibatnya, warna taupe atau beige pada kulit sintetis sering terlihat sedikit lebih cerah dan licin dibandingkan warna serupa pada kain.
 - **Kertas kemasan dan kertas kraft:** Serat kertas cokelat alami (kraft) akan memengaruhi warna tinta di atasnya. Tinta warna terang yang dicetak langsung di atas kertas cokelat akan terserap dan menggelap, sehingga kombinasi kertas cokelat sebaiknya memakai tinta gelap seperti cokelat tua atau hitam.
 
-Oleh karena itu, menyandingkan potongan sampel bahan fisik jauh lebih akurat daripada hanya mengandalkan kesamaan kode warna hex di layar desain. Bila Anda ingin melihat bagaimana pemilihan material dasar memengaruhi ketahanan penggunaan suvenir, rujuk kembali bagian material pada [panduan lengkap memilih souvenir wedding](/blog/panduan-memilih-souvenir-wedding/).
+Oleh karena itu, menyandingkan potongan sampel bahan fisik jauh lebih akurat daripada hanya mengandalkan kesamaan kode warna hex di layar desain. Bila Anda ingin melihat bagaimana pemilihan material dasar memengaruhi ketahanan penggunaan suvenir, rujuk kembali bagian material pada [panduan lengkap memilih souvenir pernikahan](/blog/panduan-memilih-souvenir-pernikahan/).
 
 ## Pengaruh Pencahayaan Ruangan terhadap Persepsi Warna
 
