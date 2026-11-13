@@ -964,6 +964,450 @@ export const articleSchemas: Record<string, any> = {
         ]
       }
     ]
+  },
+  'panduan-lengkap-souvenir-pernikahan': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/#article',
+        'headline': 'Panduan Lengkap Souvenir Pernikahan Ide Jenis Anggaran dan Tips Memilih',
+        'description': 'Panduan lengkap souvenir pernikahan tentang jenis produk, ide tidak mubazir, simulasi anggaran, timeline pemesanan, dan cara memilih vendor terpercaya.',
+        'image': [
+          'https://sekata.web.id/images/souvenir-pernikahan-modern.jpg',
+          'https://sekata.web.id/images/ide-souvenir-pernikahan.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'souvenir pernikahan, panduan souvenir pernikahan, ide souvenir pernikahan, anggaran souvenir pernikahan, jenis souvenir pernikahan, souvenir wedding',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Souvenir Pernikahan'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/#webpage',
+        'url': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/',
+        'name': 'Panduan Lengkap Souvenir Pernikahan Modern 2026 | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Panduan Lengkap Souvenir Pernikahan',
+            'item': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/panduan-lengkap-souvenir-pernikahan/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Apa souvenir pernikahan yang paling bermanfaat?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Souvenir pernikahan yang bermanfaat adalah produk yang sesuai dengan kebiasaan penerima, seperti tumbler, pouch multifungsi, card holder, notebook, dan perlengkapan makan portabel.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Berapa jumlah souvenir yang harus disiapkan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Jumlah souvenir bergantung pada sistem pembagian dan kuota undangan. Siapkan cadangan sekitar 5-10% untuk mengantisipasi kehadiran tamu tambahan atau kebutuhan panitia.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Kapan harus memesan souvenir pernikahan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Pemesanan idealnya direncanakan sekitar 2 hingga 3 bulan sebelum hari acara, khususnya untuk produk custom yang memerlukan persetujuan sampel dan waktu antrean produksi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah souvenir pernikahan harus menggunakan nama pengantin?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak harus. Personalisasi dapat dibuat minimalis berupa inisial monogram kecil, tanggal pernikahan, atau disematkan pada kartu ucapan di dalam kemasan agar barang lebih nyaman dipakai sehari-hari.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah souvenir pernikahan bisa dibuat secara custom?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Bisa. Banyak jenis produk seperti tumbler, pouch, notebook, card holder, dan kemasan lilin aromaterapi dapat disesuaikan material, warna, dan grafirnya sesuai tema pernikahan.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana cara mengetahui kualitas vendor souvenir?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Periksa portofolio nyata, minta sampel fisik untuk diuji langsung, bandingkan transparansi spesifikasi bahan, dan pastikan terdapat kesepakatan tertulis mengenai jadwal pengerjaan.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah souvenir makanan cocok untuk pernikahan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Souvenir makanan cocok bagi pasangan yang menginginkan produk praktis habis pakai. Pastikan produk tahan lama, tersegel higienis, dan memiliki tanggal kedaluwarsa yang jelas.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'souvenir-pernikahan-yang-berguna': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/#article',
+        'headline': '15 Ide Souvenir Pernikahan yang Berguna dan Tidak Mubazir',
+        'description': 'Cari souvenir pernikahan yang berguna dan tidak mubazir? Temukan 15 ide produk fungsional, estetik, dan menarik untuk tamu undangan.',
+        'image': [
+          'https://sekata.web.id/images/ide-souvenir-tidak-mubazir.jpg',
+          'https://sekata.web.id/images/souvenir-pernikahan-fungsional.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'souvenir pernikahan yang berguna, ide souvenir pernikahan, souvenir tidak mubazir, souvenir fungsional, souvenir pernikahan bermanfaat',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Souvenir Pernikahan Fungsional'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/#webpage',
+        'url': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/',
+        'name': '15 Ide Souvenir Pernikahan yang Berguna dan Berkesan | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Souvenir Pernikahan yang Berguna',
+            'item': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/souvenir-pernikahan-yang-berguna/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Apa souvenir pernikahan yang tidak mubazir?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Souvenir yang tidak mubazir adalah produk yang memiliki fungsi pemakaian harian nyata, seperti tumbler, pouch resleting, notebook catatan, card holder, atau produk konsumsi higienis.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah tumbler cocok untuk souvenir pernikahan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tumbler sangat cocok karena mendukung gaya hidup ramah lingkungan dan fleksibel digunakan bekerja di kantor, kuliah, berolahraga, maupun bepergian.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah pouch bisa dijadikan souvenir pernikahan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Pouch kanvas atau kulit imitasi sangat fleksibel karena berfungsi sebagai wadah kosmetik, kabel gawai, perlengkapan mandi, atau alat tulis.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apa souvenir yang cocok untuk tamu luar kota?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Souvenir berukuran kompak, ringan, dan tidak mudah pecah seperti card holder tipis, pouch serut, pocket notebook, atau kopi sachet artisan.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah souvenir makanan lebih baik daripada barang?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tergantung preferensi. Souvenir makanan praktis karena dapat langsung dinikmati tanpa memenuhi lemari, sedangkan barang fungsional memberikan kenangan jangka panjang.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'budget-souvenir-pernikahan': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/#article',
+        'headline': 'Cara Menghitung Budget Souvenir Pernikahan agar Tidak Membengkak',
+        'description': 'Pelajari cara menghitung budget souvenir pernikahan berdasarkan jumlah tamu, harga per pcs, dan kemasan agar pengeluaran tetap terkendali.',
+        'image': [
+          'https://sekata.web.id/images/budget-souvenir-pernikahan.jpg',
+          'https://sekata.web.id/images/simulasi-biaya-souvenir.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'budget souvenir pernikahan, menghitung biaya souvenir, harga souvenir per pcs, anggaran souvenir pernikahan, simulasi biaya souvenir',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Budget Souvenir Pernikahan'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/#webpage',
+        'url': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/',
+        'name': 'Cara Menghitung Budget Souvenir Pernikahan 2026 | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Budget Souvenir Pernikahan',
+            'item': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/budget-souvenir-pernikahan/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Berapa budget souvenir pernikahan untuk 300 tamu?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Untuk 300 souvenir di rentang harga Rp10.000 per pcs, Anda membutuhkan anggaran pokok produk Rp3.000.000, ditambah estimasi kemasan dan cadangan sekitar Rp600.000 hingga Rp800.000. Total estimasi sekitar Rp3.600.000 hingga Rp3.800.000.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah budget souvenir Rp5.000 per pcs cukup?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Cukup untuk souvenir sederhana dan berfaedah seperti sendok garpu kayu mini, pouch blacu polos, cermin saku floral, atau teh artisan sachet kemasan kraft.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana menghitung jumlah souvenir cadangan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Siapkan kuota ekstra 5% sampai 10% dari jumlah undangan yang disebar untuk mengantisipasi kehadiran tamu tak terduga, panitia, atau keluarga inti.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah kemasan harus masuk dalam budget souvenir?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Ya, biaya kemasan, hangtag ucapan, pita satin, serta pelindung bubble wrap wajib dihitung sejak awal agar tidak membebani anggaran di akhir.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah pemesanan grosir selalu lebih murah?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Secara unit produk umumnya lebih murah. Namun pastikan apakah harga grosir tersebut sudah mencakup personalisasi grafir dan ongkos kirim kargo.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'tips-memilih-vendor-souvenir-pernikahan': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/#article',
+        'headline': '10 Tips Memilih Vendor Souvenir Pernikahan agar Tidak Salah Pesan',
+        'description': 'Bingung memilih vendor souvenir pernikahan? Pelajari 10 tips mengecek sampel, kualitas, MOQ, harga, dan waktu produksi sebelum melakukan pemesanan.',
+        'image': [
+          'https://sekata.web.id/images/vendor-souvenir-pernikahan.jpg',
+          'https://sekata.web.id/images/sampel-souvenir-pernikahan.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'vendor souvenir pernikahan, tips memilih vendor souvenir, vendor souvenir custom, MOQ souvenir, sampel souvenir pernikahan',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Vendor Souvenir Pernikahan'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/#webpage',
+        'url': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/',
+        'name': '10 Tips Memilih Vendor Souvenir Pernikahan Terpercaya | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Tips Memilih Vendor Souvenir Pernikahan',
+            'item': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/tips-memilih-vendor-souvenir-pernikahan/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana cara memilih vendor souvenir pernikahan terpercaya?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Pilih vendor yang memiliki portofolio riil, transparan menjelaskan spesifikasi bahan, bersedia mengirimkan sampel fisik sebelum produksi massal, dan menyediakan nota pesanan resmi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apa itu MOQ dalam pemesanan souvenir?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'MOQ (Minimum Order Quantity) adalah batas pesanan minimum yang dapat diproses oleh workshop vendor dalam satu desain untuk efisiensi produksi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah harus meminta sampel sebelum memesan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Sangat disarankan untuk memvalidasi tekstur bahan, kekuatan jahitan, keakuratan warna, dan kerapian cetakan sebelum ratusan unit diproduksi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Kapan waktu terbaik memesan souvenir custom?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Waktu paling ideal adalah 2 hingga 3 bulan sebelum hari-H acara, memberikan waktu leluasa untuk pembuatan sampel dan Quality Control.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apa saja yang harus ditanyakan kepada vendor?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tanyakan rincian bahan material, dimensi ukuran, MOQ, durasi produksi, rincian biaya kemasan dan hangtag, batas revisi mockup, dan garansi penggantian barang cacat.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah vendor harus memberikan garansi?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Vendor profesional umumnya menyediakan garansi retur atau perbaikan unit apabila terjadi cacat produksi fatal atau kerusakan akibat kelalaian ekspedisi.'
+            }
+          }
+        ]
+      }
+    ]
   }
 };
 

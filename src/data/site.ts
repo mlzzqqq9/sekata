@@ -416,6 +416,54 @@ export const products: Product[] = [
 
 export const articles = [
   {
+    slug: 'panduan-lengkap-souvenir-pernikahan',
+    metaTitle: 'Panduan Lengkap Souvenir Pernikahan Modern 2026 | Sekata',
+    title: 'Panduan Lengkap Souvenir Pernikahan Ide Jenis Anggaran dan Tips Memilih',
+    category: 'Wedding Guide',
+    image: 'souvenir-pernikahan-modern.jpg',
+    excerpt: 'Panduan lengkap souvenir pernikahan tentang jenis produk, ide tidak mubazir, simulasi anggaran, timeline pemesanan, dan cara memilih vendor terpercaya.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '9'
+  },
+  {
+    slug: 'souvenir-pernikahan-yang-berguna',
+    metaTitle: '15 Ide Souvenir Pernikahan yang Berguna dan Berkesan | Sekata',
+    title: '15 Ide Souvenir Pernikahan yang Berguna dan Tidak Mubazir',
+    category: 'Wedding Guide',
+    image: 'ide-souvenir-tidak-mubazir.jpg',
+    excerpt: 'Cari souvenir pernikahan yang berguna dan tidak mubazir? Temukan 15 ide produk fungsional, estetik, dan menarik untuk tamu undangan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '7'
+  },
+  {
+    slug: 'budget-souvenir-pernikahan',
+    metaTitle: 'Cara Menghitung Budget Souvenir Pernikahan 2026 | Sekata',
+    title: 'Cara Menghitung Budget Souvenir Pernikahan agar Tidak Membengkak',
+    category: 'Wedding Guide',
+    image: 'budget-souvenir-pernikahan.jpg',
+    excerpt: 'Pelajari cara menghitung budget souvenir pernikahan berdasarkan jumlah tamu, harga per pcs, dan kemasan agar pengeluaran tetap terkendali.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '6'
+  },
+  {
+    slug: 'tips-memilih-vendor-souvenir-pernikahan',
+    metaTitle: '10 Tips Memilih Vendor Souvenir Pernikahan Terpercaya | Sekata',
+    title: '10 Tips Memilih Vendor Souvenir Pernikahan agar Tidak Salah Pesan',
+    category: 'Wedding Guide',
+    image: 'vendor-souvenir-pernikahan.jpg',
+    excerpt: 'Bingung memilih vendor souvenir pernikahan? Pelajari 10 tips mengecek sampel, kualitas, MOQ, harga, dan waktu produksi sebelum melakukan pemesanan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '7'
+  },
+  {
     slug: 'panduan-memilih-hampers-lebaran',
     metaTitle: 'Hampers Lebaran 2027 Panduan Memilih dan Memesan | Sekata',
     title: 'Hampers Lebaran 2027 Panduan Lengkap Memilih Jenis Anggaran dan Cara Pesan',
