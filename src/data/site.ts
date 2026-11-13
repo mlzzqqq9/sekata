@@ -501,15 +501,51 @@ export const articles = [
   },
   {
     slug: 'hampers-lebaran-malang',
-    metaTitle: 'Pesan Hampers Lebaran Malang Jadwal dan Pengiriman | Sekata',
-    title: 'Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027',
+    metaTitle: 'Hampers Lebaran Malang 2027 dan Pilihan Paketnya | Sekata',
+    title: 'Hampers Lebaran Malang 2027 untuk Keluarga dan Perusahaan',
     category: 'Hampers Guide',
-    image: 'pesan-hampers-lebaran-malang.jpg',
-    excerpt: 'Cara pesan hampers lebaran Malang dengan jadwal ideal, alur dari konsultasi WhatsApp hingga kirim, serta jangkauan area Malang, Batu, dan Kepanjen.',
+    image: 'hampers-lebaran-malang-2027.jpg',
+    excerpt: 'Temukan pilihan hampers Lebaran Malang 2027 untuk keluarga dan perusahaan, bandingkan isi, kemasan, serta pengiriman. Lihat panduannya sebelum pesan online.',
     author: 'Tim Editorial',
     reviewedBy: 'Editor Konten',
-    dateModified: '2026-11-11',
-    readTime: '6'
+    dateModified: '2026-11-13',
+    readTime: '8'
+  },
+  {
+    slug: 'pilihan-hampers-lebaran-sesuai-anggaran',
+    metaTitle: 'Pilihan Hampers Lebaran Sesuai Anggaran dan Isinya | Sekata',
+    title: 'Pilihan Hampers Lebaran Sesuai Anggaran agar Tetap Berkesan',
+    category: 'Hampers Guide',
+    image: 'hampers-berbagai-anggaran.jpg',
+    excerpt: 'Bingung menentukan isi hampers Lebaran? Bandingkan paket sederhana, reguler, premium, dan VVIP berdasarkan penerima serta anggaran sebelum memesan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '7'
+  },
+  {
+    slug: 'hampers-lebaran-perusahaan-malang',
+    metaTitle: 'Hampers Lebaran Perusahaan Malang untuk Relasi Bisnis | Sekata',
+    title: 'Hampers Lebaran Perusahaan Malang untuk Klien dan Karyawan',
+    category: 'Corporate Gifting',
+    image: 'hampers-korporat-lebaran-malang.jpg',
+    excerpt: 'Pelajari cara memilih hampers Lebaran perusahaan di Malang untuk klien dan karyawan, termasuk custom logo, paket VIP, quality control, dan distribusi.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '7'
+  },
+  {
+    slug: 'pengiriman-hampers-lebaran-malang-raya',
+    metaTitle: 'Pengiriman Hampers Lebaran di Malang Raya agar Aman | Sekata',
+    title: 'Pengiriman Hampers Lebaran Malang Raya agar Aman dan Tepat Waktu',
+    category: 'Hampers Guide',
+    image: 'pengiriman-hampers-lebaran-malang.jpg',
+    excerpt: 'Simak cara mengatur pengiriman hampers Lebaran ke Kota Malang, Batu, dan Kabupaten Malang, dari jadwal pre-order hingga kemasan aman dan bukti terima.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '7'
   },
   {
     slug: 'panduan-memilih-souvenir-pernikahan',

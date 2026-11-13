@@ -16,6 +16,9 @@ import ArticlePanduanLengkapSouvenirPernikahan from '../../components/articles/A
 import ArticleSouvenirPernikahanYangBerguna from '../../components/articles/ArticleSouvenirPernikahanYangBerguna.astro';
 import ArticleBudgetSouvenirPernikahan from '../../components/articles/ArticleBudgetSouvenirPernikahan.astro';
 import ArticleTipsMemilihVendorSouvenirPernikahan from '../../components/articles/ArticleTipsMemilihVendorSouvenirPernikahan.astro';
+import ArticlePilihanHampersLebaranSesuaiAnggaran from '../../components/articles/ArticlePilihanHampersLebaranSesuaiAnggaran.astro';
+import ArticleHampersLebaranPerusahaanMalang from '../../components/articles/ArticleHampersLebaranPerusahaanMalang.astro';
+import ArticlePengirimanHampersLebaranMalangRaya from '../../components/articles/ArticlePengirimanHampersLebaranMalangRaya.astro';
 
 export function getStaticPaths() {
   const paths: any[] = articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
@@ -61,7 +64,10 @@ const isWeddingCluster = [
   'hampers-lebaran',
   'isi-hampers-lebaran',
   'hampers-lebaran-perusahaan',
-  'hampers-lebaran-malang'
+  'hampers-lebaran-malang',
+  'pilihan-hampers-lebaran-sesuai-anggaran',
+  'hampers-lebaran-perusahaan-malang',
+  'pengiriman-hampers-lebaran-malang-raya'
 ].includes(a.slug);
 
 const personal = a.slug === 'hampers-yang-lebih-personal';
@@ -164,14 +170,50 @@ const tocMap: Record<string, [string, string][]> = {
     ['kesimpulan', 'Kesimpulan Praktis']
   ],
   'hampers-lebaran-malang': [
-    ['waktu-terbaik-malang', 'Kapan Waktu Terbaik Memesan Hampers Lebaran Malang untuk Idulfitri 2027?'],
-    ['alur-pemesanan-malang', 'Bagaimana Alur Pemesanan Hampers Lebaran di Malang?'],
-    ['informasi-disiapkan', 'Informasi Apa yang Perlu Disiapkan sebelum Menghubungi Penyedia Hampers?'],
-    ['area-pengiriman', 'Ke Mana Saja Hampers Lebaran dari Malang Bisa Dikirim?'],
-    ['mockup-sebelum-produksi', 'Apakah Desain Hampers Lebaran Bisa Dilihat Sebelum Diproduksi?'],
-    ['tips-tepat-waktu', 'Apa yang Perlu Diperhatikan agar Hampers Lebaran Sampai Tepat Waktu?'],
-    ['faq', 'Pertanyaan yang Sering Diajukan tentang Hampers Lebaran Malang'],
-    ['kesimpulan', 'Kesimpulan Praktis']
+    ['daya-tarik-hampers-malang', 'Apa yang Membuat Hampers Lebaran di Malang Menarik?'],
+    ['jenis-hampers-lebaran-malang', 'Apa Saja Jenis Hampers Lebaran Malang yang Bisa Dipilih?'],
+    ['membandingkan-pilihan-hampers', 'Bagaimana Membandingkan Pilihan Hampers Berdasarkan Kebutuhan?'],
+    ['anggaran-hampers-malang', 'Berapa Anggaran Hampers Lebaran di Malang?'],
+    ['memilih-keluarga-perusahaan', 'Bagaimana Memilih Hampers untuk Keluarga dan Perusahaan?'],
+    ['ciri-vendor-layak', 'Apa Ciri Vendor Hampers Lebaran yang Layak Dipertimbangkan?'],
+    ['kapan-sebaiknya-pesan', 'Kapan Sebaiknya Pesan Hampers Lebaran 2027?'],
+    ['cara-pesan-online', 'Bagaimana Cara Pesan Hampers Lebaran Secara Online?'],
+    ['kesalahan-umum-memilih-hampers', 'Kesalahan Apa yang Sering Terjadi Saat Memilih Hampers?'],
+    ['faq-hampers-lebaran-malang', 'Pertanyaan yang Sering Diajukan tentang Hampers Lebaran Malang'],
+    ['kesimpulan-praktis', 'Kesimpulan Praktis']
+  ],
+  'pilihan-hampers-lebaran-sesuai-anggaran': [
+    ['bagaimana-membagi-anggaran-hampers', 'Bagaimana Membagi Anggaran Hampers Lebaran?'],
+    ['isi-hampers-sederhana', 'Apa Isi Hampers Sederhana yang Tetap Layak Diberikan?'],
+    ['kapan-hampers-reguler-masuk-akal', 'Kapan Hampers Reguler Menjadi Pilihan yang Masuk Akal?'],
+    ['apa-membedakan-premium-vvip', 'Apa yang Membedakan Hampers Premium dan VVIP?'],
+    ['menghitung-biaya-sering-terlupakan', 'Bagaimana Menghitung Biaya yang Sering Terlupakan?'],
+    ['membuat-hampers-menarik-tanpa-pemborosan', 'Bagaimana Membuat Hampers Menarik Tanpa Pemborosan?'],
+    ['kesalahan-perlu-dihindari-anggaran', 'Kesalahan Apa yang Perlu Dihindari Saat Berbelanja Hampers?'],
+    ['faq-pilihan-hampers-anggaran', 'Pertanyaan yang Sering Diajukan tentang Pilihan Hampers Lebaran Sesuai Anggaran'],
+    ['kesimpulan-praktis', 'Kesimpulan Praktis']
+  ],
+  'hampers-lebaran-perusahaan-malang': [
+    ['mengapa-perusahaan-butuh-konsep-khusus', 'Mengapa Perusahaan Membutuhkan Konsep Hampers Khusus?'],
+    ['perbedaan-hampers-klien-karyawan', 'Apa Perbedaan Hampers untuk Klien dan Karyawan?'],
+    ['memilih-isi-hampers-korporat', 'Bagaimana Memilih Isi Hampers Korporat yang Tepat?'],
+    ['elemen-branding-proporsional', 'Apa Saja Elemen Branding yang Bisa Ditambahkan?'],
+    ['menyusun-brief-vendor-b2b', 'Bagaimana Menyusun Brief untuk Vendor Hampers B2B?'],
+    ['mengontrol-mutu-pesanan-massal', 'Bagaimana Mengontrol Mutu Pesanan Hampers Massal?'],
+    ['kapan-perusahaan-harus-memesan', 'Kapan Perusahaan Harus Mulai Mengurus Pesanan?'],
+    ['faq-hampers-perusahaan-malang', 'Pertanyaan yang Sering Diajukan tentang Hampers Lebaran Perusahaan Malang'],
+    ['kesimpulan-praktis', 'Kesimpulan Praktis']
+  ],
+  'pengiriman-hampers-lebaran-malang-raya': [
+    ['mengapa-pengiriman-perlu-direncanakan', 'Mengapa Pengiriman Hampers Lebaran Perlu Direncanakan?'],
+    ['kapan-menjadwalkan-pengiriman', 'Kapan Sebaiknya Memesan dan Menjadwalkan Pengiriman?'],
+    ['menentukan-kurir-sesuai-isi', 'Bagaimana Menentukan Kurir Berdasarkan Jenis Hampers?'],
+    ['mengemas-hampers-agar-aman', 'Bagaimana Mengemas Hampers agar Tidak Rusak?'],
+    ['mengirim-ke-banyak-alamat', 'Bagaimana Mengirim Hampers ke Banyak Alamat?'],
+    ['pengecekan-sebelum-diserahkan', 'Apa yang Harus Dicek Sebelum Hampers Diserahkan?'],
+    ['penanganan-paket-rusak', 'Bagaimana Menangani Paket Rusak atau Penerima Tidak Ada?'],
+    ['faq-pengiriman-hampers-malang', 'Pertanyaan yang Sering Diajukan tentang Pengiriman Hampers Lebaran Malang Raya'],
+    ['kesimpulan-praktis', 'Kesimpulan Praktis']
   ],
   'panduan-memilih-souvenir-wedding': [
     ['mengapa-direncanakan', 'Mengapa Pemilihan Souvenir Wedding Perlu Direncanakan Sejak Awal'],
@@ -391,7 +433,19 @@ const readTime = (a as any).readTime || '6';
         </p>
       ) : a.slug === 'hampers-lebaran-malang' ? (
         <p class="first-desc-paragraph">
-          Pesan hampers lebaran Malang dengan menghubungi penyedia via WhatsApp, menentukan isi dan desain, menyetujui mockup, membayar DP 50 persen, lalu menunggu produksi dan pengiriman.
+          Hampers Lebaran Malang tersedia dalam pilihan kue kering, makanan khas, perlengkapan ibadah, dan hadiah custom yang dapat disesuaikan dengan penerima serta anggaran.
+        </p>
+      ) : a.slug === 'pilihan-hampers-lebaran-sesuai-anggaran' ? (
+        <p class="first-desc-paragraph">
+          Pilihan hampers Lebaran sesuai anggaran dimulai dari menentukan penerima, memprioritaskan kualitas isi, lalu memilih kemasan yang aman tanpa menambah biaya tidak perlu.
+        </p>
+      ) : a.slug === 'hampers-lebaran-perusahaan-malang' ? (
+        <p class="first-desc-paragraph">
+          Hampers Lebaran perusahaan Malang sebaiknya dipilih berdasarkan hubungan penerima, kualitas isi, desain branding yang proporsional, serta kemampuan vendor menangani pesanan massal.
+        </p>
+      ) : a.slug === 'pengiriman-hampers-lebaran-malang-raya' ? (
+        <p class="first-desc-paragraph">
+          Pengiriman hampers Lebaran Malang Raya perlu direncanakan berdasarkan jenis isi, jarak alamat, jadwal penerima, dan perlindungan kemasan agar hadiah tiba layak.
         </p>
       ) : a.slug === 'panduan-memilih-souvenir-pernikahan' || a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
         <p class="first-desc-paragraph">
@@ -458,6 +512,12 @@ const readTime = (a as any).readTime || '6';
         <ArticleHampersLebaranPerusahaan />
       ) : a.slug === 'hampers-lebaran-malang' ? (
         <ArticleHampersLebaranMalang />
+      ) : a.slug === 'pilihan-hampers-lebaran-sesuai-anggaran' ? (
+        <ArticlePilihanHampersLebaranSesuaiAnggaran />
+      ) : a.slug === 'hampers-lebaran-perusahaan-malang' ? (
+        <ArticleHampersLebaranPerusahaanMalang />
+      ) : a.slug === 'pengiriman-hampers-lebaran-malang-raya' ? (
+        <ArticlePengirimanHampersLebaranMalangRaya />
       ) : a.slug === 'panduan-memilih-souvenir-pernikahan' || a.slug === 'panduan-memilih-souvenir-wedding' || a.slug === 'souvenir-wedding' ? (
         <ArticlePanduanSouvenirPernikahan />
       ) : a.slug === 'souvenir-pernikahan-fungsional' ? (

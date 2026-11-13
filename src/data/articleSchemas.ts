@@ -830,44 +830,31 @@ export const articleSchemas: Record<string, any> = {
       {
         '@type': 'BlogPosting',
         '@id': 'https://sekata.web.id/blog/hampers-lebaran-malang/#article',
-        'headline': 'Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027',
-        'description': 'Cara pesan hampers lebaran Malang dengan jadwal ideal, alur dari konsultasi WhatsApp hingga kirim, serta jangkauan area Malang, Batu, dan Kepanjen.',
+        'headline': 'Hampers Lebaran Malang 2027 untuk Keluarga dan Perusahaan',
+        'description': 'Temukan pilihan hampers Lebaran Malang 2027 untuk keluarga dan perusahaan, bandingkan isi, kemasan, serta pengiriman. Lihat panduannya sebelum pesan online.',
         'image': [
-          'https://sekata.web.id/images/pesan-hampers-lebaran-malang.jpg',
-          'https://sekata.web.id/images/pengiriman-hampers-lebaran-malang-batu-kepanjen.jpg'
+          'https://sekata.web.id/images/hampers-lebaran-malang-2027.jpg',
+          'https://sekata.web.id/images/hampers-kue-kering-dan-custom.jpg'
         ],
         'inLanguage': 'id-ID',
         'mainEntityOfPage': {
           '@id': 'https://sekata.web.id/blog/hampers-lebaran-malang/#webpage'
         },
-        'datePublished': '2026-11-11T09:00:00+07:00',
-        'dateModified': '2026-11-11T09:00:00+07:00',
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
         'author': author,
         'publisher': publisher,
-        'keywords': 'pesan hampers lebaran malang, hampers lebaran malang, parcel lebaran malang, hampers batu kepanjen',
+        'keywords': 'hampers Lebaran Malang, parcel Lebaran Malang, hampers Lebaran 2027, hampers custom Malang, kue kering Malang, hampers perusahaan Malang',
         'about': {
-          '@type': 'LocalBusiness',
-          '@id': 'https://sekata.web.id/#organization',
-          'name': 'Sekata Malang',
-          'url': 'https://sekata.web.id/',
-          'telephone': '+6282131087971',
-          'priceRange': '1.000.000',
-          'image': 'https://sekata.web.id/images/pesan-hampers-lebaran-malang.jpg',
-          'address': {
-            '@type': 'PostalAddress',
-            'streetAddress': 'Jalan Bandara Palmerah',
-            'addressLocality': 'Malang',
-            'addressRegion': 'Jawa Timur',
-            'postalCode': '65138',
-            'addressCountry': 'ID'
-          }
+          '@type': 'Thing',
+          'name': 'Hampers Lebaran Malang'
         }
       },
       {
         '@type': 'WebPage',
         '@id': 'https://sekata.web.id/blog/hampers-lebaran-malang/#webpage',
         'url': 'https://sekata.web.id/blog/hampers-lebaran-malang/',
-        'name': 'Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027',
+        'name': 'Hampers Lebaran Malang 2027 dan Pilihan Paketnya | Sekata',
         'inLanguage': 'id-ID'
       },
       {
@@ -889,39 +876,8 @@ export const articleSchemas: Record<string, any> = {
           {
             '@type': 'ListItem',
             'position': 3,
-            'name': 'Pesan Hampers Lebaran Malang Jadwal Alur dan Area Pengiriman 2027',
+            'name': 'Hampers Lebaran Malang',
             'item': 'https://sekata.web.id/blog/hampers-lebaran-malang/'
-          }
-        ]
-      },
-      {
-        '@type': 'HowTo',
-        '@id': 'https://sekata.web.id/blog/hampers-lebaran-malang/#howto',
-        'name': 'Alur Pemesanan Hampers Lebaran di Malang',
-        'step': [
-          {
-            '@type': 'HowToStep',
-            'position': 1,
-            'name': 'Pilih Inspirasi Katalog',
-            'text': 'Buka katalog hampers lebaran Sekata dan simpan tangkapan layar produk yang diminati.'
-          },
-          {
-            '@type': 'HowToStep',
-            'position': 2,
-            'name': 'Konsultasi WhatsApp',
-            'text': 'Diskusikan konsep, kuantitas paket, pagu anggaran, dan logo perusahaan bersama tim Sekata.'
-          },
-          {
-            '@type': 'HowToStep',
-            'position': 3,
-            'name': 'Persetujuan Mockup dan DP 50%',
-            'text': 'Periksa simulasi visual 3D desain kemasan lalu konfirmasikan pembayaran uang muka 50%.'
-          },
-          {
-            '@type': 'HowToStep',
-            'position': 4,
-            'name': 'Pengendalian Mutu dan Pengiriman',
-            'text': 'Paket diproduksi, dicek mutunya, dipacking aman ganda, dan dikirimkan ke alamat tujuan.'
           }
         ]
       },
@@ -931,34 +887,341 @@ export const articleSchemas: Record<string, any> = {
         'mainEntity': [
           {
             '@type': 'Question',
-            'name': 'Kapan batas akhir memesan hampers lebaran custom di Sekata Malang?',
+            'name': 'Apakah hampers bisa dikirim ke Kota Batu dan Kabupaten Malang?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Batas akhir pemesanan custom idealnya adalah H-20 sebelum hari raya Idulfitri (sekitar 17-18 Februari 2027). Setelah tanggal tersebut, antrean produksi biasanya telah ditutup dan hanya menyisakan paket bingkisan siap kirim dalam jumlah terbatas.'
+              'text': 'Bisa jika vendor melayani alamat tersebut. Konfirmasikan cakupan area, jenis armada kurir, jadwal pengantaran, estimasi ongkos kirim, dan syarat penanganan khusus untuk wilayah berjarak jauh.'
             }
           },
           {
             '@type': 'Question',
-            'name': 'Apakah saya bisa mengambil langsung pesanan hampers di workshop Sekata Malang?',
+            'name': 'Apakah hampers Lebaran bisa memakai logo perusahaan?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Bisa. Bagi Anda yang berdomisili di Malang, Anda dipersilakan mengambil langsung pesanan di lokasi workshop kami di Jalan Bandara Palmerah, Cemorokandang, Malang, atau menggunakan jasa kurir roda empat lokal yang kami sediakan.'
+              'text': 'Banyak konsep hampers korporat memungkinkan cetak logo pada kartu ucapan, sleeve kertas, hardbox, atau produk merchandise tertentu. Ketersediaan fasilitas ini dan syarat minimum pemesanan perlu dikonfirmasi kepada vendor.'
             }
           },
           {
             '@type': 'Question',
-            'name': 'Bagaimana sistem pembayaran pemesanan hampers di Sekata?',
+            'name': 'Apa perbedaan hampers dan parcel Lebaran?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Sistem pembayaran menerapkan skema DP 50% di awal saat persetujuan mockup desain, dan pelunasan sisa 50% dilakukan saat seluruh paket telah selesai dikerjakan, dicek kualitasnya, dan siap untuk dikirimkan.'
+              'text': 'Keduanya merupakan bingkisan hadiah hari raya. Istilah hampers sering menonjolkan kurasi tema, estetika kemasan boks, dan pengalaman membuka hadiah, sedangkan parcel kerap merujuk pada paket barang yang dirangkai dalam keranjang terbuka.'
             }
           },
           {
             '@type': 'Question',
-            'name': 'Apakah ada jaminan garansi jika toples atau keramik pecah dalam perjalanan?',
+            'name': 'Berapa lama sebelum Lebaran sebaiknya melakukan pemesanan?',
             'acceptedAnswer': {
               '@type': 'Answer',
-              'text': 'Sekata menerapkan protokol pengemasan ganda dengan bubble wrap tebal dan busa penyekat. Apabila terjadi kerusakan akibat penanganan ekspedisi, kami menyediakan layanan garansi penggantian barang sesuai syarat dokumentasi video unboxing saat paket tiba.'
+              'text': 'Sebagai acuan awal perencanaan, amankan pesanan antara H-30 sampai H-14 sebelum Idulfitri. Untuk bingkisan berdesain kustom khusus atau kuantitas ratusan paket, ajukan pesanan lebih awal sebelum awal Ramadan.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah semua jenis hampers aman dikirim luar kota?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak. Kue kering toples bersegel rapat lebih aman dikirim dibanding dessert dingin, makanan basah berkuah, atau barang keramik pecah belah tanpa proteksi peti kayu.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah ada harga baku hampers di Malang?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak ada satu harga patokan baku. Total biaya ditentukan oleh kombinasi isi produk, dimensi ukuran, merek kue, tingkat kustomisasi kemasan, volume pesanan, dan jarak pengantaran logistik.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'pilihan-hampers-lebaran-sesuai-anggaran': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/#article',
+        'headline': 'Pilihan Hampers Lebaran Sesuai Anggaran agar Tetap Berkesan',
+        'description': 'Bingung menentukan isi hampers Lebaran? Bandingkan paket sederhana, reguler, premium, dan VVIP berdasarkan penerima serta anggaran sebelum memesan.',
+        'image': [
+          'https://sekata.web.id/images/hampers-berbagai-anggaran.jpg',
+          'https://sekata.web.id/images/detail-kemasan-hampers.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'pilihan hampers Lebaran sesuai anggaran, budget hampers Lebaran, paket hampers murah, hampers Lebaran premium, ide isi hampers',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Pilihan Hampers Lebaran Sesuai Anggaran'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/#webpage',
+        'url': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/',
+        'name': 'Pilihan Hampers Lebaran Sesuai Anggaran dan Isinya | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Pilihan Hampers Lebaran Sesuai Anggaran',
+            'item': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/pilihan-hampers-lebaran-sesuai-anggaran/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Apakah hampers berisi dua barang terlihat terlalu sederhana?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Sama sekali tidak. Dua barang bermutu tinggi yang dipilih secara cermat dan bermanfaat nyata jauh lebih dihargai penerima dibandingkan satu kotak penuh pernak-pernik yang tidak terpakai.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah harga hampers selalu sudah termasuk kemasan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Belum tentu. Sebagian penawaran vendor hanya menghitung harga produk pokok, sementara kotak hardbox, pita satin, hangtag nama, dan kantong spunbond dikenakan biaya tambahan.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana jika anggaran pengadaan berubah setelah pesanan diajukan?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Segera diskusikan dengan vendor sebelum tahap cetak kemasan dan proses produksi dimulai. Mintalah penyesuaian komposisi isi atau pilihan kemasan secara tertulis beserta estimasi perubahannya.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah hampers premium wajib menggunakan kotak magnetik?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak wajib. Bentuk kemasan harus disesuaikan dengan berat produk, perlindungan keamanan saat pengiriman, serta kenyamanan saat membuka bingkisan.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'hampers-lebaran-perusahaan-malang': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/#article',
+        'headline': 'Hampers Lebaran Perusahaan Malang untuk Klien dan Karyawan',
+        'description': 'Pelajari cara memilih hampers Lebaran perusahaan di Malang untuk klien dan karyawan, termasuk custom logo, paket VIP, quality control, dan distribusi.',
+        'image': [
+          'https://sekata.web.id/images/hampers-korporat-lebaran-malang.jpg',
+          'https://sekata.web.id/images/detail-logo-hampers-custom.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'hampers Lebaran perusahaan Malang, corporate hampers Malang, hampers Lebaran klien, hampers karyawan Malang, hampers custom logo',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Hampers Lebaran Perusahaan Malang'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/#webpage',
+        'url': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/',
+        'name': 'Hampers Lebaran Perusahaan Malang untuk Relasi Bisnis | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Hampers Lebaran Perusahaan Malang',
+            'item': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/hampers-lebaran-perusahaan-malang/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Apakah hampers perusahaan wajib menyematkan logo di semua isi barang?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak disarankan. Branding yang berlebihan justru menurunkan nilai prestise hadiah. Cukup sematkan logo pada kemasan boks luar dan kartu ucapan resmi agar produk utama tetap nyaman digunakan penerima dalam aktivitas sehari-hari.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah pesanan perusahaan harus menggunakan satu jenis paket seragam?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak harus. Anda dapat membagi pesanan ke dalam dua atau tiga tingkatan (misalnya paket VIP untuk komisaris dan mitra strategis, serta paket reguler untuk seluruh tim internal) asalkan kuantitas dan distribusinya terdata rapi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apa saja hal terpenting yang wajib disetujui sebelum produksi massal?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Mockup desain tata letak logo, kebenaran ejaan teks kartu ucapan, spesifikasi dimensi boks, rincian merek isi makanan, tanggal selesai pengerjaan, dan invoice kesepakatan tertulis.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana cara meminimalkan kesalahan alamat pengiriman ke banyak klien?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Gunakan formulir digital terstandardisasi yang memuat nama lengkap penerima, nomor telepon aktif WhatsApp, alamat lengkap beserta patokan gedung/lantai kantor, serta batas akhir pengantaran sebelum libur operasional cuti bersama.'
+            }
+          }
+        ]
+      }
+    ]
+  },
+  'pengiriman-hampers-lebaran-malang-raya': {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/#article',
+        'headline': 'Pengiriman Hampers Lebaran Malang Raya agar Aman dan Tepat Waktu',
+        'description': 'Simak cara mengatur pengiriman hampers Lebaran ke Kota Malang, Batu, dan Kabupaten Malang, dari jadwal pre-order hingga kemasan aman dan bukti terima.',
+        'image': [
+          'https://sekata.web.id/images/pengiriman-hampers-lebaran-malang.jpg',
+          'https://sekata.web.id/images/pengecekan-paket-sebelum-kirim.jpg'
+        ],
+        'inLanguage': 'id-ID',
+        'mainEntityOfPage': {
+          '@id': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/#webpage'
+        },
+        'datePublished': '2026-11-13T09:00:00+07:00',
+        'dateModified': '2026-11-13T09:00:00+07:00',
+        'author': author,
+        'publisher': publisher,
+        'keywords': 'pengiriman hampers Lebaran Malang Raya, ekspedisi hampers Malang, kurir hampers Malang Batu, kirim parcel Lebaran aman',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Pengiriman Hampers Lebaran Malang Raya'
+        }
+      },
+      {
+        '@type': 'WebPage',
+        '@id': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/#webpage',
+        'url': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/',
+        'name': 'Pengiriman Hampers Lebaran di Malang Raya agar Aman | Sekata',
+        'inLanguage': 'id-ID'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/#breadcrumb',
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Beranda',
+            'item': 'https://sekata.web.id/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Blog',
+            'item': 'https://sekata.web.id/blog/'
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': 'Pengiriman Hampers Lebaran Malang Raya',
+            'item': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/'
+          }
+        ]
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://sekata.web.id/blog/pengiriman-hampers-lebaran-malang-raya/#faq',
+        'mainEntity': [
+          {
+            '@type': 'Question',
+            'name': 'Apakah semua jenis hampers dapat dikirim menggunakan kurir instan motor?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Tidak semua. Paket berukuran besar di atas dimensi 40x30x20 cm, boks bersusun lebih dari 2 tingkat, atau bingkisan pecah belah berisiko tinggi wajib diangkut menggunakan mobil agar tidak oleng atau tertimpa barang lain.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah paket kue kering aman dikirim ke luar kota Malang?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Aman asalkan toples menggunakan segel mika tebal, ruang antar kue diisi dengan kertas roti peredam, dan boks utama dilapisi bubble wrap tebal serta kardus luar berkualitas tinggi.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Bagaimana jika alamat penerima mengalami perubahan mendadak?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Segera sampaikan pembaruan titik koordinat dan alamat baru kepada vendor sebelum paket diserahkan ke armada pengiriman pada pagi hari rute pengantaran.'
+            }
+          },
+          {
+            '@type': 'Question',
+            'name': 'Apakah layanan pengiriman same day menjamin barang tiba 100% bebas cacat?',
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': 'Kecepatan waktu tempuh tidak menggantikan fungsi pengemasan yang kokoh. Kemasan yang rapat dan bantalan internal tetap menjadi penentu utama perlindungan isi hadiah.'
             }
           }
         ]
