@@ -13,7 +13,7 @@ const publisher = {
 const author = {
   '@type': 'Organization',
   'name': 'Tim Editorial',
-  'url': 'https://sekata.web.id/sekata/'
+  'url': 'https://sekata.web.id/tentang-kami/'
 };
 
 export const articleSchemas: Record<string, any> = {

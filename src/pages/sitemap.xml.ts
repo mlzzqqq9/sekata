@@ -19,7 +19,7 @@ export const GET: APIRoute = () => {
     'gift',
     'hampers',
     'souvenir',
-    'sekata',
+    'tentang-kami',
     'kontak',
     'blog',
     'kebijakan-privasi',
