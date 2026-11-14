@@ -612,14 +612,22 @@ export const articles = [
     title: 'Seni memberi hadiah yang terasa personal.',
     category: 'Gifting Ideas',
     image: 'products/wedding-gift-set-exclusive.jpg',
-    excerpt: 'Mulai dari penerima, pilih isi, lalu satukan cerita lewat kemasan.'
+    excerpt: 'Mulai dari penerima, pilih isi, lalu satukan cerita lewat kemasan.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '5'
   },
   {
     slug: 'persiapan-souvenir-acara',
     title: 'Sebelum memesan, siapkan lima hal ini.',
     category: 'Tips & Cerita',
     image: 'products/wedding-dual-pouch-canvas.jpg',
-    excerpt: 'Brief sederhana agar konsultasi souvenir lebih terarah.'
+    excerpt: 'Brief sederhana agar konsultasi souvenir lebih terarah.',
+    author: 'Tim Editorial',
+    reviewedBy: 'Editor Konten',
+    dateModified: '2026-11-13',
+    readTime: '5'
   }
 ];
 

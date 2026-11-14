@@ -7,9 +7,9 @@ export const GET: APIRoute = () => {
   const productPaths = products.map((p) => {
     const cat = p.categorySlug || (
       p.kind.toLowerCase().includes('lebaran') ? 'hampers-lebaran' :
-      p.kind.toLowerCase().includes('wedding') ? 'souvenir-wedding' :
-      p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah') ? 'souvenir-haji-umrah' :
-      'gift'
+        p.kind.toLowerCase().includes('wedding') ? 'souvenir-wedding' :
+          p.kind.toLowerCase().includes('haji') || p.kind.toLowerCase().includes('umrah') ? 'souvenir-haji-umrah' :
+            'gift'
     );
     return `${cat}/${p.id}`;
   });
@@ -33,6 +33,11 @@ export const GET: APIRoute = () => {
   ];
 
   const uniquePaths = Array.from(new Set(paths));
+
+
+
+
+
 
   const urlsXml = uniquePaths
     .map(

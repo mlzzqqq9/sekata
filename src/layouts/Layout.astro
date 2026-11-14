@@ -1,7 +1,7 @@
 ---
 import '@fontsource/poppins/400.css';import '@fontsource/poppins/500.css';import '@fontsource/poppins/600.css';
 import '../styles/global.css';import Icon from '../components/Icon.astro';import {categories,hampers,souvenirs,slug,wa,map,config} from '../data/site';
-const {title='Sekata — Souvenir Pernikahan & Hampers Custom Malang',description='Sekata membantu memilih souvenir pernikahan, hampers, dan gift custom dari Malang. Konsultasikan pilihan isi dan kemasan bersama Ayu.',schema}=Astro.props;
+const {title='Sekata — Souvenir Pernikahan & Hampers Custom Malang',description='Sekata membantu memilih souvenir pernikahan, hampers, dan gift custom dari Malang. Konsultasikan pilihan isi dan kemasan bersama Ayu.',schema,hideDefaultOrgSchema=false}=Astro.props;
 const canonical=new URL(Astro.url.pathname,'https://sekata.web.id').href;
 const org={
   '@context':'https://schema.org',
@@ -35,7 +35,7 @@ const org={
   }
 };
 ---
-<!doctype html><html lang="id"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/><link rel="icon" type="image/webp" href="/images/logo.webp"/><meta name="theme-color" content="#aa5636"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><meta property="og:image" content="https://sekata.web.id/images/hero.jpg"/><meta name="twitter:card" content="summary_large_image"/><script type="application/ld+json" set:html={JSON.stringify(org)}/>{schema&&<script type="application/ld+json" set:html={JSON.stringify(schema)}/>}</head><body>
+<!doctype html><html lang="id"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/><link rel="icon" type="image/webp" href="/images/logo.webp"/><meta name="theme-color" content="#aa5636"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><meta property="og:image" content="https://sekata.web.id/images/hero.jpg"/><meta name="twitter:card" content="summary_large_image"/>{!hideDefaultOrgSchema&&<script type="application/ld+json" set:html={JSON.stringify(org)}/>}{schema&&<script type="application/ld+json" set:html={JSON.stringify(schema)}/>}</head><body>
 <div id="splash-screen" class="splash-screen" aria-hidden="true" style="position:fixed;inset:0;z-index:99999;background:#faf8f3;display:flex;align-items:center;justify-content:center;">
   <div class="splash-content">
     <div class="splash-logo-wrap">

@@ -9,7 +9,6 @@ export function getStaticPaths() {
     'gift',
     'hampers',
     'souvenir',
-    'sekata',
     'kontak',
     'blog',
     'temukan-solusi',
@@ -250,7 +249,6 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
   heroImage = '/images/hero-tulip-gading.png'; // Hamparan tulip lembut di kain gading
 } else if (
   page === 'souvenir' ||
-  page === 'sekata' ||
   activeSlug?.includes('perusahaan') ||
   activeSlug?.includes('bumn') ||
   activeSlug?.includes('kantor') ||
@@ -272,7 +270,7 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
 ---
 
 <Layout
-  title={(category?.name || ({ gift: 'Gift & Hampers Custom', hampers: 'Hampers Custom', souvenir: 'Souvenir Custom', sekata: 'Tentang Sekata', kontak: 'Kontak Sekata', 'temukan-solusi': 'Temukan Solusi — Inspirasi Souvenir & Hampers', blog: 'Temukan Solusi — Inspirasi Souvenir & Hampers' } as any)[page!] || title) + ' | Sekata Malang'}
+  title={(category?.name || ({ gift: 'Gift & Hampers Custom', hampers: 'Hampers Custom', souvenir: 'Souvenir Custom', kontak: 'Kontak Sekata', 'temukan-solusi': 'Temukan Solusi — Inspirasi Souvenir & Hampers', blog: 'Temukan Solusi — Inspirasi Souvenir & Hampers' } as any)[page!] || title) + ' | Sekata Malang'}
   description={desc}
   schema={catalogSchema}
 >
@@ -711,18 +709,7 @@ if (isHampersLebaran || activeSlug?.includes('lebaran')) {
     </section>
   ) : (
     <div class="prose">
-      {page === 'sekata' ? (
-        <>
-          <h2>Hadiah adalah cara lain untuk bercerita.</h2>
-          <p>Sekata melayani kebutuhan souvenir pernikahan, hampers, dan gift custom dari Jalan Bandara Palmerah, Cemorokandang, Malang, Jawa Timur. Kami ingin membantu setiap perhatian disampaikan lewat hadiah yang sesuai dengan momen dan penerimanya.</p>
-          <p>Dari perayaan wedding hingga apresiasi perusahaan, prosesnya dimulai dengan percakapan: apa yang ingin kamu sampaikan, kepada siapa, dan kapan hadiah itu akan diberikan.</p>
-          <h2>Berangkat dari kebutuhanmu.</h2>
-          <p>Pilihan isi, personalisasi, dan kemasan dibicarakan bersama admin. Jumlah pesanan, penawaran, dan jadwal disepakati terlebih dahulu agar kamu memiliki gambaran yang jelas.</p>
-          <h2>Dari Malang, untuk momenmu.</h2>
-          <p>Konsultasikan pengiriman menuju Malang, Batu, Kepanjen, Surabaya, Jakarta, Bandung, Makassar, Bali, Lombok, Banjarmasin, dan kota tujuan lainnya.</p>
-          <a href={wa} class="text-link">Mulai percakapan dengan Ayu <Icon /></a>
-        </>
-      ) : page === 'kontak' ? (
+      {page === 'kontak' ? (
         <>
           <h2>Hubungi Ayu, admin Sekata.</h2>
           <p>Untuk konsultasi produk, harga, jumlah pesanan, dan estimasi pengerjaan, silakan hubungi WhatsApp <a href={wa}>+62 821-3108-7971</a>.</p>

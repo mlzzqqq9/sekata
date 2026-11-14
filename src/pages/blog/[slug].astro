@@ -346,30 +346,43 @@ const tocMap: Record<string, [string, string][]> = {
 const toc = tocMap[a.slug] || [];
 const relatedArticles = articles.filter((x) => x.slug !== a.slug);
 
+const authorDisplay = (a as any).author || 'M. Maulana Ishaq';
+const readTime = (a as any).readTime || '6';
+
 const schema = articleSchemas[a.slug] || {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
-  headline: a.title,
+  '@id': 'https://sekata.web.id/blog/' + a.slug + '/#article',
+  headline: a.title.replace(/:\s*/g, ' '),
   description: a.excerpt,
-  image: 'https://sekata.web.id/images/' + a.image,
+  image: [
+    'https://sekata.web.id/images/' + a.image
+  ],
   datePublished: '2026-11-07T09:00:00+07:00',
-  dateModified: '2026-11-09T09:00:00+07:00',
+  dateModified: `${(a as any).dateModified || '2026-11-13'}T09:00:00+07:00`,
   author: {
     '@type': 'Person',
-    name: 'M. Maulana Ishaq',
+    name: authorDisplay,
     url: 'https://sekata.web.id/penulis/m-maulana-ishaq/'
   },
   publisher: {
-    '@id': 'https://sekata.web.id/#organization'
+    '@type': 'Organization',
+    name: 'Sekata',
+    url: 'https://sekata.web.id/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://sekata.web.id/images/logo.webp'
+    }
   },
-  mainEntityOfPage: 'https://sekata.web.id/blog/' + a.slug + '/'
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://sekata.web.id/blog/' + a.slug + '/'
+  }
 };
 
 const displayTitle = a.title.replace(/:\s*/g, ' ');
 const displayMetaTitle = (a as any).metaTitle ? (a as any).metaTitle.replace(/:\s*/g, ' ') : displayTitle;
 const pageTitle = (a as any).metaTitle ? `${displayMetaTitle} | Sekata Malang` : `${displayTitle} — Temukan Solusi | Sekata Malang`;
-const authorDisplay = (a as any).author || 'M. Maulana Ishaq';
-const readTime = (a as any).readTime || '6';
 ---
 
 <Layout title={pageTitle} description={a.excerpt} schema={schema}>

@@ -174,8 +174,8 @@ Memesan hampers lebaran di Malang kini semakin mudah dengan perencanaan tanggal 
       },
       "keywords": "pesan hampers lebaran malang, hampers lebaran malang, parcel lebaran malang, hampers batu kepanjen",
       "about": {
-        "@type": "LocalBusiness",
-        "name": "Sekata Malang"
+        "@type": "Thing",
+        "name": "Hampers Lebaran Malang"
       }
     },
     {
